@@ -1,0 +1,32 @@
+qremotecontrol2 (2.2.0) stable; urgency=high
+
+  * Made Drag and Drop possible.
+  * Fixed the keyboard Bug on N9.
+  * Added a more native looking theme for N9
+  * Made black the default theme
+  * Added the Nerdy theme (work in progress)
+  * Fixed some screen distortions on N9
+  * Made the icon bigger
+
+ -- Strahlex <mail.aroessler@gmail.com>  Sun, 11 Nov 2012 23:00:00 +0100
+qremotecontrol2 (2.1.0) stable; urgency=high
+
+  * Added Wake On Lan support.
+  * Removed ui lock when no Wlan is available.
+
+ -- Strahlex <mail.aroessler@gmail.com>  Sat, 27 Oct 2012 22:00:00 +0100
+qremotecontrol2 (2.0.2) stable; urgency=high
+
+  * Fixed problems with the mouse.
+
+ -- Strahlex <mail.aroessler@gmail.com>  Tue, 25 Sep 2012 14:00:40 +0100
+qremotecontrol2 (2.0.1) stable; urgency=high
+
+  * Updated UI and fixed a bug.
+
+ -- Strahlex <mail.aroessler@gmail.com>  Tue, 21 Aug 2012 20:00:40 +0200
+qremotecontrol2 (2.0.0) stable; urgency=low
+
+  * Initial Release.
+
+ -- Strahlex <mail.aroessler@gmail.com>  Thu, 06 Jul 2012 14:30:40 +0200
