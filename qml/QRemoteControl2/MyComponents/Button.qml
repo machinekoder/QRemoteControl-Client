@@ -1,4 +1,5 @@
 import QtQuick 1.1
+import QtMobility.feedback 1.1
 import "gradients/"
 
 Rectangle {
@@ -18,6 +19,7 @@ Rectangle {
     property Gradient defaultGradient:  theme.defaultGradient
     property Gradient pressedGradient:  theme.pressedGradient
     property Gradient hoveredGradient:  theme.hoveredGradient
+    property bool animated:             true
 
     signal clicked
     signal doubleClicked
@@ -40,22 +42,30 @@ Rectangle {
 
     Behavior on rotation {
                      NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                     enabled: animated
                  }
 
     MouseArea {
         id: mouseArea
         anchors.fill: parent
         //hoverEnabled: true
-        onClicked: {
+        //onClicked: {
+
+        //}
+        //onDoubleClicked: base.doubleClicked()
+        onPressed: {
+            base.pressed()
             base.clicked()
             if (checkable)
                 checked = !checked;
             if (sound)
                 buttonSound()
+            basicHapticEffect.play()
         }
-        onDoubleClicked: base.doubleClicked()
-        onPressed: base.pressed()
-        onReleased: base.released()
+        onReleased: {
+            base.released()
+            basicHapticEffect.play()
+        }
     }
 
     Item {
@@ -79,6 +89,7 @@ Rectangle {
 
         Behavior on rotation {
                          NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         enabled: animated
                      }
     }
 
@@ -99,7 +110,10 @@ Rectangle {
 
         Behavior on rotation {
                          NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         enabled: animated
                      }
     }
+
+    ThemeEffect{ id: basicHapticEffect; effect: ThemeEffect.BasicButton }
 }
 

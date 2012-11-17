@@ -50,6 +50,9 @@ import QtQuick 1.1
              anchors.fill: parent; drag.target: parent
              drag.axis: Drag.XAxis; drag.minimumX: 2; drag.maximumX: slider.xMax+2
              onPositionChanged: { value = (maximum - minimum) * (handle.x-2) / slider.xMax + minimum; }
+             onClicked: {
+
+             }
          }
      }
  }

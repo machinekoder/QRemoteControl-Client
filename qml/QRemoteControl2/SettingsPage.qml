@@ -28,6 +28,8 @@ Rectangle {
         repeat: false
         running: false
         onTriggered: {
+            var roundness = client.uiRoundness;
+
             switch (client.uiColor)
             {
             case "gold": goldButton.clicked()
@@ -52,7 +54,7 @@ Rectangle {
                 break
             }
 
-            theme.radiusScaler = client.uiRoundness
+            theme.radiusScaler = roundness
             roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
         }
     }
@@ -100,8 +102,7 @@ Rectangle {
 
        onValueChanged: {
            theme.radiusScaler = maximum-value
-           client.uiRoundness = roundnessSlider.maximum-roundnessSlider.value
-           client.saveSettings()
+           client.uiRoundness = theme.radiusScaler
        }
    }
 
@@ -154,8 +155,7 @@ Rectangle {
                     master.backgroundImage = "images/background_gold.png"
                     master.iconTheme = "black"
                     client.uiColor = "gold"
-                    client.uiRoundness = roundnessSlider.maximum-roundnessSlider.value
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -179,8 +179,7 @@ Rectangle {
                     master.backgroundImage = "images/background_grey.png"
                     master.iconTheme = "black"
                     client.uiColor = "grey"
-                    client.uiRoundness = roundnessSlider.maximum-roundnessSlider.value
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -204,8 +203,7 @@ Rectangle {
                     master.backgroundImage = "images/background_green.png"
                     master.iconTheme = "black"
                     client.uiColor = "green"
-                    client.uiRoundness = roundnessSlider.maximum-roundnessSlider.value
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -229,8 +227,7 @@ Rectangle {
                     master.backgroundImage = "images/background_silver.png"
                     master.iconTheme = "black"
                     client.uiColor = "silver"
-                    client.uiRoundness = roundnessSlider.maximum-roundnessSlider.value
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -254,8 +251,7 @@ Rectangle {
                     master.backgroundImage = "images/background_pink.png"
                     master.iconTheme = "black"
                     client.uiColor = "pink"
-                    client.uiRoundness = roundnessSlider.maximum-roundnessSlider.value
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -279,8 +275,7 @@ Rectangle {
                     master.backgroundImage = "images/background_red.png"
                     master.iconTheme = "black"
                     client.uiColor = "red"
-                    client.uiRoundness = roundnessSlider.maximum-roundnessSlider.value
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -304,8 +299,7 @@ Rectangle {
                     master.backgroundImage = "images/background_white.png"
                     master.iconTheme = "black"
                     client.uiColor = "white"
-                    client.uiRoundness = roundnessSlider.maximum-roundnessSlider.value
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -329,8 +323,7 @@ Rectangle {
                     master.backgroundImage = ""
                     master.iconTheme = "white"
                     client.uiColor = "black"
-                    client.uiRoundness = roundnessSlider.maximum-roundnessSlider.value
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -354,8 +347,7 @@ Rectangle {
                     master.backgroundImage = "images/background_blue.png"
                     master.iconTheme = "black"
                     client.uiColor = "blue"
-                    client.uiRoundness = roundnessSlider.maximum-roundnessSlider.value
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
             Button {
@@ -378,8 +370,7 @@ Rectangle {
                     master.backgroundImage = ""
                     master.iconTheme = "white"
                     client.uiColor = "nerdy"
-                    client.uiRoundness = roundnessSlider.maximum-roundnessSlider.value
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
         }
