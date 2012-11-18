@@ -1,2 +1,2 @@
-/home/alexander/Dropbox/C++/QRemoteControl2/android/bin/AndroidManifest.xml : \
-/home/alexander/Dropbox/C++/QRemoteControl2/android/AndroidManifest.xml \
+/home/alexander/projects/qremotecontrol-client/android/bin/AndroidManifest.xml : \
+/home/alexander/projects/qremotecontrol-client/android/AndroidManifest.xml \

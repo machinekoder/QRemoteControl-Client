@@ -30,25 +30,47 @@ Rectangle {
         mouseButtonReleased.connect(client.sendMouseRelease)
     }
 
-    TouchPad {
-        id: touchpad
-        anchors.top: buttonRow.bottom
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.rightMargin: 5
-        anchors.leftMargin: 5
-        anchors.bottomMargin: 5
-        anchors.topMargin: 5
-        onLeftButtonPressed: mouseButtonPressed(1)
-        onLeftButtonReleased: mouseButtonReleased(1)
-        onMiddleButtonPressed: mouseButtonPressed(2)
-        onMiddleButtonReleased: mouseButtonReleased(2)
-        onRightButtonPressed: mouseButtonPressed(3)
-        onRightButtonReleased: mouseButtonReleased(3)
-        leftButtonCheckable: controlButton.checked || altButton.checked || shiftButton.checked
-        middleButtonCheckable: controlButton.checked || altButton.checked || shiftButton.checked
-        rightButtonCheckable: controlButton.checked || altButton.checked || shiftButton.checked
+    Item {
+        id:                     wrapper
+        anchors.top:            buttonRow.bottom
+        anchors.right:          parent.right
+        anchors.bottom:         parent.bottom
+        anchors.left:           parent.left
+        anchors.rightMargin:    5
+        anchors.leftMargin:     5
+        anchors.bottomMargin:   5
+        anchors.topMargin:      5
+        TouchPad {
+            id: touchpad
+
+            rotation:       master.screenRotation
+            width:          ((rotation === 0) || (rotation === 180)) ? parent.width : parent.height
+            height:         ((rotation === 0) || (rotation === 180)) ? parent.height : parent.width
+            anchors.centerIn: parent
+
+            onLeftButtonPressed: mouseButtonPressed(1)
+            onLeftButtonReleased: mouseButtonReleased(1)
+            onMiddleButtonPressed: mouseButtonPressed(2)
+            onMiddleButtonReleased: mouseButtonReleased(2)
+            onRightButtonPressed: mouseButtonPressed(3)
+            onRightButtonReleased: mouseButtonReleased(3)
+            //leftButtonCheckable: controlButton.checked || altButton.checked || shiftButton.checked
+            //middleButtonCheckable: controlButton.checked || altButton.checked || shiftButton.checked
+            //rightButtonCheckable: controlButton.checked || altButton.checked || shiftButton.checked
+
+            Behavior on rotation {
+                            enabled:      (mainRect.state == "touchpadPageState")
+                            NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+            Behavior on width {
+                            enabled:       (mainRect.state == "buttonPageState")
+                            NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+            Behavior on height {
+                            enabled:       (mainRect.state == "buttonPageState")
+                            NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                        }
+        }
     }
 
     Row {
@@ -67,6 +89,7 @@ Rectangle {
             text: qsTr("Ctrl")
             onClicked:controlClicked(!checked)
             checkable: true
+            textRotation: master.screenRotation
         }
 
         Button {
@@ -76,6 +99,7 @@ Rectangle {
             text: qsTr("Alt")
             onClicked: altClicked(!checked)
             checkable: true
+            textRotation: master.screenRotation
         }
 
         Button {
@@ -85,6 +109,7 @@ Rectangle {
             text: qsTr("Shift")
             onClicked: shiftClicked(!checked)
             checkable: true
+            textRotation: master.screenRotation
         }
     }
 }

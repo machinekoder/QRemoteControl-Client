@@ -88,8 +88,14 @@ Button {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         anchors.horizontalCenter: parent.horizontalCenter
-        onPressed: downPressed()
-        onReleased: downReleased()
+        onPressed: {
+            downPressed()
+            mouse.accepted = false
+        }
+        onReleased: {
+            downReleased()
+            mouse.accepted = false
+        }
     }
 
     MouseArea {
@@ -99,8 +105,14 @@ Button {
         anchors.top: parent.top
         anchors.topMargin: 0
         anchors.horizontalCenter: parent.horizontalCenter
-        onPressed: upPressed()
-        onReleased: upReleased()
+        onPressed: {
+            downPressed()
+            mouse.accepted = false
+        }
+        onReleased: {
+            downReleased()
+            mouse.accepted = false
+        }
     }
 
     MouseArea {
@@ -110,8 +122,14 @@ Button {
         anchors.left: parent.left
         anchors.leftMargin: 0
         anchors.verticalCenter: parent.verticalCenter
-        onPressed: leftPressed()
-        onReleased: leftReleased()
+        onPressed: {
+            downPressed()
+            mouse.accepted = false
+        }
+        onReleased: {
+            downReleased()
+            mouse.accepted = false
+        }
     }
 
     MouseArea {
@@ -120,7 +138,13 @@ Button {
         height: okButton.height
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        onPressed: rightPressed()
-        onReleased: rightReleased()
+        onPressed: {
+            downPressed()
+            mouse.accepted = false
+        }
+        onReleased: {
+            downReleased()
+            mouse.accepted = false
+        }
     }
 }

@@ -24,10 +24,12 @@ Rectangle {
 
     Timer {
         id: loadTimer
-        interval: 100
+        interval: 50
         repeat: false
         running: false
         onTriggered: {
+            var roundness = client.uiRoundness;
+
             switch (client.uiColor)
             {
             case "gold": goldButton.clicked()
@@ -51,6 +53,9 @@ Rectangle {
             case "nerdy": nerdyButton.clicked()
                 break
             }
+
+            theme.radiusScaler = roundness
+            roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
         }
     }
 
@@ -70,17 +75,36 @@ Rectangle {
         anchors.leftMargin: 10
     }
 
-   /* Label {
+   Label {
         id: label2
-        text: qsTr("Language:")
+        text: qsTr("Roundness:")
         anchors.top: grid1.bottom
         anchors.topMargin: 10
         anchors.right: parent.right
         anchors.rightMargin: 10
         anchors.left: parent.left
         anchors.leftMargin: 10
-        font.pixelSize: master.textSize2
-    }*/
+    }
+
+   Slider {
+       id: roundnessSlider
+       anchors.top: label2.bottom
+       anchors.topMargin: 10
+       anchors.right: parent.right
+       anchors.rightMargin: 10
+       anchors.left: parent.left
+       anchors.leftMargin: 10
+
+       height: parent.height*0.08
+
+       minimum: 2
+       maximum: 20
+
+       onValueChanged: {
+           theme.radiusScaler = maximum-value
+           client.uiRoundness = theme.radiusScaler
+       }
+   }
 
     Button {
             id: exitButton
@@ -127,10 +151,11 @@ Rectangle {
                 hoveredGradient: goldStyle.hoveredGradient
                 onClicked: {
                     theme.load(goldStyle);
+                    roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_gold.png"
                     master.iconTheme = "black"
                     client.uiColor = "gold"
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -150,10 +175,11 @@ Rectangle {
                 hoveredGradient: greyStyle.hoveredGradient
                 onClicked: {
                     theme.load(greyStyle);
+                    roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_grey.png"
                     master.iconTheme = "black"
                     client.uiColor = "grey"
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -173,10 +199,11 @@ Rectangle {
                 hoveredGradient: greenStyle.hoveredGradient
                 onClicked: {
                     theme.load(greenStyle);
+                    roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_green.png"
                     master.iconTheme = "black"
                     client.uiColor = "green"
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -196,10 +223,11 @@ Rectangle {
                 hoveredGradient: silverStyle.hoveredGradient
                 onClicked: {
                     theme.load(silverStyle);
+                    roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_silver.png"
                     master.iconTheme = "black"
                     client.uiColor = "silver"
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -219,10 +247,11 @@ Rectangle {
                 hoveredGradient: pinkStyle.hoveredGradient
                 onClicked: {
                     theme.load(pinkStyle);
+                    roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_pink.png"
                     master.iconTheme = "black"
                     client.uiColor = "pink"
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -242,10 +271,11 @@ Rectangle {
                 hoveredGradient: redStyle.hoveredGradient
                 onClicked: {
                     theme.load(redStyle);
+                    roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_red.png"
                     master.iconTheme = "black"
                     client.uiColor = "red"
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -265,10 +295,11 @@ Rectangle {
                 hoveredGradient: whiteStyle.hoveredGradient
                 onClicked: {
                     theme.load(whiteStyle);
+                    roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_white.png"
                     master.iconTheme = "black"
                     client.uiColor = "white"
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -288,10 +319,11 @@ Rectangle {
                 hoveredGradient: blackStyle.hoveredGradient
                 onClicked: {
                     theme.load(blackStyle);
+                    roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = ""
                     master.iconTheme = "white"
                     client.uiColor = "black"
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
 
@@ -311,10 +343,11 @@ Rectangle {
                 hoveredGradient: blueStyle.hoveredGradient
                 onClicked: {
                     theme.load(blueStyle);
+                    roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_blue.png"
                     master.iconTheme = "black"
                     client.uiColor = "blue"
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
             Button {
@@ -333,10 +366,11 @@ Rectangle {
                 hoveredGradient: nerdyStyle.hoveredGradient
                 onClicked: {
                     theme.load(nerdyStyle);
+                    roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = ""
                     master.iconTheme = "white"
                     client.uiColor = "nerdy"
-                    client.saveSettings()
+                    client.uiRoundness = theme.radiusScaler
                 }
             }
         }

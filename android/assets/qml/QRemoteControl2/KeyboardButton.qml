@@ -9,20 +9,27 @@ Button {
     property string shiftedText: ""
     property bool topRow: false
     property int key: 0
+    property bool showPreview : true
 
     id:                 keyboardButton
     width:              100
     height:             62
     border.width:       1
     text:               shifted?shiftedText:normalText
+    textRotation:       master.screenRotation-keyboard.rotation
+    iconRotation:       master.screenRotation-keyboard.rotation
     font.pixelSize:     keyboardMain.textSize
+    animated:           (mainRect.state == "keyboardPageState")
+
     onPressed:  {
         client.sendKey(key,keyboardMain.modifierState(),true)
-        preview.visible = true
+        if (showPreview)
+            preview.visible = true
     }
     onReleased: {
         client.sendKey(key,keyboardMain.modifierState(),false)
-        preview.visible = false
+        if (showPreview)
+            preview.visible = false
     }
 
     Rectangle {

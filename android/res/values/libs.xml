@@ -6,6 +6,7 @@
         <item>QtGui</item>
         <item>QtNetwork</item>
         <item>QtScript</item>
+        <item>QtSensors</item>
         <item>QtSql</item>
         <item>QtSvg</item>
         <item>QtWebKit</item>

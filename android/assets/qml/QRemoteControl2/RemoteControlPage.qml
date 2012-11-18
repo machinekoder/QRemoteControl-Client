@@ -68,6 +68,7 @@ Rectangle {
                 width:      (barRow.width) / 4 - barRow.spacing
                 iconSource: master.imagePath + master.iconTheme + "/remote.png"
                 onClicked:  mainRect.state = "buttonPageState"
+                iconRotation: master.screenRotation
             }
 
             Button {
@@ -76,6 +77,7 @@ Rectangle {
                 width:      (barRow.width) / 4 - barRow.spacing
                 iconSource: master.imagePath + master.iconTheme + "/apps.png"
                 onClicked:  mainRect.state = "actionsPageState"
+                iconRotation: master.screenRotation
             }
 
             Button {
@@ -84,6 +86,7 @@ Rectangle {
                 width:      (barRow.width) / 4 - barRow.spacing
                 iconSource: master.imagePath + master.iconTheme + "/mouse.png"
                 onClicked:  mainRect.state = "touchpadPageState"
+                iconRotation: master.screenRotation
             }
 
             Button {
@@ -92,6 +95,7 @@ Rectangle {
                 width:      (barRow.width) / 4 - barRow.spacing
                 iconSource: master.imagePath + master.iconTheme + "/keyboard.png"
                 onClicked:  mainRect.state = "keyboardPageState"
+                iconRotation: master.screenRotation
             }
         }
     }
