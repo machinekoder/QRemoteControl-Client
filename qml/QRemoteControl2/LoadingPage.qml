@@ -65,7 +65,7 @@ Rectangle {
         radius: width/2
         anchors.verticalCenter: rightImage.verticalCenter
         smooth: true
-        border.color: master.border.color
+        border.color: theme.buttonBorderColor
         border.width: 2
         Behavior on x {
             NumberAnimation { easing.type: Easing.Linear; duration: ballTimer.interval-50 }
