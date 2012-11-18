@@ -12,34 +12,49 @@ Rectangle {
         client.actionReceived.connect(actionReceived)
     }
 
-    GridView {
-        id:                     gridView
-        anchors.rightMargin:    10
-        anchors.leftMargin:     10
-        anchors.bottomMargin:   10
-        anchors.topMargin:      10
-        anchors.fill:           parent
-        cellHeight:             (parent.width-20) / 4 -1
-        cellWidth:              cellHeight
-        delegate: Item {
-            width:  gridView.cellWidth
-            height: gridView.cellHeight
-            Button {
-                anchors.fill:           parent
-                anchors.leftMargin:     5
-                anchors.rightMargin:    5
-                anchors.topMargin:      5
-                anchors.bottomMargin:   5
-                text:                   name
-                font.bold:              true
-                font.pixelSize:         master.textSize1
-                icon:                   (image.charAt(image.length-1) !== "/")? "file:///"+image:""
-                onPressed:              client.sendAction(index+1,true)
-                onReleased:             client.sendAction(index+1,false)
+    Item {
+        id: wrapper
+        anchors.fill: parent
+        anchors.margins: 10
+
+        GridView {
+            id:             gridView
+
+            rotation:       master.screenRotation
+            width:          ((rotation === 0) || (rotation === 180)) ? parent.width : parent.height
+            height:         ((rotation === 0) || (rotation === 180)) ? parent.height : parent.width
+            anchors.centerIn: parent
+
+            cellWidth:      parent.width / 4 - 1   //4 items in a row
+            cellHeight:     cellHeight
+
+            delegate: Item {
+                width:  gridView.cellWidth
+                height: gridView.cellHeight
+                Button {
+                    anchors.fill:           parent
+                    anchors.leftMargin:     5
+                    anchors.rightMargin:    5
+                    anchors.topMargin:      5
+                    anchors.bottomMargin:   5
+                    text:                   name
+                    icon:                   (image.charAt(image.length-1) !== "/")? "file:///"+image:""
+                    onPressed:              client.sendAction(index+1,true)
+                    onReleased:             client.sendAction(index+1,false)
+                }
             }
-        }
-        model: ListModel {
-            id: listModel
+            model: ListModel {
+                id: listModel
+            }
+            Behavior on rotation {
+                            NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+            Behavior on width {
+                            NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+            Behavior on height {
+                            NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                            }
         }
     }
 

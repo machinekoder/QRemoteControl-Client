@@ -150,6 +150,8 @@ Rectangle {
                             anchors.verticalCenter: parent.verticalCenter
                             font.bold: theme.buttonFontBold
                             font.pixelSize: theme.buttonFontSize
+                            font.family: theme.fontFamily
+                            color: theme.primaryTextColor
                         }
                     }
 

@@ -51,11 +51,20 @@ Rectangle {
             onPressed: lastPos = mouseX
             onMouseXChanged: {
                 if (pressed) {
-                    var delta = mouseX - lastPos
-                    if (delta != 0) {
-                        lastPos = mouseX
+                    var delta = mouseY - lastPos
+                    var deltaRounded = 0
+
+                    if ((delta >= 1) || (delta <= -1))
+                    {
+                        if (delta < 0)
+                            deltaRounded = Math.ceil(delta)
+                        else
+                            deltaRounded = Math.floor(delta)
+                        lastPos += deltaRounded
+                    }
+
+                    if (deltaRounded !== 0) {
                         horizontalScroll(delta)
-                        //console.log("X scroll:" + delta)
                     }
                 }
             }
@@ -74,11 +83,19 @@ Rectangle {
             onMouseXChanged: {
                 if (pressed) {
                     var delta = mouseY - lastPos
-                    if (delta != 0)
+                    var deltaRounded = 0
+
+                    if ((delta >= 1) || (delta <= -1))
                     {
-                        lastPos = mouseY
+                        if (delta < 0)
+                            deltaRounded = Math.ceil(delta)
+                        else
+                            deltaRounded = Math.floor(delta)
+                        lastPos += deltaRounded
+                    }
+
+                    if (deltaRounded !== 0) {
                         verticalScroll(delta)
-                        //console.log("Y scroll:" + delta)
                     }
                 }
             }

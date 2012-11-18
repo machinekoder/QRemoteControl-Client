@@ -1,26 +1,14 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import RemoteControl 2.0
-//import "gradients/grey" as GreyGradients
+import QtMobility.sensors 1.1
 import "MyComponents"
-//import "MyComponents/styles/" as Styles
+
 Rectangle {
-    //property Gradient defaultGradient: style.defaultGradient
-    //property Gradient pressedGradient: GreyGradients.PressedGradient{}
-    //property Gradient hoveredGradient: GreyGradients.HoveredGradient{}
-    //property Gradient labelGradient: GreyGradients.LabelGradient{}
-    //property Gradient barGradient: GreyGradients.BarGradient{}
-    //property Gradient editGradient: GreyGradients.EditGradient{}
     property string backgroundImage: "images/background_grey.png"
-    //border.color: "#555555"
-    //property color textColor1: "black"  //Normal text color
-    //property color textColor2: "white"  //secondary text color
-    //property color textColor3: "grey"   //light visible text color
-    //property color textColor4: "black"  //edit text color
-    //property int textSize1: width*0.040
-    //property int textSize2: width*0.05
     property string imagePath: "images/"
     property string iconTheme: "black"
+    property int    screenRotation: 0
 
     id:master
     width: 360
@@ -60,6 +48,25 @@ Rectangle {
         onBroadcastingStarted: master.state = "broadcastState"
         onNetworkOpened: master.state = "startState"
         onNetworkClosed: master.state = "networkState"
+    }
+
+    OrientationSensor {
+        id: orientation
+        active: true
+
+        onReadingChanged: {
+
+            if (reading.orientation === OrientationReading.TopUp)
+                screenRotation = 0
+            else if (reading.orientation === OrientationReading.TopDown)
+                screenRotation = 180
+            else if (reading.orientation === OrientationReading.RightUp)
+                screenRotation = 90
+            else if (reading.orientation === OrientationReading.LeftUp)
+                screenRotation = -90
+
+            // ... more tests for different orientations ...
+        }
     }
 
     Image {

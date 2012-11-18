@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: /home/alexander/Dropbox/C++/QRemoteControl2/android/src/org/kde/necessitas/ministro/IMinistro.aidl
+ * Original file: /home/christian/Developing/qt_projects/QtProjects/QRemote/qremotecontrol-client/android/src/org/kde/necessitas/ministro/IMinistro.aidl
  */
 package org.kde.necessitas.ministro;
 public interface IMinistro extends android.os.IInterface

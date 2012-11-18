@@ -34,6 +34,7 @@ Rectangle {
         onUpReleased:   buttonReleased(11)
         onDownPressed:  buttonPressed(12)
         onDownReleased: buttonReleased(12)
+        rotation: master.screenRotation
     }
 
     Button {
@@ -46,6 +47,7 @@ Rectangle {
         anchors.topMargin:  10
         iconSource:         master.imagePath + master.iconTheme + "/disconnect.png"
         onClicked:          disconnectClicked()
+        rotation: master.screenRotation
     }
 
     Button {
@@ -59,6 +61,7 @@ Rectangle {
         iconSource:         master.imagePath + master.iconTheme + "/power.png"
         onPressed:          buttonPressed(1)
         onReleased:         buttonReleased(1)
+        rotation: master.screenRotation
     }
 
     Button {
@@ -72,6 +75,7 @@ Rectangle {
         iconSource:         master.imagePath + master.iconTheme + "/zoom_in.png"
         onPressed:          buttonPressed(3)
         onReleased:         buttonReleased(3)
+        rotation: master.screenRotation
     }
 
     Button {
@@ -85,6 +89,8 @@ Rectangle {
         iconSource:         master.imagePath + master.iconTheme + "/zoom_out.png"
         onPressed:          buttonPressed(2)
         onReleased:         buttonReleased(2)
+        rotation: master.screenRotation
+
     }
 
     Button {
@@ -98,6 +104,7 @@ Rectangle {
         iconSource:         master.imagePath + master.iconTheme + "/volume_up.png"
         onPressed:          buttonPressed(6)
         onReleased:         buttonReleased(6)
+        rotation: master.screenRotation
     }
 
     Button {
@@ -111,6 +118,7 @@ Rectangle {
         iconSource:         master.imagePath + master.iconTheme + "/volume_down.png"
         onPressed:          buttonPressed(5)
         onReleased:         buttonReleased(5)
+        rotation: master.screenRotation
     }
 
     Button {
@@ -124,6 +132,7 @@ Rectangle {
         iconSource:         master.imagePath + master.iconTheme + "/volume_mute.png"
         onPressed:          buttonPressed(4)
         onReleased:         buttonReleased(4)
+        rotation: master.screenRotation
     }
 
     Button {
@@ -137,6 +146,7 @@ Rectangle {
         iconSource:         master.imagePath + master.iconTheme + "/backspace.png"
         onPressed:          buttonPressed(8)
         onReleased:         buttonReleased(8)
+        rotation: master.screenRotation
     }
 
     Button {
@@ -150,6 +160,7 @@ Rectangle {
         iconSource:         master.imagePath + master.iconTheme + "/exit.png"
         onPressed:          buttonPressed(7)
         onReleased:         buttonReleased(7)
+        rotation: master.screenRotation
     }
 
     Button {
@@ -163,6 +174,7 @@ Rectangle {
         iconSource:         master.imagePath + master.iconTheme + "/switch_window.png"
         onPressed:          buttonPressed(9)
         onReleased:         buttonReleased(9)
+        rotation: master.screenRotation
     }
 
     Button {
@@ -176,6 +188,7 @@ Rectangle {
         iconSource:         master.imagePath + master.iconTheme + "/menu.png"
         onPressed:          buttonPressed(10)
         onReleased:         buttonReleased(10)
+        rotation: master.screenRotation
     }
 
     Row {
@@ -199,6 +212,7 @@ Rectangle {
             iconSource:             master.imagePath + master.iconTheme + "/seek_backward.png"
             onPressed:              buttonPressed(16)
             onReleased:             buttonReleased(16)
+            rotation: master.screenRotation
         }
 
         Button {
@@ -209,6 +223,7 @@ Rectangle {
             iconSource:             master.imagePath + master.iconTheme + "/play_pause.png"
             onPressed:              buttonPressed(18)
             onReleased:             buttonReleased(18)
+            rotation: master.screenRotation
         }
         Button {
             id:                     button19
@@ -218,6 +233,7 @@ Rectangle {
             iconSource:             master.imagePath + master.iconTheme + "/stop.png"
             onPressed:              buttonPressed(19)
             onReleased:             buttonReleased(19)
+            rotation: master.screenRotation
         }
         Button {
             id:                     button17
@@ -227,6 +243,7 @@ Rectangle {
             iconSource:             master.imagePath + master.iconTheme + "/seek_forward.png"
             onPressed:              buttonPressed(17)
             onReleased:             buttonReleased(17)
+            rotation: master.screenRotation
         }
     }
 }
