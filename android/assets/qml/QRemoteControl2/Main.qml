@@ -48,6 +48,10 @@ Rectangle {
         onBroadcastingStarted: master.state = "broadcastState"
         onNetworkOpened: master.state = "startState"
         onNetworkClosed: master.state = "networkState"
+
+        Component.onDestruction: {
+            client.saveSettings()
+        }
     }
 
     OrientationSensor {

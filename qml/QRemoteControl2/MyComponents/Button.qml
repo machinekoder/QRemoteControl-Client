@@ -1,5 +1,5 @@
 import QtQuick 1.1
-import QtMobility.feedback 1.1
+//import QtMobility.feedback 1.1
 import "gradients/"
 
 Rectangle {
@@ -60,11 +60,11 @@ Rectangle {
                 checked = !checked;
             if (sound)
                 buttonSound()
-            basicHapticEffect.play()
+//            basicHapticEffect.play()
         }
         onReleased: {
             base.released()
-            basicHapticEffect.play()
+//            basicHapticEffect.play()
         }
     }
 

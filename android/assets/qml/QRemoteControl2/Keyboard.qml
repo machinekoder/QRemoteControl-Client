@@ -481,7 +481,8 @@ Rectangle {
             height: parent.height
             key: Qt.Key_Left
             icon: master.imagePath + master.iconTheme + "/left.png"
-            iconMargin: 15
+            //iconMargin: 15
+            showPreview: false
         }
         KeyboardButton {
             width: parent.width/columnCount*3
@@ -495,19 +496,22 @@ Rectangle {
             height: parent.height
             key: Qt.Key_Right
             icon: master.imagePath + master.iconTheme + "/right.png"
-            iconMargin: 15
+            //iconMargin: 15
+            showPreview: false
         }
         KeyboardButton {
             width: parent.width/columnCount
             height: parent.height
             key: Qt.Key_Return
             icon: master.imagePath + master.iconTheme + "/return.png"
+            showPreview: false
         }
         KeyboardButton {
             width: parent.width/columnCount
             height: parent.height
             key: Qt.Key_Backspace
             icon: master.imagePath + master.iconTheme + "/backspace.png"
+            showPreview: false
         }
     }
 

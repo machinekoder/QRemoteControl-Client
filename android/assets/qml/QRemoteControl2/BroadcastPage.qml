@@ -57,7 +57,7 @@ Rectangle {
         radius: width/2
         anchors.verticalCenter: rightImage.verticalCenter
         smooth: true
-        border.color: master.border.color
+        border.color: theme.buttonBorderColor
         border.width: 2
         Behavior on x {
             NumberAnimation { easing.type: Easing.Linear; duration: ballTimer.interval-50 }
@@ -122,44 +122,48 @@ Rectangle {
 
             ListView {
                 id: listVew
-                anchors.rightMargin: 5
-                anchors.leftMargin: 5
-                anchors.bottomMargin: 5
-                anchors.topMargin: 5
                 anchors.fill: parent
-                delegate: Button {
-                    height: listVew.height*0.13
-                    width: listVew.width
-                    border.color: master.border.color
 
-                    Row {
-                        id: row1
-                        x: 10
-                        spacing: 20
-                        height: parent.height
-                        Image {
-                            width: 40
-                            height: 40
-                            source: master.imagePath + master.iconTheme + "/computer.png"
-                            fillMode: Image.PreserveAspectFit
-                            anchors.verticalCenter: parent.verticalCenter
+                delegate: Item {
+                        height: listVew.height*0.13
+                        width: listVew.width
+
+                        Button {
+                        anchors.fill:           parent
+                        anchors.leftMargin:     5
+                        anchors.rightMargin:    5
+                        anchors.topMargin:      5
+                        border.color: theme.buttonBorderColor
+
+                        Row {
+                            id: row1
+                            x: 10
+                            spacing: 20
+                            height: parent.height
+                            Image {
+                                width: 40
+                                height: 40
+                                source: master.imagePath + master.iconTheme + "/computer.png"
+                                fillMode: Image.PreserveAspectFit
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+
+                            Text {
+                                text: hostName //+ ", Connected: " + (connected?"Yes":"No")
+                                anchors.verticalCenter: parent.verticalCenter
+                                font.bold: theme.buttonFontBold
+                                font.pixelSize: theme.buttonFontSize
+                                font.family: theme.fontFamily
+                                color: theme.primaryTextColor
+                            }
                         }
 
-                        Text {
-                            text: hostName //+ ", Connected: " + (connected?"Yes":"No")
-                            anchors.verticalCenter: parent.verticalCenter
-                            font.bold: theme.buttonFontBold
-                            font.pixelSize: theme.buttonFontSize
-                            font.family: theme.fontFamily
-                            color: theme.primaryTextColor
+                        onClicked: {
+                            loadingPage.showNormalText()
+                            client.connectToServer(index)
                         }
-                    }
 
-                    onClicked: {
-                        loadingPage.showNormalText()
-                        client.connectToServer(index)
                     }
-
                 }
                 model: ListModel {
                     id: listModel

@@ -59,14 +59,17 @@ Rectangle {
             //rightButtonCheckable: controlButton.checked || altButton.checked || shiftButton.checked
 
             Behavior on rotation {
+                            enabled:      (mainRect.state == "touchpadPageState")
                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
                          }
             Behavior on width {
+                            enabled:       (mainRect.state == "buttonPageState")
                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
                          }
             Behavior on height {
+                            enabled:       (mainRect.state == "buttonPageState")
                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
-                            }
+                        }
         }
     }
 
