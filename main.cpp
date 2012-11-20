@@ -2,6 +2,7 @@
 #include <QtDeclarative>
 #include "qmlapplicationviewer.h"
 #include "qremotecontrolclient.h"
+#include "platformdetails.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -12,18 +13,19 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     app->installTranslator(&myappTranslator);*/
 
     qmlRegisterType<QRemoteControlClient>("RemoteControl", 2, 0, "Client");
+    qmlRegisterType<PlatformDetails>("Platform", 1, 0, "Details");
     QmlApplicationViewer viewer;
 
 #if !defined(Q_OS_MEEGO)//defined(Q_OS_SYMBIAN) || defined(Q_WS_SIMULATOR)|| defined(Q_WS_X11) || defined(Q_WS_WIN)
-    viewer.setMainQmlFile(QLatin1String("qml/QRemoteControl2/Main.qml"));
+    viewer.setMainQmlFile(QLatin1String("qml/QRemoteControl2/init.qml"));
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
     qDebug() << "not MEEGO";
 #else   //MEEGO!?
-    viewer.setMainQmlFile(QLatin1String("qml/QRemoteControl2/meegowrapper.qml"));
+    viewer.setMainQmlFile(QLatin1String("qml/QRemoteControl2/initMeego.qml"));
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
     qDebug() << "MEEGO";
 #endif
-    viewer.showFullScreen();
+    viewer.showExpanded();
 
     return app->exec();
 }

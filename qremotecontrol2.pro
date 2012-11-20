@@ -49,9 +49,11 @@ QT += network
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
             qremotecontrolclient.cpp \
-            wakeonlanpacket.cpp
+            wakeonlanpacket.cpp \
+    platformdetails.cpp
 HEADERS += qremotecontrolclient.h \
-           wakeonlanpacket.h
+           wakeonlanpacket.h \
+    platformdetails.h
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
