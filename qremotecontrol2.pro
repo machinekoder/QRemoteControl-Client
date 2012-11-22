@@ -15,6 +15,7 @@ DEPLOYMENTFOLDERS = folder_01
 
 # Additional import path used to resolve QML modules in Creator's code model
 #QML_IMPORT_PATH += ../
+QML_IMPORT_PATH =
 
 symbian: {
 TARGET.UID3 = 0x200629ab
@@ -28,6 +29,9 @@ ICON = qremotecontrol2.svg
 
 # Allow network access on Symbian
 TARGET.CAPABILITY += NetworkServices
+#TARGET.CAPABILITY += ReadUserData
+TARGET.CAPABILITY += WriteDeviceData
+TARGET.CAPABILITY += ReadDeviceData
 }
 
 contains(MEEGO_EDITION,harmattan): {
@@ -39,9 +43,6 @@ contains(MEEGO_EDITION,harmattan): {
 # lines and add the respective components to the MOBILITY variable.
  CONFIG += mobility
  MOBILITY += sensors
-
-# Add dependency to Symbian components
-# CONFIG += qt-components
 
 QT += network
 #QT += webkit
@@ -99,7 +100,8 @@ OTHER_FILES += \
     qtc_packaging/debian_harmattan/copyright \
     qtc_packaging/debian_harmattan/control \
     qtc_packaging/debian_harmattan/compat \
-    qtc_packaging/debian_harmattan/changelog
+    qtc_packaging/debian_harmattan/changelog \
+    Test.qml
 
 RESOURCES += \
     i18.qrc

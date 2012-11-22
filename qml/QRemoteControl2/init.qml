@@ -51,7 +51,7 @@ Item {
                 console.debug("Finishing the splash screen progress bar.");
 
                 if (splashScreenLoader.item) {
-                   // splashScreenLoader.item.progressBarValue = 100;
+                    splashScreenLoader.item.loadingProgress = 1;
                 }
 
                 // Set the phase for deletion.
