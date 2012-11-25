@@ -9,8 +9,6 @@ Button {
     height: 161
     round: true
 
-    property bool ignorePress: false
-
     signal leftPressed
     signal leftReleased
     signal rightPressed
@@ -34,13 +32,10 @@ Button {
         iconSource: master.imagePath + master.iconTheme + "/ok.png"
 
         onPressed: {
-            if (!ignorePress)
                 okPressed()
         }
         onReleased: {
-            if (!ignorePress)
                 okReleased()
-            ignorePress = false
         }
     }
 
@@ -99,12 +94,11 @@ Button {
         anchors.horizontalCenter: parent.horizontalCenter
         onPressed: {
             downPressed()
-            ignorePress = true
-            mouse.accepted = false
+            okButton.playHaptic()
         }
         onReleased: {
             downReleased()
-            mouse.accepted = false
+            okButton.playHaptic()
         }
     }
 
@@ -117,12 +111,11 @@ Button {
         anchors.horizontalCenter: parent.horizontalCenter
         onPressed: {
             upPressed()
-            ignorePress = true
-            mouse.accepted = false
+            okButton.playHaptic()
         }
         onReleased: {
             upReleased()
-            mouse.accepted = false
+            okButton.playHaptic()
         }
     }
 
@@ -135,12 +128,11 @@ Button {
         anchors.verticalCenter: parent.verticalCenter
         onPressed: {
             leftPressed()
-            ignorePress = true
-            mouse.accepted = false
+            okButton.playHaptic()
         }
         onReleased: {
             leftReleased()
-            mouse.accepted = false
+            okButton.playHaptic()
         }
     }
 
@@ -152,12 +144,11 @@ Button {
         anchors.verticalCenter: parent.verticalCenter
         onPressed: {
             rightPressed()
-            ignorePress = true
-            mouse.accepted = false
+            okButton.playHaptic()
         }
         onReleased: {
             rightReleased()
-            mouse.accepted = false
+            okButton.playHaptic()
         }
     }
 }

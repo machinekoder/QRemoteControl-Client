@@ -115,5 +115,10 @@ Rectangle {
     }
 
    ThemeEffect{ id: basicHapticEffect; effect: ThemeEffect.BasicButton }
+
+   function playHaptic()
+   {
+       basicHapticEffect.play()
+   }
 }
 
