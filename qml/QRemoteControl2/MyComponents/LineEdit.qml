@@ -66,9 +66,13 @@ Rectangle {
             }
             onActiveFocusChanged: {
                               if (!input.activeFocus)
+                              {
                                   input.closeSoftwareInputPanel()
+                              }
                               else
+                              {
                                   input.openSoftwareInputPanel()
+                              }
                           }
             onAccepted: {
                 input.closeSoftwareInputPanel()

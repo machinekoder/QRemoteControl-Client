@@ -9,6 +9,8 @@ Button {
     height: 161
     round: true
 
+    property bool ignorePress: false
+
     signal leftPressed
     signal leftReleased
     signal rightPressed
@@ -31,8 +33,15 @@ Button {
         iconMargin: 15
         iconSource: master.imagePath + master.iconTheme + "/ok.png"
 
-        onPressed: okPressed()
-        onReleased: okReleased()
+        onPressed: {
+            if (!ignorePress)
+                okPressed()
+        }
+        onReleased: {
+            if (!ignorePress)
+                okReleased()
+            ignorePress = false
+        }
     }
 
     Image {
@@ -90,6 +99,7 @@ Button {
         anchors.horizontalCenter: parent.horizontalCenter
         onPressed: {
             downPressed()
+            ignorePress = true
             mouse.accepted = false
         }
         onReleased: {
@@ -106,11 +116,12 @@ Button {
         anchors.topMargin: 0
         anchors.horizontalCenter: parent.horizontalCenter
         onPressed: {
-            downPressed()
+            upPressed()
+            ignorePress = true
             mouse.accepted = false
         }
         onReleased: {
-            downReleased()
+            upReleased()
             mouse.accepted = false
         }
     }
@@ -123,11 +134,12 @@ Button {
         anchors.leftMargin: 0
         anchors.verticalCenter: parent.verticalCenter
         onPressed: {
-            downPressed()
+            leftPressed()
+            ignorePress = true
             mouse.accepted = false
         }
         onReleased: {
-            downReleased()
+            leftReleased()
             mouse.accepted = false
         }
     }
@@ -139,11 +151,12 @@ Button {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         onPressed: {
-            downPressed()
+            rightPressed()
+            ignorePress = true
             mouse.accepted = false
         }
         onReleased: {
-            downReleased()
+            rightReleased()
             mouse.accepted = false
         }
     }

@@ -17,7 +17,15 @@ PageStackWindow {
             id: mainAppLoader
             width: mainAppLoaderItem.width
             height: mainAppLoaderItem.height
-            onLoaded: console.debug("Main application loaded.");
+            onLoaded: {
+                focus = true
+                console.debug("Main application loaded.");
+            }
+            focus: true
+             Keys.onPressed: {
+                 console.log("Loaded item captured:", event.text);
+                 event.accepted = true;
+             }
         }
         Loader {
             id: splashScreenLoader

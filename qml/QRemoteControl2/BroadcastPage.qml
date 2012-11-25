@@ -72,7 +72,7 @@ Rectangle {
     Timer {
         id: ballTimer
         interval: 800
-        running: true
+        running: true//master.state == "broadcastState"
         repeat: true
         onTriggered: {
             if (!ballright)
