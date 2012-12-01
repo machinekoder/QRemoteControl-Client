@@ -23,6 +23,6 @@
 /home/christian/Developing/qt_projects/QtProjects/QRemoteControl/qremotecontrol-client/android/res/values-ru/strings.xml \
 /home/christian/Developing/qt_projects/QtProjects/QRemoteControl/qremotecontrol-client/android/res/values-zh-rCN/strings.xml \
 /home/christian/Developing/qt_projects/QtProjects/QRemoteControl/qremotecontrol-client/android/res/values-zh-rTW/strings.xml \
-/home/christian/Developing/qt_projects/QtProjects/QRemoteControl/qremotecontrol-client/android/res/values/libs.xml \
 /home/christian/Developing/qt_projects/QtProjects/QRemoteControl/qremotecontrol-client/android/res/values/strings.xml \
+/home/christian/Developing/qt_projects/QtProjects/QRemoteControl/qremotecontrol-client/android/res/values/libs.xml \
 /home/christian/Developing/qt_projects/QtProjects/QRemoteControl/qremotecontrol-client/android/bin/AndroidManifest.xml \
