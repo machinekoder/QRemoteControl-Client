@@ -1,7 +1,7 @@
 #ifndef QREMOTECONTROLCLIENT_H
 #define QREMOTECONTROLCLIENT_H
 
-#include <QtGui/QMainWindow>
+#include <QObject>
 #include <QtNetwork>
 #include <QApplication>
 #include <QDesktopWidget>

@@ -1,3 +1,17 @@
+qremotecontrol2 (2.3.1) stable; urgency=high
+
+  * Added a splashscreen
+  * Fixed the navigation button bug
+
+ -- Strahlex <mail.aroessler@gmail.com>  Mon, 26 Nov 2012 00:00:00 +0100
+qremotecontrol2 (2.3.0) stable; urgency=high
+
+  * Added landscape modes
+  * Added animations
+  * Added haptic feedback
+  * Improved theming
+
+ -- Strahlex <mail.aroessler@gmail.com>  Mon, 19 Nov 2012 00:00:00 +0100
 qremotecontrol2 (2.2.0) stable; urgency=high
 
   * Made Drag and Drop possible.

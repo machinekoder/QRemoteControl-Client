@@ -307,9 +307,14 @@ void QRemoteControlClient::incomingData()
 
 void QRemoteControlClient::incomingUdpData()
 {
-    QByteArray datagram;
     QHostAddress hostAddress;
+#ifdef Q_OS_SYMBIAN
+    QByteArray datagram(2^16,0);    //Workaround for a bug in Qt 4.8
+#else
+    QByteArray datagram;
     datagram.resize(udpSocket->pendingDatagramSize());
+#endif
+
     udpSocket->readDatagram(datagram.data(), datagram.size(), &hostAddress);
 
     QString magicMessageConnected = "QRC:Connected";

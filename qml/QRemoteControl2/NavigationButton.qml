@@ -31,8 +31,12 @@ Button {
         iconMargin: 15
         iconSource: master.imagePath + master.iconTheme + "/ok.png"
 
-        onPressed: okPressed()
-        onReleased: okReleased()
+        onPressed: {
+                okPressed()
+        }
+        onReleased: {
+                okReleased()
+        }
     }
 
     Image {
@@ -90,11 +94,11 @@ Button {
         anchors.horizontalCenter: parent.horizontalCenter
         onPressed: {
             downPressed()
-            mouse.accepted = false
+            okButton.playHaptic()
         }
         onReleased: {
             downReleased()
-            mouse.accepted = false
+            okButton.playHaptic()
         }
     }
 
@@ -106,12 +110,12 @@ Button {
         anchors.topMargin: 0
         anchors.horizontalCenter: parent.horizontalCenter
         onPressed: {
-            downPressed()
-            mouse.accepted = false
+            upPressed()
+            okButton.playHaptic()
         }
         onReleased: {
-            downReleased()
-            mouse.accepted = false
+            upReleased()
+            okButton.playHaptic()
         }
     }
 
@@ -123,12 +127,12 @@ Button {
         anchors.leftMargin: 0
         anchors.verticalCenter: parent.verticalCenter
         onPressed: {
-            downPressed()
-            mouse.accepted = false
+            leftPressed()
+            okButton.playHaptic()
         }
         onReleased: {
-            downReleased()
-            mouse.accepted = false
+            leftReleased()
+            okButton.playHaptic()
         }
     }
 
@@ -139,12 +143,12 @@ Button {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         onPressed: {
-            downPressed()
-            mouse.accepted = false
+            rightPressed()
+            okButton.playHaptic()
         }
         onReleased: {
-            downReleased()
-            mouse.accepted = false
+            rightReleased()
+            okButton.playHaptic()
         }
     }
 }

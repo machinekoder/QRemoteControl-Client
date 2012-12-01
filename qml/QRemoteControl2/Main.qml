@@ -13,6 +13,7 @@ Rectangle {
     id:master
     width: 360
     height: 640
+    anchors.fill: parent
     color: "black"
     state: "networkState"
 

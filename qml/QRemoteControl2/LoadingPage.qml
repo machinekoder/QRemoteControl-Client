@@ -78,7 +78,7 @@ Rectangle {
     Timer {
         id: ballTimer
         interval: 800
-        running: true
+        running: true//master.state == "loadingState"
         repeat: true
         onTriggered: {
             if (!ballright)

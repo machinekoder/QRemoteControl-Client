@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: unknown <>
 Build-Depends: debhelper (>= 5), libqt4-dev
 Standards-Version: 3.7.3
-Homepage: http://qt-apps.org/content/show.php/QRemoteControl-Server?content=150421
+Homepage: http://qremote.org
 
 Package: qremotecontrol2
 Architecture: any

@@ -1,5 +1,5 @@
 TARGET = qremotecontrol2
-VERSION = 2.3.0
+VERSION = 2.3.1
 
 TRANSLATIONS = i18/de.ts i18/ru.ts
 
@@ -15,6 +15,7 @@ DEPLOYMENTFOLDERS = folder_01
 
 # Additional import path used to resolve QML modules in Creator's code model
 #QML_IMPORT_PATH += ../
+QML_IMPORT_PATH =
 
 symbian: {
 TARGET.UID3 = 0x200629ab
@@ -28,6 +29,9 @@ ICON = qremotecontrol2.svg
 
 # Allow network access on Symbian
 TARGET.CAPABILITY += NetworkServices
+#TARGET.CAPABILITY += ReadUserData
+TARGET.CAPABILITY += WriteDeviceData
+TARGET.CAPABILITY += ReadDeviceData
 }
 
 contains(MEEGO_EDITION,harmattan): {
@@ -40,18 +44,17 @@ contains(MEEGO_EDITION,harmattan): {
  CONFIG += mobility
  MOBILITY += sensors
 
-# Add dependency to Symbian components
-# CONFIG += qt-components
-
 QT += network
 #QT += webkit
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
             qremotecontrolclient.cpp \
-            wakeonlanpacket.cpp
+            wakeonlanpacket.cpp \
+    platformdetails.cpp
 HEADERS += qremotecontrolclient.h \
-           wakeonlanpacket.h
+           wakeonlanpacket.h \
+    platformdetails.h
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)

@@ -65,10 +65,17 @@ Rectangle {
                 visible:        input.text == "" && !input.focus ? true : false
             }
             onActiveFocusChanged: {
-                              if (!input.activeFocus) input.closeSoftwareInputPanel();
+                              if (!input.activeFocus)
+                              {
+                                  input.closeSoftwareInputPanel()
+                              }
+                              else
+                              {
+                                  input.openSoftwareInputPanel()
+                              }
                           }
             onAccepted: {
-                input.closeSoftwareInputPanel();
+                input.closeSoftwareInputPanel()
             }
         }
     }
