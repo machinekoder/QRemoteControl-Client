@@ -2,6 +2,7 @@
 import QtQuick 1.1
 import RemoteControl 2.0
 import QtMobility.sensors 1.1
+import Platform 1.0
 import "MyComponents"
 
 Rectangle {
@@ -55,7 +56,7 @@ Rectangle {
         }
     }
 
-    OrientationSensor {
+  OrientationSensor {
         id: orientation
         active: true
 

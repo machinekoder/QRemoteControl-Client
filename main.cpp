@@ -17,7 +17,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QmlApplicationViewer viewer;
 
 #if !defined(Q_OS_MEEGO)//defined(Q_OS_SYMBIAN) || defined(Q_WS_SIMULATOR)|| defined(Q_WS_X11) || defined(Q_WS_WIN)
+#if defined(Q_WS_X11) || defined(Q_WS_WIN)  // On Desktop skip the Splash screen
+    viewer.setMainQmlFile(QLatin1String("qml/QRemoteControl2/Main.qml"));
+#else
     viewer.setMainQmlFile(QLatin1String("qml/QRemoteControl2/init.qml"));
+#endif
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
     qDebug() << "not MEEGO";
 #else   //MEEGO!?

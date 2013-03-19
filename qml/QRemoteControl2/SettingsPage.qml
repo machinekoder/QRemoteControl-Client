@@ -368,7 +368,7 @@ Rectangle {
                     theme.load(nerdyStyle);
                     roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = ""
-                    master.iconTheme = "white"
+                    master.iconTheme = "nerdy"
                     client.uiColor = "nerdy"
                     client.uiRoundness = theme.radiusScaler
                 }

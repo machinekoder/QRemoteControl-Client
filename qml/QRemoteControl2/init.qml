@@ -1,5 +1,5 @@
 import QtQuick 1.1
-import Platform 1.0
+//import Platform 1.0
 Item {
     id: mainAppLoaderItem
 

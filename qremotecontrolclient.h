@@ -9,6 +9,7 @@
 
 typedef struct {
     QHostAddress hostAddress;
+    QString      hostName;
     bool connected;
 } QRCServer;
 
@@ -27,6 +28,7 @@ class QRemoteControlClient : public QObject
     Q_PROPERTY(int wolPort READ wolPort WRITE setWolPort NOTIFY wolPortChanged)
     Q_PROPERTY(int wolDatagramNumber READ wolDatagramNumber WRITE setWolDatagramNumber NOTIFY wolDatagramNumberChanged)
     Q_PROPERTY(int screenDpi READ screenDpi NOTIFY screenDpiChanged)
+    Q_PROPERTY(int networkTimeout READ networkTimeout WRITE setNetworkTimeout NOTIFY networkTimeoutChanged)
 
 public:
     enum ScreenOrientation {
@@ -106,6 +108,11 @@ public:
     double uiRoundness() const
     {
         return m_uiRoundness;
+    }
+
+    int networkTimeout() const
+    {
+        return m_networkTimeout;
     }
 
 public slots:
@@ -223,6 +230,14 @@ public slots:
         }
     }
 
+    void setNetworkTimeout(int arg)
+    {
+        if (m_networkTimeout != arg) {
+            m_networkTimeout = arg;
+            emit networkTimeoutChanged(arg);
+        }
+    }
+
 signals:
     void hostnameChanged(QString arg);
     void hostAddressChanged(QHostAddress arg);
@@ -237,7 +252,7 @@ signals:
     void firstStart();
     void actionReceived(int id, QString text, QString imagePath);
     void serversCleared();
-    void serverFound(QString address, bool connected);
+    void serverFound(QString address, QString hostName, bool connected);
     void passwordIncorrect();
     void serverConnecting();
 
@@ -256,6 +271,8 @@ signals:
 
     void uiRoundnessChanged(double arg);
 
+    void networkTimeoutChanged(int arg);
+
 private:
     //Network
     QUdpSocket *udpSocket;
@@ -265,6 +282,7 @@ private:
     QTimer     *connectionRequestTimer;
     QNetworkSession *session;
     QNetworkConfigurationManager *netConfigManager;
+    QTimer     *networkTimeoutTimer;
 
     //General
     QByteArray passwordHash;
@@ -298,13 +316,20 @@ private:
 
     double m_uiRoundness;
 
+    void initializeNetworkTimeoutTimer();
+    void sendVersion();
+
+    int m_networkTimeout;
+
 private slots:
     void sendConnectionRequest();
     void sendBroadcast();
+    void sendKeepAlive();
     void newConnection();
     void deleteConnection();
     void incomingData();
     void incomingUdpData();
+    void saveResolvedHostName(QHostInfo hostInfo);
 
     void initialize();
 };

@@ -1,5 +1,5 @@
 TARGET = qremotecontrol2
-VERSION = 2.3.1
+VERSION = 2.4.0
 
 TRANSLATIONS = i18/de.ts i18/ru.ts
 

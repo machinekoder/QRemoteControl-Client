@@ -175,7 +175,7 @@ Rectangle {
             }
         }
 
-        function addServer(hostName, connected)
+        function addServer(ipAddress,hostName, connected)
         {
             listModel.append({"hostName":hostName,"connected":connected})
         }

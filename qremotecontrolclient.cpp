@@ -35,6 +35,10 @@ QRemoteControlClient::QRemoteControlClient(QObject *parent)
     connect(netConfigManager, SIGNAL(updateCompleted()),
             this, SLOT(openNetworkSession()));
     netConfigManager->updateConfigurations();
+
+    // initialize network timeout
+    m_networkTimeout = 4500;
+    initializeNetworkTimeoutTimer();
 }
 
 QRemoteControlClient::~QRemoteControlClient()
@@ -270,6 +274,9 @@ void QRemoteControlClient::newConnection()
         emit connected();
         abortConnectionRequest();
         saveSettings();
+        sendVersion();
+
+        networkTimeoutTimer->start();
     }
 }
 
@@ -278,6 +285,8 @@ void QRemoteControlClient::deleteConnection()
     tcpSocket->abort();
     tcpSocket->deleteLater();
     tcpSocket = NULL;
+
+    networkTimeoutTimer->stop();
 
     emit disconnected();
 }
@@ -360,20 +369,50 @@ void QRemoteControlClient::addServer(QHostAddress hostAddress, bool connected)
         if (serverList.at(i).hostAddress == hostAddress) {
             found = true;
             serverList[i].connected = connected;
+            break;
         }
     }
     if (!found)
     {
         QRCServer qrcServer;
         qrcServer.hostAddress = hostAddress;
+        qrcServer.hostName = hostAddress.toString();
         qrcServer.connected = connected;
         serverList.append(qrcServer);
+
+        QHostInfo::lookupHost(hostAddress.toString(),
+                               this, SLOT(saveResolvedHostName(QHostInfo)));
     }
 
     emit serversCleared();
     for (int i = 0; i < serverList.size(); i++)
     {
-        emit serverFound(serverList.at(i).hostAddress.toString(),serverList.at(i).connected);
+        emit serverFound(serverList.at(i).hostAddress.toString(), serverList.at(i).hostName, serverList.at(i).connected);
+    }
+}
+
+void QRemoteControlClient::initializeNetworkTimeoutTimer()
+{
+    networkTimeoutTimer = new QTimer(this);
+    networkTimeoutTimer->setInterval(m_networkTimeout);
+    connect(networkTimeoutTimer, SIGNAL(timeout()),
+            this, SLOT(sendKeepAlive()));
+}
+
+void QRemoteControlClient::saveResolvedHostName(QHostInfo hostInfo)
+{
+    for (int i = 0; i < serverList.size(); i++)
+    {
+        if (serverList.at(i).hostName == hostInfo.addresses().first().toString())
+        {
+            serverList[i].hostName = hostInfo.hostName();
+        }
+    }
+
+    emit serversCleared();
+    for (int i = 0; i < serverList.size(); i++)
+    {
+        emit serverFound(serverList.at(i).hostAddress.toString(), serverList.at(i).hostName, serverList.at(i).connected);
     }
 }
 
@@ -565,6 +604,29 @@ void QRemoteControlClient::sendLight(int code)
     QDataStream streamOut(&data, QIODevice::WriteOnly);
     streamOut << mode1;
     streamOut << (quint16)code;
+
+    udpSocket->writeDatagram(data, tcpSocket->peerAddress(), m_port);
+}
+
+void QRemoteControlClient::sendKeepAlive()
+{
+    quint8 mode1 = 6;
+
+    QByteArray data;
+    QDataStream streamOut(&data, QIODevice::WriteOnly);
+    streamOut << mode1;
+
+    udpSocket->writeDatagram(data, tcpSocket->peerAddress(), m_port);
+}
+
+void QRemoteControlClient::sendVersion()
+{
+    quint8 mode1 = 7;
+
+    QByteArray data;
+    QDataStream streamOut(&data, QIODevice::WriteOnly);
+    streamOut << mode1;
+    streamOut << QString(VERSION);
 
     udpSocket->writeDatagram(data, tcpSocket->peerAddress(), m_port);
 }
