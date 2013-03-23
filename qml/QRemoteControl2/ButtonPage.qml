@@ -9,9 +9,9 @@ Rectangle {
     signal infoButtonClicked
     signal disconnectClicked
 
-    property int buttonMargin: 10
-    property int buttonwidth: (width-buttonMargin*6)/5
-    property int buttonheight: buttonwidth
+    property int buttonMargin: master.generalMargin//Math.round(width*0.03)
+    property int buttonwidth: master.buttonHeight//Math.round(width*0.18)
+    property int buttonheight: master.buttonHeight//Math.round(height*0.11)
 
     id:     main
     width:  480
@@ -20,7 +20,7 @@ Rectangle {
 
     NavigationButton {
         id:             navigationbutton1
-        width:          parent.width*0.55
+        width:          master.buttonHeight*3
         height:         width
         y:              (row1.y + button2.y+button2.height)/2 - height/2//parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
@@ -43,9 +43,9 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.left:       parent.left
-        anchors.leftMargin: 10
+        anchors.leftMargin: master.generalMargin
         anchors.top:        parent.top
-        anchors.topMargin:  10
+        anchors.topMargin:  master.generalMargin
         iconSource:         master.imagePath + master.iconTheme + "/disconnect.png"
         onClicked:          disconnectClicked()
         rotation:            master.screenRotation
@@ -57,9 +57,9 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.top:        parent.top
-        anchors.topMargin:  10
+        anchors.topMargin:  master.generalMargin
         anchors.right:      parent.right
-        anchors.rightMargin:10
+        anchors.rightMargin:master.generalMargin
         iconSource:         master.imagePath + master.iconTheme + "/power.png"
         onPressed:          buttonPressed(1)
         onReleased:         buttonReleased(1)
@@ -72,9 +72,9 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.top:        button0.bottom
-        anchors.topMargin:  10
+        anchors.topMargin:  master.generalMargin
         anchors.left:       button2.right
-        anchors.leftMargin: 10
+        anchors.leftMargin: master.generalMargin
         iconSource:         master.imagePath + master.iconTheme + "/zoom_in.png"
         onPressed:          buttonPressed(3)
         onReleased:         buttonReleased(3)
@@ -87,9 +87,9 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.top:        button0.bottom
-        anchors.topMargin:  10
+        anchors.topMargin:  master.generalMargin
         anchors.left:       parent.left
-        anchors.leftMargin: 10
+        anchors.leftMargin: master.generalMargin
         iconSource:         master.imagePath + master.iconTheme + "/zoom_out.png"
         onPressed:          buttonPressed(2)
         onReleased:         buttonReleased(2)
@@ -103,9 +103,9 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.right:      parent.right
-        anchors.rightMargin: 10
+        anchors.rightMargin:master.generalMargin
         anchors.top:        button0.bottom
-        anchors.topMargin:  10
+        anchors.topMargin:  master.generalMargin
         iconSource:         master.imagePath + master.iconTheme + "/volume_up.png"
         onPressed:          buttonPressed(6)
         onReleased:         buttonReleased(6)
@@ -118,9 +118,9 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.top:        button0.bottom
-        anchors.topMargin:  10
+        anchors.topMargin:  master.generalMargin
         anchors.right:      button6.left
-        anchors.rightMargin:10
+        anchors.rightMargin:master.generalMargin
         iconSource:         master.imagePath + master.iconTheme + "/volume_down.png"
         onPressed:          buttonPressed(5)
         onReleased:         buttonReleased(5)
@@ -133,9 +133,9 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.top:        button1.bottom
-        anchors.topMargin:  10
+        anchors.topMargin:  master.generalMargin
         anchors.right:      button5.left
-        anchors.rightMargin:10
+        anchors.rightMargin:master.generalMargin
         iconSource:         master.imagePath + master.iconTheme + "/volume_mute.png"
         onPressed:          buttonPressed(4)
         onReleased:         buttonReleased(4)
@@ -205,14 +205,12 @@ Rectangle {
 
     Row {
         id: row1
-        x:  57
-        y:  497
         width: button18.width + button16.width + button19.width + button17.width + spacing * 3
         height: button18.height
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 10
-        spacing: 10
+        anchors.bottomMargin: master.generalMargin
+        spacing: master.generalMargin
 
 
 

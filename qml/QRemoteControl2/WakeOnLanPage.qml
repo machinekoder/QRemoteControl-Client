@@ -19,19 +19,20 @@ Rectangle {
 
     Column {
         id: mainColumn
-        spacing: 5
+        spacing: master.generalMargin/2
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 5
+        anchors.bottomMargin: master.generalMargin
         anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.rightMargin: master.generalMargin
         anchors.left: parent.left
-        anchors.leftMargin: 10
+        anchors.leftMargin: master.generalMargin
+        anchors.top: parent.top
+        anchors.topMargin: master.generalMargin
 
         Behavior on height {
                          NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
                      }
-                     anchors.top: parent.top
-                     anchors.topMargin: 10
+
 
         Label {
             id:             label

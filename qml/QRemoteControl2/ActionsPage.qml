@@ -15,7 +15,7 @@ Rectangle {
     Item {
         id: wrapper
         anchors.fill: parent
-        anchors.margins: 10
+        anchors.margins: master.generalMargin
 
         GridView {
             id:             gridView
@@ -26,17 +26,17 @@ Rectangle {
             anchors.centerIn: parent
 
             cellWidth:      parent.width / 4 - 1   //4 items in a row
-            cellHeight:     cellHeight
+            cellHeight:     master.buttonHeight
 
             delegate: Item {
                 width:  gridView.cellWidth
                 height: gridView.cellHeight
                 Button {
                     anchors.fill:           parent
-                    anchors.leftMargin:     5
-                    anchors.rightMargin:    5
-                    anchors.topMargin:      5
-                    anchors.bottomMargin:   5
+                    anchors.leftMargin:     master.generalMargin/2
+                    anchors.rightMargin:    master.generalMargin/2
+                    anchors.topMargin:      master.generalMargin/2
+                    anchors.bottomMargin:   master.generalMargin/2
                     text:                   name
                     icon:                   (image.charAt(image.length-1) !== "/")? "file:///"+image:""
                     onPressed:              client.sendAction(index+1,true)

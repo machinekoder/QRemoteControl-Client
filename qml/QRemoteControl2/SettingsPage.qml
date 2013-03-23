@@ -21,6 +21,7 @@ Rectangle {
     Styles.Silver{ id: silverStyle}
     Styles.White{ id: whiteStyle}
     Styles.Nerdy{ id: nerdyStyle}
+    Styles.Tech{ id: techStyle}
 
     Timer {
         id: loadTimer
@@ -52,6 +53,8 @@ Rectangle {
                 break
             case "nerdy": nerdyButton.clicked()
                 break
+            case "tech": techButton.clicked()
+                break
             }
 
             theme.radiusScaler = roundness
@@ -68,32 +71,32 @@ Rectangle {
         id: label1
         text: qsTr("Color:")
         anchors.top: parent.top
-        anchors.topMargin: 10
+        anchors.topMargin: master.generalMargin
         anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.rightMargin: master.generalMargin
         anchors.left: parent.left
-        anchors.leftMargin: 10
+        anchors.leftMargin: master.generalMargin
     }
 
    Label {
         id: label2
         text: qsTr("Roundness:")
         anchors.top: grid1.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: master.generalMargin
         anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.rightMargin: master.generalMargin
         anchors.left: parent.left
-        anchors.leftMargin: 10
+        anchors.leftMargin: master.generalMargin
     }
 
    Slider {
        id: roundnessSlider
        anchors.top: label2.bottom
-       anchors.topMargin: 10
+       anchors.topMargin: master.generalMargin
        anchors.right: parent.right
-       anchors.rightMargin: 10
+       anchors.rightMargin: master.generalMargin
        anchors.left: parent.left
-       anchors.leftMargin: 10
+       anchors.leftMargin: master.generalMargin
 
        height: parent.height*0.08
 
@@ -108,14 +111,14 @@ Rectangle {
 
     Button {
             id: exitButton
-            height: parent.height * 0.08
+            height: master.buttonHeight * 0.8
             text: qsTr("Continue")
             anchors.right: parent.right
-            anchors.rightMargin: 10
+            anchors.rightMargin: master.generalMargin
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: master.generalMargin
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
+            anchors.bottomMargin: master.generalMargin
             icon: ""
             onClicked: continueClicked()
         }
@@ -127,13 +130,13 @@ Rectangle {
             anchors.bottom: parent.bottom
             rows: 4
             columns: 3
-            spacing: 5
+            spacing: master.generalMargin/2
             anchors.top: label1.bottom
-            anchors.topMargin: 10
+            anchors.topMargin: master.generalMargin
             anchors.right: parent.right
-            anchors.rightMargin: 10
+            anchors.rightMargin: master.generalMargin
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: master.generalMargin
 
             Button {
                 id: goldButton
@@ -370,6 +373,29 @@ Rectangle {
                     master.backgroundImage = ""
                     master.iconTheme = "nerdy"
                     client.uiColor = "nerdy"
+                    client.uiRoundness = theme.radiusScaler
+                }
+            }
+            Button {
+                id: techButton
+                width: (parent.width-(parent.columns-1)*parent.spacing) / parent.columns
+                height: (parent.height-parent.spacing*(parent.rows-1))/parent.rows
+                text: qsTr("Tech")
+                border.color: techStyle.buttonBorderColor
+                font.pixelSize: techStyle.buttonFontSize
+                font.bold: techStyle.buttonFontBold
+                font.family: techStyle.fontFamily
+                textColor: techStyle.primaryTextColor
+                radiusScaler: techStyle.radiusScaler
+                defaultGradient: techStyle.defaultGradient
+                pressedGradient: techStyle.pressedGradient
+                hoveredGradient: techStyle.hoveredGradient
+                onClicked: {
+                    theme.load(techStyle);
+                    roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
+                    master.backgroundImage = ""
+                    master.iconTheme = "nerdy"
+                    client.uiColor = "tech"
                     client.uiRoundness = theme.radiusScaler
                 }
             }

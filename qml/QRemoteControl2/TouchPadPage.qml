@@ -36,10 +36,10 @@ Rectangle {
         anchors.right:          parent.right
         anchors.bottom:         parent.bottom
         anchors.left:           parent.left
-        anchors.rightMargin:    5
-        anchors.leftMargin:     5
-        anchors.bottomMargin:   5
-        anchors.topMargin:      5
+        anchors.rightMargin:    master.generalMargin
+        anchors.leftMargin:     master.generalMargin
+        anchors.bottomMargin:   master.generalMargin/2
+        anchors.topMargin:      master.generalMargin/2
         TouchPad {
             id: touchpad
 
@@ -75,12 +75,12 @@ Rectangle {
 
     Row {
         id: buttonRow
-        width: parent.width-10
-        height: parent.height*0.1
+        width: parent.width-master.generalMargin*2
+        height: master.buttonHeight
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: 5
-        spacing: 7
+        anchors.topMargin: master.generalMargin
+        spacing: master.generalMargin/2
 
         Button {
             id: controlButton

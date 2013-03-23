@@ -1,4 +1,3 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import RemoteControl 2.0
 import QtMobility.sensors 1.1
@@ -11,9 +10,11 @@ Rectangle {
     property string iconTheme: "black"
     property int    screenRotation: 0
 
+    property int generalMargin: Math.round(width*0.02)
+    property int buttonWidth: Math.round(width*0.18)
+    property int buttonHeight: Math.round(height*0.10)
+
     id:master
-    width: 360
-    height: 640
     anchors.fill: parent
     color: "black"
     state: "networkState"

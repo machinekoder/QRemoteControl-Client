@@ -91,58 +91,57 @@ Rectangle {
 
     Button {
             id: exitButton
-            height: parent.height * 0.08
+            height: master.buttonHeight * 0.8
             text: qsTr("Abort")
             anchors.right: parent.right
-            anchors.rightMargin: 10
+            anchors.rightMargin: master.generalMargin
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: master.generalMargin
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
+            anchors.bottomMargin: master.generalMargin
             onClicked: abortClicked()
     }
 
 
         Rectangle {
             id: listRect
-            color: "#ffffff"
             radius: 11
             border.color: theme.buttonBorderColor
             border.width: 2
             smooth: true
             gradient: theme.defaultGradient
             anchors.top: rightImage.bottom
-            anchors.topMargin: 5
+            anchors.topMargin: master.generalMargin/2
             anchors.right: parent.right
-            anchors.rightMargin: 10
+            anchors.rightMargin: master.generalMargin
             anchors.bottom: exitButton.top
-            anchors.bottomMargin: 10
+            anchors.bottomMargin: master.generalMargin
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: master.generalMargin
 
             ListView {
                 id: listVew
                 anchors.fill: parent
 
                 delegate: Item {
-                        height: listVew.height*0.13
+                        height: master.buttonHeight
                         width: listVew.width
 
                         Button {
                         anchors.fill:           parent
-                        anchors.leftMargin:     5
-                        anchors.rightMargin:    5
-                        anchors.topMargin:      5
+                        anchors.leftMargin:     master.generalMargin/2
+                        anchors.rightMargin:    master.generalMargin/2
+                        anchors.topMargin:      master.generalMargin/2
                         border.color: theme.buttonBorderColor
 
                         Row {
                             id: row1
-                            x: 10
-                            spacing: 20
+                            x: master.generalMargin
+                            spacing: master.generalMargin*2
                             height: parent.height
                             Image {
-                                width: 40
-                                height: 40
+                                width: parent.height * 0.8
+                                height: width
                                 source: master.imagePath + master.iconTheme + "/computer.png"
                                 fillMode: Image.PreserveAspectFit
                                 anchors.verticalCenter: parent.verticalCenter
@@ -173,6 +172,17 @@ Rectangle {
                     }
                 }
             }
+
+            Text {
+                id: text1
+                text: qsTr("Searching Servers...")
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: master.generalMargin
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pixelSize: theme.labelFontSize
+                font.bold: theme.labelFontBold
+                color: theme.primaryTextColor
+            }
         }
 
         function addServer(ipAddress,hostName, connected)
@@ -183,16 +193,5 @@ Rectangle {
         function clearServers()
         {
             listModel.clear()
-        }
-        Text {
-            id: text1
-            width: 179
-            height: 27
-            text: qsTr("Searching Servers...")
-            anchors.bottom: listRect.bottom
-            anchors.bottomMargin: 10
-            anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: parent.width * 0.05
-            color: theme.primaryTextColor
         }
 }

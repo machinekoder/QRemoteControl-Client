@@ -14,19 +14,19 @@ Rectangle {
         id: flickable
 
         width: aboutPage.width
-        height: aboutPage.height - 40
+        height: aboutPage.height - master.generalMargin*4
         flickableDirection: Flickable.VerticalFlick
         clip: true
-        contentWidth: aboutPage.width - 60
+        contentWidth: aboutPage.width - master.generalMargin*6
         contentHeight: aboutContainer.height + moreText.height + 60
 
         anchors {
             left: parent.left
-            leftMargin: 20
-            rightMargin: 20
+            leftMargin: master.generalMargin*2
+            rightMargin: master.generalMargin*2
             right: parent.right
             top: parent.top
-            topMargin: 20
+            topMargin: master.generalMargin*2
         }
 
         Item {
@@ -84,14 +84,14 @@ Rectangle {
 
     Button {
             id: exitButton
-            height: parent.height * 0.08
+            height: master.buttonHeight * 0.8
             text: qsTr("Continue")
             anchors.right: parent.right
-            anchors.rightMargin: 10
+            anchors.rightMargin: master.generalMargin
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: master.generalMargin
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
+            anchors.bottomMargin: master.generalMargin
             icon: ""
             onClicked: continueClicked()
         }

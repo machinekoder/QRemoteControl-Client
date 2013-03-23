@@ -49,18 +49,17 @@ Rectangle {
 
     ButtonBar {
         id: buttonbar
-        width: parent.width
-        height: parent.height * 0.1
+        height: master.buttonHeight
+        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
 
         Row {
             id: barRow
-            x: 5
-            y: 5
-            width: parent.width - 5
-            height: parent.height-10
-            spacing: 5
+            anchors.centerIn: parent
+            width: parent.width - master.generalMargin
+            height: parent.height - master.generalMargin
+            spacing: master.generalMargin/2
 
             Button {
                 id:         button1

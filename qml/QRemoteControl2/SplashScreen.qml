@@ -3,9 +3,6 @@ import QtQuick 1.1
 Rectangle {
     id: splash
     z: 100
-    width: 360
-    height: 640
-
     property alias loadingProgress: progressRect.percent
 
     Rectangle {

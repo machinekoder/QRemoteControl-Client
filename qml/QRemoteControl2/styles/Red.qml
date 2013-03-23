@@ -13,7 +13,7 @@ Style {
     labelBorderColor:     "#00000000"
     editBorderColor:      "#ff2e00"
     borderWidth:          2
-    radiusScaler:         2.8
+    radiusScaler:         6
     primaryTextColor:     "black"
     secondaryTextColor:   "black"
     editTextColor:        "black"
