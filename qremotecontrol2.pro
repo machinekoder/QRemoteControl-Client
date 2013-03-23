@@ -134,7 +134,8 @@ OTHER_FILES += \
     android/src/org/kde/necessitas/ministro/IMinistro.aidl \
     android/src/org/kde/necessitas/ministro/IMinistroCallback.aidl \
     android/AndroidManifest.xml \
-    android/version.xml
+    android/version.xml \
+    bar-descriptor.xml
 
 RESOURCES += \
     i18.qrc

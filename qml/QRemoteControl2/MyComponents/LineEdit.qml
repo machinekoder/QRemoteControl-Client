@@ -31,7 +31,9 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 10
         anchors.verticalCenter: parent.verticalCenter
-        font: input.font
+        font.pixelSize: theme.editFontSize
+        font.bold:      theme.editFontBold
+        font.family:    theme.fontFamily
         color: input.color
         visible: labelEnabled
         width: labelEnabled?parent.width*0.3:0
@@ -60,6 +62,7 @@ Rectangle {
                 id:             emptyLabel
                 font.pixelSize: theme.hintFontSize
                 font.bold:      theme.hintFontBold
+                font.family:    theme.fontFamily
                 color:          theme.hintTextColor
                 anchors.fill:   parent
                 visible:        input.text == "" && !input.focus ? true : false

@@ -26,7 +26,7 @@ Style {
     editFontBold:         false
     hintFontSize:         master.width * 0.04
     hintFontBold:         false
-    fontFamily:           ""
+    fontFamily:           "Arial"
 
     Gradient {
                 id: defaultGrad

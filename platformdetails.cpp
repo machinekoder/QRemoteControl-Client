@@ -15,4 +15,7 @@ PlatformDetails::PlatformDetails(QObject *parent) :
 #ifdef Q_OS_ANDROID
     m_platform = "Android";
 #endif
+#ifdef Q_OS_BLACKBERRY
+    m_platform = "BlackBerry";
+#endif
 }

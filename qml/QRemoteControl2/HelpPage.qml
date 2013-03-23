@@ -1,8 +1,6 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
-import QtWebKit 1.0
 import "MyComponents/"
-//import MyComponents 1.0
 
 Rectangle {
     signal continueClicked
@@ -97,17 +95,5 @@ Rectangle {
             icon: ""
             onClicked: continueClicked()
         }
-
-        /*FlickableWebView {
-            id: web_view1
-            //preferredHeight: height
-            //preferredWidth: width
-            anchors.bottomMargin: exitButton.height + 20
-            anchors.rightMargin: 10
-            anchors.leftMargin: 10
-            anchors.topMargin: 10
-            anchors.fill: parent
-            url: "help.html"
-        }*/
 }
 
