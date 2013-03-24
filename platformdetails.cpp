@@ -3,6 +3,15 @@
 PlatformDetails::PlatformDetails(QObject *parent) :
     QObject(parent)
 {
+#ifdef Q_OS_LINUX
+    m_platform = "Linux";
+#endif
+#ifdef Q_OS_OSX
+    m_platform = "OSX";
+#endif
+#ifdef Q_WS_WIN
+    m_platform = "Windows";
+#endif
 #ifdef Q_OS_SYMBIAN
     m_platform = "Symbian";
 #endif

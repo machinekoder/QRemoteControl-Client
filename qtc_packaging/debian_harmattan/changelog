@@ -1,3 +1,10 @@
+qremotecontrol2 (2.4.1) stable; urgency=high
+
+  * Made UI nicer
+  * Fixed some links
+  * Added a new theme
+
+ -- Strahlex <mail.aroessler@gmail.com> Thu, 07 Mar 2013 00:00:00 +0100
 qremotecontrol2 (2.4.0) stable; urgency=high
 
   * Added version sending

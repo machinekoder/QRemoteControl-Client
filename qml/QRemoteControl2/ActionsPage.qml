@@ -1,7 +1,5 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import "MyComponents/"
-//import MyComponents 1.0
 
 Rectangle {
     width: 400
@@ -15,7 +13,6 @@ Rectangle {
     Item {
         id: wrapper
         anchors.fill: parent
-        anchors.margins: master.generalMargin
 
         GridView {
             id:             gridView

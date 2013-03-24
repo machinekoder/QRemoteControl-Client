@@ -64,7 +64,7 @@ Rectangle {
 
             Text {
                 textFormat: Text.RichText
-                text: qsTr("Copyright 2012-2013 by Alexander Rössler <br>Version: ") + client.version
+                text: qsTr("Copyright 2012-2013 <br>by Alexander Rössler <br>Version: ") + client.version
                 color: theme.primaryTextColor
                 anchors {
                     left: logoImg.right
@@ -82,7 +82,7 @@ Rectangle {
 
         Text {
             id: moreText
-            text: qsTr("If you find bugs and errors or want to give feedback please contact: <a href=\"mailto:mail.aroessler@gmail.com\">support@qremote.org</a><br>") +
+            text: qsTr("If you find bugs and errors or want to give feedback please contact: <a href=\"mailto:support@qremote.org\">support@qremote.org</a><br>") +
                   qsTr("or visit <a href=\"http://qremote.org\">qremote.org</a> <br> <br>") +
                   qsTr("If you find this application useful please show it to your friends and vote for it.")
 

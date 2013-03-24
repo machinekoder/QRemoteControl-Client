@@ -33,7 +33,7 @@ Rectangle {
         id: rectangle1
         width: parent.width
         height: parent.height - buttonRow.height - master.generalMargin/2
-        radius: 11
+        radius: leftButton.radius
         smooth: true
         gradient: theme.defaultGradient
         border.width: theme.borderWidth

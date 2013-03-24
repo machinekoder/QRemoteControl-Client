@@ -1,6 +1,7 @@
 import QtQuick 1.1
-//import QtMobility.feedback 1.1
+import Platform 1.0
 import "gradients/"
+import "feedback.js" as Feedback
 
 Rectangle {
     property alias text:                text.text
@@ -20,6 +21,8 @@ Rectangle {
     property Gradient pressedGradient:  theme.pressedGradient
     property Gradient hoveredGradient:  theme.hoveredGradient
     property bool animated:             true
+
+    property bool feedbackAvailable: false
 
     signal clicked
     signal doubleClicked
@@ -59,12 +62,14 @@ Rectangle {
             if (checkable)
                 checked = !checked;
             if (sound)
-                buttonSound()
-            //basicHapticEffect.play()
+                buttonSound();
+            if (feedbackAvailable)
+                Feedback.playHaptic();
         }
         onReleased: {
             base.released()
-            //basicHapticEffect.play()
+            if (feedbackAvailable)
+                Feedback.playHaptic();
         }
     }
 
@@ -114,12 +119,16 @@ Rectangle {
                      }
     }
 
+    Details {
+        id: platform
+    }
 
-   //ThemeEffect{ id: basicHapticEffect; effect: ThemeEffect.BasicButton }
-
-   function playHaptic()
-   {
-       //basicHapticEffect.play()
-   }
+    Component.onCompleted: {
+        if ((platform.platform == "MeeGo") || (platform.platform == "Symbian"))
+        {
+            Feedback.createHaptic()
+            feedbackAvailable = true
+        }
+    }
 }
 

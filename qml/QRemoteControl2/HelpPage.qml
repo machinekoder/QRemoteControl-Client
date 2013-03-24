@@ -53,7 +53,7 @@ Rectangle {
         Text {
             id: moreText
             text: qsTr("<br><b>Before Starting</b><br>") +
-                  qsTr("Make shure you have the server software installed on the computer you want to remote control. You can download the software at: <a href=\"http://qremote.org\">qremote.org</a> <br> <br>") +
+                  qsTr("Make shure you have the server software installed on the computer you want to remote control. You can download the software at: <a href=\"http://qremote.org/download.php#Download\">qremote.org</a> <br> <br>") +
                   qsTr("<b>Connecting</b><br>") +
                   qsTr("- Connect your smart phone and your computer to a wireless network. <br>") +
                   qsTr("- Start the server software on your computer.<br>") +

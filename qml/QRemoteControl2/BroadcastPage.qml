@@ -105,7 +105,7 @@ Rectangle {
 
         Rectangle {
             id: listRect
-            radius: 11
+            radius: exitButton.radius
             border.color: theme.buttonBorderColor
             border.width: 2
             smooth: true
