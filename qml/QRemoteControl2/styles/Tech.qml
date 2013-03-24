@@ -9,15 +9,15 @@ Style {
     labelGradient:    labelGrad
     editGradient:     editGrad
     extraGradient:    extraGrad
-    buttonBorderColor:    "blue"
-    labelBorderColor:     "#00000000"
-    editBorderColor:      "blue"
+    buttonBorderColor:    "#596b7f"
+    labelBorderColor:     "#596b7f"
+    editBorderColor:      "#596b7f"
     borderWidth:          2
     radiusScaler:         100
-    primaryTextColor:     "blue"
-    secondaryTextColor:   "blue"
-    editTextColor:        "blue"
-    hintTextColor:        "#92009909"
+    primaryTextColor:     "#81d4ff"
+    secondaryTextColor:   "#81d4ff"
+    editTextColor:        "#81d4ff"
+    hintTextColor:        "#71e4ef"
     buttonFontSize:       master.width * 0.05
     buttonFontBold:       true
     labelFontSize:        master.width * 0.04
@@ -32,36 +32,36 @@ Style {
                 id: defaultGrad
                     GradientStop {
                         position: 0.020
-                        color: "#1e04ff00"
+                        color: "#CC0B3450"
                     }
 
                     GradientStop {
                         position: 1
-                        color: "#32007309"
+                        color: "#CC132C42"
                     }
                 }
     Gradient {
                 id: hoveredGrad
                     GradientStop {
                         position: 0.020
-                        color: "#4404ff00"
+                        color: "#CC3484BF"
                     }
 
                     GradientStop {
                         position: 1
-                        color: "#99007309"
+                        color: "#CC3D7CA5"
                     }
                 }
     Gradient {
                 id: pressedGrad
                 GradientStop {
                         position: 0.020
-                        color: "#8804ff00"
+                        color: "#CC399ADE"
                     }
 
                     GradientStop {
                         position: 1
-                        color: "#bb007309"
+                        color: "#CC4190C8"
                     }
                 }
     Gradient {
@@ -80,44 +80,44 @@ Style {
                 id: editGrad
                 GradientStop {
                     position: 0.020
-                    color: "#1e04ff00"
+                    color: "#CC2E6792"
                 }
 
                 GradientStop {
                     position: 1
-                    color: "#32007309"
+                    color: "#CC2B577A"
                 }
                 }
     Gradient {
                  id: extraGrad
                     GradientStop {
                         position: 0
-                        color: "#333333"
+                        color: "#CC1D2F3D"
                     }
 
                     GradientStop {
                         position: 0.080
-                        color: "#232323"
+                        color: "#CC24425A"
                     }
 
                     GradientStop {
                         position: 0.390
-                        color: "#1b1b1b"
+                        color: "#CC5F94BC"
                     }
 
                     GradientStop {
                         position: 0.400
-                        color: "#0e0d0d"
+                        color: "#CC24425A"
                     }
 
                     GradientStop {
                         position: 0.900
-                        color: "#0c0c0c"
+                        color: "#CC24445D"
                     }
 
                     GradientStop {
                         position: 1
-                        color: "#000000"
+                        color: "#CC212E37"
                     }
                 }
     }

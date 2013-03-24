@@ -5,11 +5,18 @@ Rectangle {
     id: rectangle6
     width: 480
     height: 800
-    color: "black"
+    color: "#000000"
     z: 2147483646
 
     Styles.Tech {
         id: techStyle
+        fontFamily: "Arial"
+        hintTextColor: "#81D4FF"
+        secondaryTextColor: "#81d4ff"
+        primaryTextColor: "#81d4ff"
+        editTextColor: "#596b7f"
+        editBorderColor: "#596b7f"
+        buttonBorderColor: "#596b7f"
     }
 
     Rectangle {
@@ -120,6 +127,8 @@ Rectangle {
 
     Image {
         id: image1
+        sourceSize.height: 40
+        sourceSize.width: 40
         fillMode: Image.Tile
         z: 0
         anchors.fill: parent

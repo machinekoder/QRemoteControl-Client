@@ -6,6 +6,7 @@ import "MyComponents"
 
 Rectangle {
     property string backgroundImage: "images/background_grey.png"
+    property alias backgroundImageFillMode: backgroundImage.fillMode
     property string imagePath: "images/"
     property string iconTheme: "black"
     property int    screenRotation: 0
@@ -80,6 +81,7 @@ Rectangle {
         id: backgroundImage
         anchors.fill: parent
         source: master.backgroundImage
+        fillMode: master.backgroundFillMode
     }
 
     Text {

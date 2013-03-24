@@ -156,6 +156,7 @@ Rectangle {
                     theme.load(goldStyle);
                     roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_gold.png"
+                    master.backgroundImageFillMode = Image.Stretch
                     master.iconTheme = "black"
                     client.uiColor = "gold"
                     client.uiRoundness = theme.radiusScaler
@@ -180,6 +181,7 @@ Rectangle {
                     theme.load(greyStyle);
                     roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_grey.png"
+                    master.backgroundImageFillMode = Image.Stretch
                     master.iconTheme = "black"
                     client.uiColor = "grey"
                     client.uiRoundness = theme.radiusScaler
@@ -204,6 +206,7 @@ Rectangle {
                     theme.load(greenStyle);
                     roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_green.png"
+                    master.backgroundImageFillMode = Image.Stretch
                     master.iconTheme = "black"
                     client.uiColor = "green"
                     client.uiRoundness = theme.radiusScaler
@@ -228,6 +231,7 @@ Rectangle {
                     theme.load(silverStyle);
                     roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_silver.png"
+                    master.backgroundImageFillMode = Image.Stretch
                     master.iconTheme = "black"
                     client.uiColor = "silver"
                     client.uiRoundness = theme.radiusScaler
@@ -252,6 +256,7 @@ Rectangle {
                     theme.load(pinkStyle);
                     roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_pink.png"
+                    master.backgroundImageFillMode = Image.Stretch
                     master.iconTheme = "black"
                     client.uiColor = "pink"
                     client.uiRoundness = theme.radiusScaler
@@ -276,6 +281,7 @@ Rectangle {
                     theme.load(redStyle);
                     roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_red.png"
+                    master.backgroundImageFillMode = Image.Stretch
                     master.iconTheme = "black"
                     client.uiColor = "red"
                     client.uiRoundness = theme.radiusScaler
@@ -300,6 +306,7 @@ Rectangle {
                     theme.load(whiteStyle);
                     roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_white.png"
+                    master.backgroundImageFillMode = Image.Stretch
                     master.iconTheme = "black"
                     client.uiColor = "white"
                     client.uiRoundness = theme.radiusScaler
@@ -348,6 +355,7 @@ Rectangle {
                     theme.load(blueStyle);
                     roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
                     master.backgroundImage = "images/background_blue.png"
+                    master.backgroundImageFillMode = Image.Stretch
                     master.iconTheme = "black"
                     client.uiColor = "blue"
                     client.uiRoundness = theme.radiusScaler
@@ -393,8 +401,9 @@ Rectangle {
                 onClicked: {
                     theme.load(techStyle);
                     roundnessSlider.value = roundnessSlider.maximum-theme.radiusScaler
-                    master.backgroundImage = ""
-                    master.iconTheme = "nerdy"
+                    master.backgroundImage = "images/tile.png"
+                    master.backgroundImageFillMode = Image.Tile
+                    master.iconTheme = "white"
                     client.uiColor = "tech"
                     client.uiRoundness = theme.radiusScaler
                 }
