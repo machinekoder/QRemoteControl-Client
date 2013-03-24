@@ -8,10 +8,7 @@ DEFINES += VERSION=\"\\\"$$VERSION\\\"\"
 # Add more folders to ship with the application, here
 folder_01.source += qml/QRemoteControl2
 folder_01.target = qml/
-#folder_02.source = ../MyComponents
-#folder_02.target = /opt/$(TARGET)/bin/
 DEPLOYMENTFOLDERS = folder_01
-#folder_02
 
 # Additional import path used to resolve QML modules in Creator's code model
 #QML_IMPORT_PATH += ../
@@ -45,9 +42,7 @@ contains(MEEGO_EDITION,harmattan): {
  MOBILITY += sensors
 
 QT += network
-#QT += webkit
 
-# The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
             qremotecontrolclient.cpp \
             wakeonlanpacket.cpp \
