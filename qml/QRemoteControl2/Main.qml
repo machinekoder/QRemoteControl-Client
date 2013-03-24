@@ -81,7 +81,6 @@ Rectangle {
         id: backgroundImage
         anchors.fill: parent
         source: master.backgroundImage
-        fillMode: master.backgroundFillMode
     }
 
     Text {
