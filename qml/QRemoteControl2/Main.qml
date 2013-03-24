@@ -95,6 +95,7 @@ Rectangle {
         anchors.leftMargin: 20
         anchors.verticalCenter: parent.verticalCenter
         color: theme.primaryTextColor
+        font.pixelSize: theme.hintFontSize
     }
 
     Row {

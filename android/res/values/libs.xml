@@ -3,13 +3,13 @@
     <array name="bundled_libs"/>
     <array name="qt_libs">
         <item>QtCore</item>
+        <item>QtFeedback</item>
         <item>QtGui</item>
         <item>QtNetwork</item>
         <item>QtScript</item>
         <item>QtSensors</item>
         <item>QtSql</item>
         <item>QtSvg</item>
-        <item>QtWebKit</item>
         <item>QtXmlPatterns</item>
         <item>QtDeclarative</item>
     </array>
