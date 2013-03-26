@@ -15,7 +15,7 @@
    height="1052.3622047"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="icons.svg">
   <sodipodi:namedview
      id="base"
@@ -25,8 +25,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.90509668"
-     inkscape:cx="-1031.5102"
-     inkscape:cy="402.27622"
+     inkscape:cx="647.86841"
+     inkscape:cy="580.15777"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -39,8 +39,8 @@
      inkscape:object-nodes="false"
      inkscape:window-width="1600"
      inkscape:window-height="855"
-     inkscape:window-x="1024"
-     inkscape:window-y="26"
+     inkscape:window-x="-4"
+     inkscape:window-y="18"
      inkscape:window-maximized="1"
      inkscape:snap-center="true"
      inkscape:snap-global="false">
@@ -5452,19 +5452,6 @@
        fx="671.18823"
        fy="707.28809"
        r="4.5" />
-    <filter
-       color-interpolation-filters="sRGB"
-       height="1.2136244"
-       y="-0.10681222"
-       width="1.100384"
-       x="-0.05019201"
-       id="filter7576-2"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur7578-1"
-         stdDeviation="0.5986952"
-         inkscape:collect="always" />
-    </filter>
     <radialGradient
        r="15.233768"
        fy="642.88782"
@@ -5707,15 +5694,6 @@
          offset="1"
          style="stop-color:#b7b7b7;stop-opacity:1;" />
     </linearGradient>
-    <filter
-       color-interpolation-filters="sRGB"
-       id="filter4133-4"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur4135-3"
-         stdDeviation="0.61071847"
-         inkscape:collect="always" />
-    </filter>
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3778-97-0"
@@ -6002,15 +5980,6 @@
          offset="1"
          style="stop-color:#b7b7b7;stop-opacity:1;" />
     </linearGradient>
-    <filter
-       color-interpolation-filters="sRGB"
-       id="filter4100-8"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur4102-7"
-         stdDeviation="1.4828014"
-         inkscape:collect="always" />
-    </filter>
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3778-307-6"
@@ -6176,15 +6145,6 @@
          offset="1"
          style="stop-color:#b7b7b7;stop-opacity:1;" />
     </linearGradient>
-    <filter
-       color-interpolation-filters="sRGB"
-       id="filter4031-4"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur4033-2"
-         stdDeviation="0.6696428"
-         inkscape:collect="always" />
-    </filter>
     <linearGradient
        id="linearGradient3778-988-0">
       <stop
@@ -6449,42 +6409,6 @@
          offset="1"
          style="stop-color:#b7b7b7;stop-opacity:1;" />
     </linearGradient>
-    <filter
-       color-interpolation-filters="sRGB"
-       id="filter4479-9"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur4481-4"
-         stdDeviation="0.719496"
-         inkscape:collect="always" />
-    </filter>
-    <filter
-       color-interpolation-filters="sRGB"
-       id="filter4372-6"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur4374-9"
-         stdDeviation="0.56152134"
-         inkscape:collect="always" />
-    </filter>
-    <filter
-       color-interpolation-filters="sRGB"
-       id="filter4326-5"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur4328-6"
-         stdDeviation="0.76825782"
-         inkscape:collect="always" />
-    </filter>
-    <filter
-       color-interpolation-filters="sRGB"
-       id="filter4253-0"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur4255-2"
-         stdDeviation="0.72186265"
-         inkscape:collect="always" />
-    </filter>
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3778-219-3"
@@ -7013,15 +6937,6 @@
          offset="1"
          style="stop-color:#b7b7b7;stop-opacity:1;" />
     </linearGradient>
-    <filter
-       color-interpolation-filters="sRGB"
-       id="filter4157-2"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur4159-8"
-         stdDeviation="0.51413181"
-         inkscape:collect="always" />
-    </filter>
     <linearGradient
        id="linearGradient3778-436-8">
       <stop
@@ -7143,15 +7058,6 @@
          offset="1"
          style="stop-color:#b7b7b7;stop-opacity:1;" />
     </linearGradient>
-    <filter
-       color-interpolation-filters="sRGB"
-       id="filter4308-0"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur4310-8"
-         stdDeviation="0.69971705"
-         inkscape:collect="always" />
-    </filter>
     <linearGradient
        id="linearGradient3778-794-0">
       <stop
@@ -7240,15 +7146,6 @@
          offset="1"
          style="stop-color:#b7b7b7;stop-opacity:1;" />
     </linearGradient>
-    <filter
-       color-interpolation-filters="sRGB"
-       id="filter4061-1"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur4063-7"
-         stdDeviation="0.62475773"
-         inkscape:collect="always" />
-    </filter>
     <linearGradient
        id="linearGradient3778-566-4">
       <stop
@@ -10846,6 +10743,270 @@
        fx="372.09845"
        fy="640.005"
        r="32.971741" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5592"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5594"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5596"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5598"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5600"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5602"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5604"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5606"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5608"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5610"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5612"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5614"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5616"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5618"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5620"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5622"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,38.855644,0,-26774.846)"
+       cx="671.18823"
+       cy="707.28809"
+       fx="671.18823"
+       fy="707.28809"
+       r="4.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5632"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.03597724,0,869.24063)"
+       cx="492.36032"
+       cy="901.6806"
+       fx="492.36032"
+       fy="901.6806"
+       r="125.07907" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5634"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.03597885,0,869.23918)"
+       cx="492.36591"
+       cy="901.6806"
+       fx="492.36591"
+       fy="901.6806"
+       r="125.0735" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5636"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.03597724,0,869.24063)"
+       cx="492.36032"
+       cy="901.6806"
+       fx="492.36032"
+       fy="901.6806"
+       r="125.07907" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5638"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.03597885,0,869.23918)"
+       cx="492.36591"
+       cy="901.6806"
+       fx="492.36591"
+       fy="901.6806"
+       r="125.0735" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5640"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.03597724,0,869.24063)"
+       cx="492.36032"
+       cy="901.6806"
+       fx="492.36032"
+       fy="901.6806"
+       r="125.07907" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5642"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.03597885,0,869.23918)"
+       cx="492.36591"
+       cy="901.6806"
+       fx="492.36591"
+       fy="901.6806"
+       r="125.0735" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5644"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.03597724,0,869.24063)"
+       cx="492.36032"
+       cy="901.6806"
+       fx="492.36032"
+       fy="901.6806"
+       r="125.07907" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3778"
+       id="radialGradient5646"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.03597885,0,869.23918)"
+       cx="492.36591"
+       cy="901.6806"
+       fx="492.36591"
+       fy="901.6806"
+       r="125.0735" />
   </defs>
   <metadata
      id="metadata7">
@@ -12520,100 +12681,50 @@
       </g>
     </g>
     <g
-       id="g5326"
-       transform="translate(-35.514019,-163.5514)">
-      <g
-         style="fill:url(#radialGradient5380);fill-opacity:1;stroke:url(#radialGradient5382);filter:url(#filter4171)"
-         id="g4163"
-         inkscape:export-filename="/home/alexander/projects/qremotecontrol/QRemoteControlClient/images/vscroll.png"
-         inkscape:export-xdpi="89.343239"
-         inkscape:export-ydpi="89.343239">
-        <path
-           inkscape:connector-curvature="0"
-           id="path4165"
-           d="m 670.6875,532.9375 0,348.6875 1,0 0,-348.6875 -1,0 z"
-           style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:url(#radialGradient5368);fill-opacity:1;stroke:url(#radialGradient5370);stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
-        <path
-           inkscape:connector-curvature="0"
-           id="path4167"
-           d="m 671.18825,542.93769 4,4 -4,-14 -4,14 4,-4 z"
-           style="fill:url(#radialGradient5372);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5374);stroke-width:0.8pt;marker-start:none" />
-        <path
-           inkscape:connector-curvature="0"
-           id="path4169"
-           d="m 671.18825,871.63849 -4,-4 4,14 4,-14 -4,4 z"
-           style="fill:url(#radialGradient5376);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5378);stroke-width:0.8pt;marker-start:none" />
-      </g>
-      <g
-         id="g4087"
-         style="fill:url(#radialGradient5396);fill-opacity:1;stroke:url(#radialGradient5398)"
-         inkscape:export-filename="/home/alexander/projects/qremotecontrol/QRemoteControlClient/images/vscroll.png"
-         inkscape:export-xdpi="89.343239"
-         inkscape:export-ydpi="89.343239">
-        <path
-           style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:url(#radialGradient5384);fill-opacity:1;stroke:url(#radialGradient5386);stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
-           d="m 670.6875,532.9375 0,348.6875 1,0 0,-348.6875 -1,0 z"
-           id="path3283"
-           inkscape:connector-curvature="0" />
-        <path
-           style="fill:url(#radialGradient5388);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5390);stroke-width:0.8pt;marker-start:none"
-           d="m 671.18825,542.93769 4,4 -4,-14 -4,14 4,-4 z"
-           id="path4093"
-           inkscape:connector-curvature="0" />
-        <path
-           style="fill:url(#radialGradient5392);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5394);stroke-width:0.8pt;marker-start:none"
-           d="m 671.18825,871.63849 -4,-4 4,14 4,-14 -4,4 z"
-           id="path4095"
-           inkscape:connector-curvature="0" />
-      </g>
+       inkscape:export-ydpi="297.06787"
+       inkscape:export-xdpi="297.06787"
+       inkscape:export-filename="/home/alexander/projects/qremotecontrol-client/qml/QRemoteControl2/images/black/vscroll.png"
+       style="fill:url(#radialGradient5604);fill-opacity:1;stroke:url(#radialGradient5606)"
+       id="g4087"
+       transform="translate(-29.514019,-159.13198)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3283"
+         d="m 670.6875,532.9375 0,348.6875 1,0 0,-348.6875 -1,0 z"
+         style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:url(#radialGradient5592);fill-opacity:1;stroke:url(#radialGradient5594);stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4093"
+         d="m 671.18825,542.93769 4,4 -4,-14 -4,14 4,-4 z"
+         style="fill:url(#radialGradient5596);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5598);stroke-width:0.8pt;marker-start:none" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4095"
+         d="m 671.18825,871.63849 -4,-4 4,14 4,-14 -4,4 z"
+         style="fill:url(#radialGradient5600);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5602);stroke-width:0.8pt;marker-start:none" />
     </g>
     <g
-       id="g5300"
-       transform="translate(-140.18692,-163.5514)">
-      <g
-         style="fill:url(#radialGradient5348);fill-opacity:1;stroke:url(#radialGradient5350);filter:url(#filter4159)"
-         id="g4139"
-         inkscape:export-filename="/home/alexander/projects/qremotecontrol/QRemoteControlClient/images/hscroll.png"
-         inkscape:export-xdpi="89.343239"
-         inkscape:export-ydpi="89.343239">
-        <path
-           inkscape:connector-curvature="0"
-           id="path4141"
-           d="m 367.78125,901.1875 0,1 249.15625,0 0,-1 -249.15625,0 z"
-           style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:url(#radialGradient5336);fill-opacity:1;stroke:url(#radialGradient5338);stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
-        <path
-           inkscape:connector-curvature="0"
-           id="path4143"
-           d="m 606.93939,901.68061 -4,4 14,-4 -14,-4 4,4 z"
-           style="fill:url(#radialGradient5340);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5342);stroke-width:0.8pt;marker-start:none" />
-        <path
-           inkscape:connector-curvature="0"
-           id="path4145"
-           d="m 377.7924,901.68061 4,-4 -14,4 14,4 -4,-4 z"
-           style="fill:url(#radialGradient5344);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5346);stroke-width:0.8pt;marker-start:none" />
-      </g>
-      <g
-         id="g4113"
-         style="fill:url(#radialGradient5364);fill-opacity:1;stroke:url(#radialGradient5366)"
-         inkscape:export-filename="/home/alexander/projects/qremotecontrol/QRemoteControlClient/images/hscroll.png"
-         inkscape:export-xdpi="89.343239"
-         inkscape:export-ydpi="89.343239">
-        <path
-           style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:url(#radialGradient5352);fill-opacity:1;stroke:url(#radialGradient5354);stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
-           d="m 367.78125,901.1875 0,1 249.15625,0 0,-1 -249.15625,0 z"
-           id="path6147"
-           inkscape:connector-curvature="0" />
-        <path
-           style="fill:url(#radialGradient5356);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5358);stroke-width:0.8pt;marker-start:none"
-           d="m 606.93939,901.68061 -4,4 14,-4 -14,-4 4,4 z"
-           id="path4119"
-           inkscape:connector-curvature="0" />
-        <path
-           style="fill:url(#radialGradient5360);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5362);stroke-width:0.8pt;marker-start:none"
-           d="m 377.7924,901.68061 4,-4 -14,4 14,4 -4,-4 z"
-           id="path4121"
-           inkscape:connector-curvature="0" />
-      </g>
+       inkscape:export-ydpi="296.22449"
+       inkscape:export-xdpi="296.22449"
+       inkscape:export-filename="/home/alexander/projects/qremotecontrol-client/qml/QRemoteControl2/images/black/hscroll.png"
+       style="fill:url(#radialGradient5644);fill-opacity:1;stroke:url(#radialGradient5646)"
+       id="g4113"
+       transform="translate(-136.87236,-154.71257)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6147"
+         d="m 367.78125,901.1875 0,1 249.15625,0 0,-1 -249.15625,0 z"
+         style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:url(#radialGradient5632);fill-opacity:1;stroke:url(#radialGradient5634);stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4119"
+         d="m 606.93939,901.68061 -4,4 14,-4 -14,-4 4,4 z"
+         style="fill:url(#radialGradient5636);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5638);stroke-width:0.8pt;marker-start:none" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4121"
+         d="m 377.7924,901.68061 4,-4 -14,4 14,4 -4,-4 z"
+         style="fill:url(#radialGradient5640);fill-opacity:1;fill-rule:evenodd;stroke:url(#radialGradient5642);stroke-width:0.8pt;marker-start:none" />
     </g>
     <g
        transform="translate(-61.592766,-68.303838)"

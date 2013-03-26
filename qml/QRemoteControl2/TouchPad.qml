@@ -44,7 +44,7 @@ Rectangle {
 
             id: horizontalScrollArea
             width: parent.width
-            height: 45
+            height: verticalScrollArea.width
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 0
 
@@ -68,13 +68,24 @@ Rectangle {
                     }
                 }
             }
+
+            Image {
+                id: image1
+                width:  parent.width * 0.8
+                height: parent.height * 0.2
+                smooth: true
+                fillMode: Image.Stretch
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                source: master.imagePath + master.iconTheme + "/hscroll.png"
+            }
         }
 
         MouseArea {
             property int lastPos
 
             id: verticalScrollArea
-            width: 45
+            width: parent.width * 0.13
             height: parent.height - horizontalScrollArea.height
             anchors.right: parent.right
             anchors.rightMargin: 0
@@ -98,6 +109,17 @@ Rectangle {
                         verticalScroll(delta)
                     }
                 }
+            }
+
+            Image {
+                id: image2
+                width:  parent.width * 0.2
+                height: parent.height * 0.8
+                smooth: true
+                fillMode: Image.Stretch
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                source: master.imagePath + master.iconTheme + "/vscroll.png"
             }
         }
 
@@ -163,24 +185,6 @@ Rectangle {
                     }
                 }
             }
-        }
-
-        Image {
-            id: image1
-            width:  horizontalScrollArea.width * 0.8
-            smooth: true
-            anchors.horizontalCenter: horizontalScrollArea.horizontalCenter
-            anchors.verticalCenter: horizontalScrollArea.verticalCenter
-            source: master.imagePath + master.iconTheme + "/hscroll.png"
-        }
-
-        Image {
-            id: image2
-            height: verticalScrollArea.height * 0.8
-            smooth: true
-            anchors.horizontalCenter: verticalScrollArea.horizontalCenter
-            anchors.verticalCenter: verticalScrollArea.verticalCenter
-            source: master.imagePath + master.iconTheme + "/vscroll.png"
         }
     }
 

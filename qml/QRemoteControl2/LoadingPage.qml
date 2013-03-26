@@ -60,7 +60,7 @@ Rectangle {
     Rectangle {
         id: ball
         gradient: theme.pressedGradient
-        width: 19
+        width: parent.width * 0.05
         height: width
         radius: width/2
         anchors.verticalCenter: rightImage.verticalCenter

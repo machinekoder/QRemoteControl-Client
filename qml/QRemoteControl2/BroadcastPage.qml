@@ -65,7 +65,7 @@ Rectangle {
         Behavior on y {
             NumberAnimation { easing.type: Easing.Linear; duration: ballTimer.interval-50 }
         }
-        width: parent.width* 0.04
+        width: parent.width * 0.04
     }
 
 
