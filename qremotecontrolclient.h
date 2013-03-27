@@ -16,6 +16,7 @@ typedef struct {
 class QRemoteControlClient : public QObject
 {
     Q_OBJECT
+    Q_ENUMS(ScreenOrientation)
     Q_PROPERTY(QString hostname READ hostname WRITE setHostname NOTIFY hostnameChanged)
     Q_PROPERTY(QHostAddress hostAddress READ hostAddress WRITE setHostAddress NOTIFY hostAddressChanged)
     Q_PROPERTY(QString password READ password WRITE setPassword NOTIFY passwordChanged)
@@ -29,18 +30,20 @@ class QRemoteControlClient : public QObject
     Q_PROPERTY(int wolDatagramNumber READ wolDatagramNumber WRITE setWolDatagramNumber NOTIFY wolDatagramNumberChanged)
     Q_PROPERTY(int screenDpi READ screenDpi NOTIFY screenDpiChanged)
     Q_PROPERTY(int networkTimeout READ networkTimeout WRITE setNetworkTimeout NOTIFY networkTimeoutChanged)
+    Q_PROPERTY(ScreenOrientation screenOrientation READ screenOrientation WRITE screenOrientation NOTIFY screenOrientationChanged)
 
 public:
     enum ScreenOrientation {
-        ScreenOrientationLockPortrait,
-        ScreenOrientationLockLandscape,
-        ScreenOrientationAuto
+        ScreenOrientationAuto = 0,
+        ScreenOrientationLockPortrait = 1,
+        ScreenOrientationLockReversePortrait = 2,
+        ScreenOrientationLockLandscape = 3,
+        ScreenOrientationLockReverseLandscape = 4
     };
 
     explicit QRemoteControlClient(QObject *parent = 0);
     virtual ~QRemoteControlClient();
 
-    void setOrientation(ScreenOrientation orientation);
     void showExpanded();
 
     Q_INVOKABLE void connectToHost();
@@ -113,6 +116,11 @@ public:
     int networkTimeout() const
     {
         return m_networkTimeout;
+    }
+
+    ScreenOrientation screenOrientation() const
+    {
+        return m_screenOrientation;
     }
 
 public slots:
@@ -238,6 +246,14 @@ public slots:
         }
     }
 
+    void screenOrientation(ScreenOrientation arg)
+    {
+        if (m_screenOrientation != arg) {
+            m_screenOrientation = arg;
+            emit screenOrientationChanged(arg);
+        }
+    }
+
 signals:
     void hostnameChanged(QString arg);
     void hostAddressChanged(QHostAddress arg);
@@ -272,6 +288,8 @@ signals:
     void uiRoundnessChanged(double arg);
 
     void networkTimeoutChanged(int arg);
+
+    void screenOrientationChanged(ScreenOrientation arg);
 
 private:
     //Network
@@ -320,6 +338,8 @@ private:
     void sendVersion();
 
     int m_networkTimeout;
+
+    ScreenOrientation m_screenOrientation;
 
 private slots:
     void sendConnectionRequest();

@@ -1,17 +1,23 @@
 qremotecontrol2 (2.4.1) stable; urgency=high
 
+  * A few fixes to UI
+  * Added screen lock feature
+
+ -- Strahlex <mail.aroessler@gmail.com>  Thu, 28 Mar 2013 00:00:00 +0100
+qremotecontrol2 (2.4.1) stable; urgency=high
+
   * Made UI nicer
   * Fixed some links
   * Added a new theme
 
- -- Strahlex <mail.aroessler@gmail.com> Thu, 07 Mar 2013 00:00:00 +0100
+ -- Strahlex <mail.aroessler@gmail.com>  Thu, 07 Mar 2013 00:00:00 +0100
 qremotecontrol2 (2.4.0) stable; urgency=high
 
   * Added version sending
   * Added keep alive timer
   * Added nerdier nery theme icons
 
- -- Strahlex <mail.aroessler@gmail.com> Thu, 07 Mar 2013 00:00:00 +0100
+ -- Strahlex <mail.aroessler@gmail.com>  Thu, 07 Mar 2013 00:00:00 +0100
 qremotecontrol2 (2.3.1) stable; urgency=high
 
   * Added a splashscreen

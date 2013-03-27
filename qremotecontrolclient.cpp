@@ -14,6 +14,7 @@ QRemoteControlClient::QRemoteControlClient(QObject *parent)
 //   ui->buttonStack->setCurrentIndex(0);
 //    ui->songLabel->setText("");
 
+    m_screenOrientation = ScreenOrientationAuto;
     m_version = QString(VERSION);
     m_screenDpi = QApplication::desktop()->physicalDpiX();
 
@@ -208,6 +209,7 @@ void QRemoteControlClient::saveSettings()
     settings.setValue("port", m_port);
     settings.setValue("uiColor", m_uiColor);
     settings.setValue("uiRoundness", m_uiRoundness);
+    settings.setValue("screenOrientation", static_cast<int>(m_screenOrientation));
 
     settings.beginGroup("wol");
         settings.setValue("macAddress", m_wolMacAddress);
@@ -228,6 +230,7 @@ void QRemoteControlClient::loadSettings()
     m_port      = settings.value("port", 5487).toInt();
     m_uiColor   = settings.value("uiColor", "black").toString();
     m_uiRoundness = settings.value("uiRoundness", 10).toDouble();
+    m_screenOrientation = static_cast<ScreenOrientation>(settings.value("screenOrientation", ScreenOrientationAuto).toInt());
 
     settings.beginGroup("wol");
         m_wolMacAddress     = settings.value("macAddress",QString()).toString();

@@ -148,9 +148,9 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.bottom:     navigationbutton1.top
-        anchors.bottomMargin: -20
+        anchors.bottomMargin: anchors.leftMargin
         anchors.left:       navigationbutton1.right
-        anchors.leftMargin: -20
+        anchors.leftMargin: -Math.round(master.width * 0.04)
         iconSource:         master.imagePath + master.iconTheme + "/backspace.png"
         onPressed:          buttonPressed(8)
         onReleased:         buttonReleased(8)
@@ -163,9 +163,9 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.bottom:     navigationbutton1.top
-        anchors.bottomMargin: -20
+        anchors.bottomMargin: anchors.rightMargin
         anchors.right:      navigationbutton1.left
-        anchors.rightMargin: -20
+        anchors.rightMargin: -Math.round(master.width * 0.04)
         iconSource:         master.imagePath + master.iconTheme + "/exit.png"
         onPressed:          buttonPressed(7)
         onReleased:         buttonReleased(7)
@@ -178,9 +178,9 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.right:      navigationbutton1.left
-        anchors.rightMargin: -20
+        anchors.rightMargin: anchors.topMargin
         anchors.top:        navigationbutton1.bottom
-        anchors.topMargin: -20
+        anchors.topMargin: -Math.round(master.width * 0.04)
         iconSource:         master.imagePath + master.iconTheme + "/switch_window.png"
         onPressed:          buttonPressed(9)
         onReleased:         buttonReleased(9)
@@ -193,9 +193,9 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.left:       navigationbutton1.right
-        anchors.leftMargin: -20
+        anchors.leftMargin: anchors.topMargin
         anchors.top:        navigationbutton1.bottom
-        anchors.topMargin: -20
+        anchors.topMargin: -Math.round(master.width * 0.04)
         iconSource:         master.imagePath + master.iconTheme + "/menu.png"
         onPressed:          buttonPressed(10)
         onReleased:         buttonReleased(10)
