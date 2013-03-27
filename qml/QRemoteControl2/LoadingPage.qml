@@ -126,6 +126,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 10
         font.pixelSize: parent.width * 0.05
+        color: theme.primaryTextColor
     }
 
     function showPasswordText()
