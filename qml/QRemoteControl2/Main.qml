@@ -1,11 +1,18 @@
 import QtQuick 1.1
 import RemoteControl 2.0
-import QtMobility.sensors 1.1
 import Platform 1.0
 import "MyComponents"
+import "orientationSensor.js" as OrientationSensor
 
 Rectangle {
     property bool   landscapeMode: (device.width < device.height)
+
+    onLandscapeModeChanged: {
+        if (device.landscapeMode)
+            master.screenRotation = 0
+        else
+            master.screenRotation = 90
+    }
 
     id: device
     anchors.fill: parent
@@ -15,7 +22,6 @@ Rectangle {
         property string imagePath: "images/"
         property string iconTheme: "black"
         property int    screenRotation: 0
-
 
         property int generalMargin: Math.round(width*0.02)
         property int buttonWidth: Math.round(width*0.18)
@@ -43,6 +49,18 @@ Rectangle {
             wakeOnLanPage.datagramNumber = client.wolDatagramNumber
 
             settingsPage.setScreenOrientation(client.screenOrientation)
+            if ((platform.platform === "MeeGo")
+                    || (platform.platform === "Symbian")
+                    || (platform.platform === "Android")
+                    || (platform.platform === "BlackBerry")
+                    || (platform.platform === "Simulator"))
+            {
+                OrientationSensor.createOrientationSensor()
+            }
+        }
+
+        Details {
+            id: platform
         }
 
         Style {
@@ -69,7 +87,7 @@ Rectangle {
             }
         }
 
-      OrientationSensor {
+      /*OrientationSensor {
             id: orientation
             active: client.screenOrientation === 0    // No orientation lock
 
@@ -87,7 +105,7 @@ Rectangle {
                 if (!device.landscapeMode)
                     master.screenRotation += 90
             }
-        }
+        }*/
 
         Image {
             id: backgroundImage

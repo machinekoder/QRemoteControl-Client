@@ -81,6 +81,7 @@ Rectangle {
 
         Text {
             id:                         text
+            elide:                      Text.ElideRight
             color:                      theme.primaryTextColor
             font.pixelSize:             theme.buttonFontSize
             font.bold:                  theme.buttonFontBold
@@ -124,11 +125,19 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        if ((platform.platform == "MeeGo") || (platform.platform == "Symbian") || (platform.platform == "Android"))
+        if ((platform.platform === "MeeGo")
+                || (platform.platform === "Symbian")
+                || (platform.platform === "Android"))
         {
             Feedback.createHaptic()
             feedbackAvailable = true
         }
+    }
+
+    function playHaptic()
+    {
+        if (feedbackAvailable)
+            Feedback.playHaptic()
     }
 }
 

@@ -579,14 +579,21 @@ Rectangle {
             case 0: noLockButton.checked = true
                 break
             case 1: portraitLockButton.checked = true
+                master.screenRotation = 0
                 break
             case 2: reversePortraitLockButton.checked = true
+                master.screenRotation = 180
                 break
             case 3: landscapeLockButton.checked = true
+                master.screenRotation = 90
                 break
             case 4: reverseLandcapeLockButton.checked = true
+                master.screenRotation = -90
                 break
         }
+
+        if (!device.landscapeMode)
+             master.screenRotation += 90
     }
 }
 

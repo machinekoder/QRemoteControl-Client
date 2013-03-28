@@ -18,10 +18,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer.addImportPath(QLatin1String("modules"));
 
 #if !defined(Q_OS_MEEGO)
-#if defined(Q_WS_X11) || defined(Q_WS_WIN) // On Desktop skip the Splash screen
-    viewer.setMainQmlFile(QLatin1String("qml/QRemoteControl2/Main.qml"));
-#else
     viewer.setMainQmlFile(QLatin1String("qml/QRemoteControl2/init.qml"));
+#if defined(Q_WS_X11) || defined(Q_WS_WIN) // On Desktop skip the Splash screen
+    viewer.setGeometry(0,0, 400, 600);
 #endif
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
     qDebug() << "not MEEGO";

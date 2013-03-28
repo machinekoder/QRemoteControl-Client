@@ -1,6 +1,5 @@
 import QtQuick 1.1
 import "MyComponents/"
-//import MyComponents 1.0
 
 Rectangle {
     property int textSize: width*0.035
