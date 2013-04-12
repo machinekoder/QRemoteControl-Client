@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>i18/de.qm</file>
+        <file>i18/ru.qm</file>
+        <file>i18/uk.qm</file>
     </qresource>
 </RCC>

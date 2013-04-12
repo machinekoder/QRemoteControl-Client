@@ -6,6 +6,18 @@ import "orientationSensor.js" as OrientationSensor
 
 Rectangle {
     property bool   landscapeMode: (device.width < device.height)
+    property bool   active: Qt.application.active
+
+    TextEdit {
+        id: dummyEdit
+    }
+
+    onActiveChanged: {
+        if (active)
+        {
+            dummyEdit.closeSoftwareInputPanel()
+        }
+    }
 
     onLandscapeModeChanged: {
         if (device.landscapeMode)
@@ -49,6 +61,7 @@ Rectangle {
             wakeOnLanPage.datagramNumber = client.wolDatagramNumber
 
             settingsPage.setScreenOrientation(client.screenOrientation)
+            settingsPage.setLanguage(client.language)
             if ((platform.platform === "MeeGo")
                     || (platform.platform === "Symbian")
                     || (platform.platform === "Android")
@@ -115,7 +128,7 @@ Rectangle {
 
         Text {
             id: label
-            text: qsTr("Warning!<br>No Wireless network connection found, local service discovery unavailable. Check your network connection or use advanced options.")
+            text: qsTr("Warning!<br>No Wireless network connection found, local service discovery unavailable. Check your network connection or use advanced options.") + client.emptyString
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
             anchors.right: parent.right

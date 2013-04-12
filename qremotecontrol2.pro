@@ -1,7 +1,7 @@
 TARGET = qremotecontrol2
 VERSION = 2.4.2
 
-TRANSLATIONS = i18/de.ts i18/ru.ts
+TRANSLATIONS = i18/de.ts i18/ru.ts i18/uk.ts
 
 DEFINES += VERSION=\"\\\"$$VERSION\\\"\"
 
@@ -40,16 +40,19 @@ contains(MEEGO_EDITION,harmattan): {
 # lines and add the respective components to the MOBILITY variable.
  CONFIG += mobility
  MOBILITY += sensors
+ MOBILITY += systeminfo
 
 QT += network
 
 SOURCES += main.cpp \
             qremotecontrolclient.cpp \
             wakeonlanpacket.cpp \
-    platformdetails.cpp
+    platformdetails.cpp \
+    qtrialversion.cpp
 HEADERS += qremotecontrolclient.h \
            wakeonlanpacket.h \
-    platformdetails.h
+    platformdetails.h \
+    qtrialversion.h
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)

@@ -23,7 +23,8 @@ Rectangle {
         id: text
         width: 223
         height: 23
-        text: qsTr("Establishing connection...")
+        horizontalAlignment: Text.AlignHCenter
+        text: "TEST"
         anchors.bottom: rightImage.top
         anchors.bottomMargin: 30
         anchors.horizontalCenterOffset: 0
@@ -97,7 +98,7 @@ Rectangle {
     Button {
             id: exitButton
             height: parent.height * 0.08
-            text: qsTr("Abort")
+            text: qsTr("Abort") + client.emptyString
             anchors.right: parent.right
             anchors.rightMargin: 10
             anchors.left: parent.left
@@ -116,7 +117,7 @@ Rectangle {
     }
     Text {
         id: timeoutText
-        text: qsTr("Errortext")
+        text: qsTr("Errortext") + client.emptyString
         wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignHCenter
         anchors.top: rightImage.bottom
@@ -131,29 +132,29 @@ Rectangle {
 
     function showPasswordText()
     {
-        text.text = qsTr("Password Incorrect!")
+        text.text = qsTr("Password Incorrect!") + client.emptyString
         main.status = 1
     }
     function showNormalText()
     {
-        text.text = qsTr("Establishing connection...")
+        text.text = qsTr("Establishing connection to <br>") + connectPage.hostname + "..." + client.emptyString
         main.status = 0
         timeoutText.visible = false
         timeoutTimer.start()
     }
     function showServerText()
     {
-        text.text = qsTr("Server trying to connect...")
+        text.text = qsTr("Server trying to connect...") + client.emptyString
         main.status = 2
     }
     function showTimeout()
     {
         timeoutText.visible = true
         if (status == 0)
-            timeoutText.text = qsTr("Timeout: Check server address and wireless connection.")
+            timeoutText.text = qsTr("Timeout: Check server address and wireless connection.") + client.emptyString
         else if (status == 1)
-            timeoutText.text = qsTr("Change password in advanced tab.")
+            timeoutText.text = qsTr("Change password in advanced tab.") + client.emptyString
         else if (status == 2)
-            timeoutText.text = qsTr("Timeout: Check your firewall settings.")
+            timeoutText.text = qsTr("Timeout: Check your firewall settings.") + client.emptyString
     }
 }

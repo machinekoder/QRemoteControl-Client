@@ -28,6 +28,7 @@ Rectangle {
         fillMode: Image.PreserveAspectFit
         smooth: true
         source: master.imagePath + master.iconTheme + "/remote.png"
+        rotation: master.screenRotation
     }
 
 
@@ -43,6 +44,7 @@ Rectangle {
         smooth: true
         source: master.imagePath + master.iconTheme + "/computer.png"
         fillMode: Image.PreserveAspectFit
+        rotation: master.screenRotation
     }
 
 
@@ -87,109 +89,126 @@ Rectangle {
     }
 
 
-    Button {
-            id: exitButton
-            height: master.buttonHeight * 0.8
-            text: qsTr("Abort")
-            anchors.right: parent.right
-            anchors.rightMargin: master.generalMargin
-            anchors.left: parent.left
-            anchors.leftMargin: master.generalMargin
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: master.generalMargin
-            onClicked: abortClicked()
+    Item {
+        id: wrapper
+        anchors.top: rightImage.bottom
+        anchors.topMargin: master.generalMargin
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+
+        Item {
+            id: rotator
+            rotation:       master.screenRotation
+            width:          ((rotation === 0) || (rotation === 180)) ? parent.width : parent.height
+            height:         ((rotation === 0) || (rotation === 180)) ? parent.height : parent.width
+            anchors.centerIn: parent
+
+            Button {
+                    id: exitButton
+                    height: master.buttonHeight * 0.8
+                    text: qsTr("Abort") + client.emptyString
+                    anchors.right: parent.right
+                    anchors.rightMargin: master.generalMargin
+                    anchors.left: parent.left
+                    anchors.leftMargin: master.generalMargin
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: master.generalMargin
+                    onClicked: abortClicked()
+            }
+
+            Rectangle {
+                id: listRect
+                radius: exitButton.radius
+                border.color: theme.buttonBorderColor
+                border.width: 2
+                smooth: true
+                gradient: theme.defaultGradient
+                anchors.top: parent.top
+                anchors.topMargin: master.generalMargin
+                anchors.right: parent.right
+                anchors.rightMargin: master.generalMargin
+                anchors.bottom: exitButton.top
+                anchors.bottomMargin: master.generalMargin
+                anchors.left: parent.left
+                anchors.leftMargin: master.generalMargin
+
+                ListView {
+                    id: listVew
+                    anchors.fill: parent
+                    clip: true
+
+                    delegate: Item {
+                            height: master.buttonHeight
+                            width: listVew.width
+
+                            Button {
+                            anchors.fill:           parent
+                            anchors.leftMargin:     master.generalMargin/2
+                            anchors.rightMargin:    master.generalMargin/2
+                            anchors.topMargin:      master.generalMargin/2
+                            border.color: theme.buttonBorderColor
+
+                            Row {
+                                id: row1
+                                x: master.generalMargin
+                                spacing: master.generalMargin*2
+                                height: parent.height
+                                Image {
+                                    width: parent.height * 0.8
+                                    height: width
+                                    source: master.imagePath + master.iconTheme + "/computer.png"
+                                    fillMode: Image.PreserveAspectFit
+                                    anchors.verticalCenter: parent.verticalCenter
+                                }
+
+                                Text {
+                                    text: hostName //+ ", Connected: " + (connected?"Yes":"No")
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    font.bold: theme.buttonFontBold
+                                    font.pixelSize: theme.buttonFontSize
+                                    font.family: theme.fontFamily
+                                    color: theme.primaryTextColor
+                                }
+                            }
+
+                            onClicked: {
+                                loadingPage.showNormalText()
+                                client.connectToServer(index)
+                            }
+
+                        }
+                    }
+                    model: ListModel {
+                        id: listModel
+                        ListElement {
+                            hostName: "10.0.0.1"
+                            connected: true
+                        }
+                    }
+                }
+
+                Text {
+                    id: text1
+                    text: qsTr("Searching Servers...") + client.emptyString
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: master.generalMargin
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.pixelSize: theme.labelFontSize
+                    font.bold: theme.labelFontBold
+                    color: theme.primaryTextColor
+                }
+            }
+
+        }
+    }
+    function addServer(ipAddress,hostName, connected)
+    {
+        listModel.append({"hostName":hostName,"connected":connected})
     }
 
-
-        Rectangle {
-            id: listRect
-            radius: exitButton.radius
-            border.color: theme.buttonBorderColor
-            border.width: 2
-            smooth: true
-            gradient: theme.defaultGradient
-            anchors.top: rightImage.bottom
-            anchors.topMargin: master.generalMargin/2
-            anchors.right: parent.right
-            anchors.rightMargin: master.generalMargin
-            anchors.bottom: exitButton.top
-            anchors.bottomMargin: master.generalMargin
-            anchors.left: parent.left
-            anchors.leftMargin: master.generalMargin
-
-            ListView {
-                id: listVew
-                anchors.fill: parent
-
-                delegate: Item {
-                        height: master.buttonHeight
-                        width: listVew.width
-
-                        Button {
-                        anchors.fill:           parent
-                        anchors.leftMargin:     master.generalMargin/2
-                        anchors.rightMargin:    master.generalMargin/2
-                        anchors.topMargin:      master.generalMargin/2
-                        border.color: theme.buttonBorderColor
-
-                        Row {
-                            id: row1
-                            x: master.generalMargin
-                            spacing: master.generalMargin*2
-                            height: parent.height
-                            Image {
-                                width: parent.height * 0.8
-                                height: width
-                                source: master.imagePath + master.iconTheme + "/computer.png"
-                                fillMode: Image.PreserveAspectFit
-                                anchors.verticalCenter: parent.verticalCenter
-                            }
-
-                            Text {
-                                text: hostName //+ ", Connected: " + (connected?"Yes":"No")
-                                anchors.verticalCenter: parent.verticalCenter
-                                font.bold: theme.buttonFontBold
-                                font.pixelSize: theme.buttonFontSize
-                                font.family: theme.fontFamily
-                                color: theme.primaryTextColor
-                            }
-                        }
-
-                        onClicked: {
-                            loadingPage.showNormalText()
-                            client.connectToServer(index)
-                        }
-
-                    }
-                }
-                model: ListModel {
-                    id: listModel
-                    ListElement {
-                        hostName: "10.0.0.1"
-                        connected: true
-                    }
-                }
-            }
-
-            Text {
-                id: text1
-                text: qsTr("Searching Servers...")
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: master.generalMargin
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.pixelSize: theme.labelFontSize
-                font.bold: theme.labelFontBold
-                color: theme.primaryTextColor
-            }
-        }
-
-        function addServer(ipAddress,hostName, connected)
-        {
-            listModel.append({"hostName":hostName,"connected":connected})
-        }
-
-        function clearServers()
-        {
-            listModel.clear()
-        }
+    function clearServers()
+    {
+        listModel.clear()
+    }
 }

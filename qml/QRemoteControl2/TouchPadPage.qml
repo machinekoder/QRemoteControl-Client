@@ -84,7 +84,7 @@ Rectangle {
             id: controlButton
             width:  (parent.width - parent.spacing*2) / 3
             height: parent.height
-            text: qsTr("Ctrl")
+            text: qsTr("Ctrl") + client.emptyString
             onClicked:controlClicked(!checked)
             checkable: true
             textRotation: master.screenRotation
@@ -94,7 +94,7 @@ Rectangle {
             id: altButton
             width:  (parent.width - parent.spacing*2) / 3
             height: parent.height
-            text: qsTr("Alt")
+            text: qsTr("Alt") + client.emptyString
             onClicked: altClicked(!checked)
             checkable: true
             textRotation: master.screenRotation
@@ -104,7 +104,7 @@ Rectangle {
             id: shiftButton
             width:  (parent.width - parent.spacing*2) / 3
             height: parent.height
-            text: qsTr("Shift")
+            text: qsTr("Shift") + client.emptyString
             onClicked: shiftClicked(!checked)
             checkable: true
             textRotation: master.screenRotation

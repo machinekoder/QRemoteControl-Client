@@ -60,6 +60,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             Text {
                 id:             emptyLabel
+                elide:          Text.ElideRight
                 font.pixelSize: theme.hintFontSize
                 font.bold:      theme.hintFontBold
                 font.family:    theme.fontFamily
@@ -79,6 +80,7 @@ Rectangle {
                           }
             onAccepted: {
                 input.closeSoftwareInputPanel()
+                label.forceActiveFocus()                            // prevents keyboard from reopening
             }
         }
     }

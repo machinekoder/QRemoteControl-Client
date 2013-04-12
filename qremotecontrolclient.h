@@ -6,6 +6,7 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include "wakeonlanpacket.h"
+#include "qtrialversion.h"
 
 typedef struct {
     QHostAddress hostAddress;
@@ -31,6 +32,8 @@ class QRemoteControlClient : public QObject
     Q_PROPERTY(int screenDpi READ screenDpi NOTIFY screenDpiChanged)
     Q_PROPERTY(int networkTimeout READ networkTimeout WRITE setNetworkTimeout NOTIFY networkTimeoutChanged)
     Q_PROPERTY(ScreenOrientation screenOrientation READ screenOrientation WRITE screenOrientation NOTIFY screenOrientationChanged)
+    Q_PROPERTY(QString emptyString READ getEmptyString NOTIFY emptyStringChanged)
+    Q_PROPERTY(QString language READ language WRITE setLanguage NOTIFY languageChanged)
 
 public:
     enum ScreenOrientation {
@@ -123,6 +126,16 @@ public:
         return m_screenOrientation;
     }
 
+    QString getEmptyString() const
+    {
+        return m_emptyString;
+    }
+
+    QString language() const
+    {
+        return m_language;
+    }
+
 public slots:
     Q_INVOKABLE void sendKey (quint32 key, quint32 modifiers, bool keyPressed);
     Q_INVOKABLE void sendButton (quint8 id, bool keyPressed);
@@ -141,6 +154,7 @@ public slots:
     //void sendCharacter(quint32 character, quint32 modifiers);
     Q_INVOKABLE void sendAction (int id, bool pressed);
     Q_INVOKABLE void sendLight (int code);
+    Q_INVOKABLE void sendText (QString text);
     Q_INVOKABLE void disconnect();
     Q_INVOKABLE void clearServerList();
     Q_INVOKABLE void connectToServer(int id);
@@ -254,6 +268,37 @@ public slots:
         }
     }
 
+    void setLanguage(QString arg)
+    {
+        if (m_language != arg) {
+            m_language = arg;
+
+            if(m_language.contains(QString("de"))) {
+                m_language = "de";
+                translator1->load("de", ":/i18");
+                qApp->installTranslator(translator1);
+               }
+            else if(m_language.contains(QString("ru"))) {
+                m_language = "ru";
+                translator2->load("ru", ":/i18");
+                qApp->installTranslator(translator2);
+               }
+            else if(m_language.contains(QString("uk"))) {
+                m_language = "uk";
+                translator3->load("uk", ":/i18");
+                qApp->installTranslator(translator3);
+               }
+            else {                                          // english fall through
+                m_language = "en";
+                qApp->removeTranslator(translator1);
+                qApp->removeTranslator(translator2);
+                qApp->removeTranslator(translator3);
+               }
+            emit emptyStringChanged("");
+            emit languageChanged(m_language);
+        }
+    }
+
 signals:
     void hostnameChanged(QString arg);
     void hostAddressChanged(QHostAddress arg);
@@ -276,23 +321,20 @@ signals:
     void networkClosed();
 
     void macAddressChanged(QString arg);
-
     void wolHostnameChanged(QString arg);
-
     void wolPortChanged(int arg);
-
     void wolDatagramNumberChanged(int arg);
-
     void screenDpiChanged(int arg);
-
     void uiRoundnessChanged(double arg);
-
     void networkTimeoutChanged(int arg);
-
     void screenOrientationChanged(ScreenOrientation arg);
 
+    void emptyStringChanged(QString arg);
+
+    void languageChanged(QString arg);
+
 private:
-    //Network
+    // Network
     QUdpSocket *udpSocket;
     QTcpServer *tcpServer;
     QTcpSocket *tcpSocket;
@@ -302,44 +344,47 @@ private:
     QNetworkConfigurationManager *netConfigManager;
     QTimer     *networkTimeoutTimer;
 
-    //General
+    // Trial
+    QNetworkAccessManager *networkAccesManager;
+    QTimer                *trailTimer;
+
+    // General
     QByteArray passwordHash;
 
     // Servers
     QList<QRCServer> serverList;
+
+    // Translators
+    QTranslator *translator1;
+    QTranslator *translator2;
+    QTranslator *translator3;
 
     void incomingIcon(QByteArray data);
     void incomingAmarokData(QByteArray data);
 
     void addServer(QHostAddress hostAddress, bool connected);
 
-    QString m_hostname;
-    QString m_password;
-    int m_port;
-    QString m_version;
-
-    QHostAddress m_hostAddress;
-
-    QString m_uiColor;
-
-    QString m_wolMacAddress;
-
-    QString m_wolHostname;
-
-    int m_wolPort;
-
-    int m_wolDatagramNumber;
-
-    int m_screenDpi;
-
-    double m_uiRoundness;
+    QString         m_hostname;
+    QString         m_password;
+    int             m_port;
+    QString         m_version;
+    QHostAddress    m_hostAddress;
+    QString         m_uiColor;
+    QString         m_wolMacAddress;
+    QString         m_wolHostname;
+    int             m_wolPort;
+    int             m_wolDatagramNumber;
+    int             m_screenDpi;
+    double          m_uiRoundness;
+    int             m_networkTimeout;
+    ScreenOrientation m_screenOrientation;
 
     void initializeNetworkTimeoutTimer();
     void sendVersion();
 
-    int m_networkTimeout;
+    QString m_emptyString;
 
-    ScreenOrientation m_screenOrientation;
+    QString m_language;
 
 private slots:
     void sendConnectionRequest();
@@ -350,6 +395,9 @@ private slots:
     void incomingData();
     void incomingUdpData();
     void saveResolvedHostName(QHostInfo hostInfo);
+    void checkTrialExpiration();
+    void replyFinished(QNetworkReply* reply);
+    void trailTimerTimeout();
 
     void initialize();
 };

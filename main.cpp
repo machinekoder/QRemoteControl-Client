@@ -8,10 +8,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 
-    /*QTranslator myappTranslator;
-    qDebug() << myappTranslator.load(QLocale::system().name(),":/i18","",".qm");
-    app->installTranslator(&myappTranslator);*/
-
     qmlRegisterType<QRemoteControlClient>("RemoteControl", 2, 0, "Client");
     qmlRegisterType<PlatformDetails>("Platform", 1, 0, "Details");
     QmlApplicationViewer viewer;

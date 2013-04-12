@@ -18,6 +18,13 @@ QRemoteControlClient::QRemoteControlClient(QObject *parent)
     m_version = QString(VERSION);
     m_screenDpi = QApplication::desktop()->physicalDpiX();
 
+    // initialize translators
+    m_emptyString = "";
+    m_language = "en";
+    translator1 = new QTranslator(this);
+    translator2 = new QTranslator(this);
+    translator3 = new QTranslator(this);
+
     loadSettings();
 
     tcpSocket = NULL;
@@ -40,6 +47,16 @@ QRemoteControlClient::QRemoteControlClient(QObject *parent)
     // initialize network timeout
     m_networkTimeout = 4500;
     initializeNetworkTimeoutTimer();
+
+    // trial
+    networkAccesManager = new QNetworkAccessManager(this);
+    connect(networkAccesManager, SIGNAL(finished(QNetworkReply*)),
+        this, SLOT(replyFinished(QNetworkReply*)));
+    trailTimer = new QTimer(this);
+    trailTimer->setInterval(10000);
+    trailTimer->start();
+    connect(trailTimer, SIGNAL(timeout()),
+            this, SLOT(trailTimerTimeout()));
 }
 
 QRemoteControlClient::~QRemoteControlClient()
@@ -48,8 +65,6 @@ QRemoteControlClient::~QRemoteControlClient()
 
     if (tcpSocket)
         tcpSocket->disconnectFromHost();
-
-    //delete ui;
 }
 
 void QRemoteControlClient::openNetworkSession()
@@ -210,6 +225,7 @@ void QRemoteControlClient::saveSettings()
     settings.setValue("uiColor", m_uiColor);
     settings.setValue("uiRoundness", m_uiRoundness);
     settings.setValue("screenOrientation", static_cast<int>(m_screenOrientation));
+    settings.setValue("language", m_language);
 
     settings.beginGroup("wol");
         settings.setValue("macAddress", m_wolMacAddress);
@@ -231,6 +247,8 @@ void QRemoteControlClient::loadSettings()
     m_uiColor   = settings.value("uiColor", "black").toString();
     m_uiRoundness = settings.value("uiRoundness", 10).toDouble();
     m_screenOrientation = static_cast<ScreenOrientation>(settings.value("screenOrientation", ScreenOrientationAuto).toInt());
+
+    setLanguage(settings.value("language", QLocale::system().name()).toString());
 
     settings.beginGroup("wol");
         m_wolMacAddress     = settings.value("macAddress",QString()).toString();
@@ -417,6 +435,46 @@ void QRemoteControlClient::saveResolvedHostName(QHostInfo hostInfo)
     {
         emit serverFound(serverList.at(i).hostAddress.toString(), serverList.at(i).hostName, serverList.at(i).connected);
     }
+}
+
+void QRemoteControlClient::checkTrialExpiration()
+{
+    QNetworkRequest *request = new QNetworkRequest(QUrl("http://qremote.org/trail.php?imei=123456789012334"));
+    QNetworkReply *reply = networkAccesManager->get(*request);
+}
+
+void QRemoteControlClient::replyFinished(QNetworkReply *reply)
+{
+    QByteArray  data;
+    QString     timeString;
+    QDateTime   dateTime;
+    bool        valid;
+
+    data        = reply->readAll();
+    timeString  = QString(data).trimmed();
+    dateTime    = QDateTime::fromString(timeString.trimmed(), Qt::ISODate);
+
+    if (dateTime.isValid())
+    {
+        if (QDateTime::currentDateTime() < dateTime)
+        {
+            valid = true;
+        } else
+        {
+            valid = false;
+        }
+        qDebug() << timeString << dateTime << valid;
+    } else
+    {
+        qDebug() << "cheking failed";
+    }
+
+
+}
+
+void QRemoteControlClient::trailTimerTimeout()
+{
+    checkTrialExpiration();
 }
 
 void QRemoteControlClient::clearServerList()
@@ -607,6 +665,18 @@ void QRemoteControlClient::sendLight(int code)
     QDataStream streamOut(&data, QIODevice::WriteOnly);
     streamOut << mode1;
     streamOut << (quint16)code;
+
+    udpSocket->writeDatagram(data, tcpSocket->peerAddress(), m_port);
+}
+
+void QRemoteControlClient::sendText(QString text)
+{
+    quint8 mode1 = 8;
+
+    QByteArray data;
+    QDataStream streamOut(&data, QIODevice::WriteOnly);
+    streamOut << mode1;
+    streamOut << text;
 
     udpSocket->writeDatagram(data, tcpSocket->peerAddress(), m_port);
 }
