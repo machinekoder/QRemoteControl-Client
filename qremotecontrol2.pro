@@ -1,9 +1,10 @@
 TARGET = qremotecontrol2
-VERSION = 2.4.2
+VERSION = 2.4.3
 
 TRANSLATIONS = i18/de.ts i18/ru.ts i18/uk.ts
 
 DEFINES += VERSION=\"\\\"$$VERSION\\\"\"
+DEFINES += TRIAL
 
 # Add more folders to ship with the application, here
 folder_01.source += qml/QRemoteControl2
@@ -44,15 +45,13 @@ contains(MEEGO_EDITION,harmattan): {
 
 QT += network
 
-SOURCES += main.cpp \
-            qremotecontrolclient.cpp \
-            wakeonlanpacket.cpp \
-    platformdetails.cpp \
-    qtrialversion.cpp
-HEADERS += qremotecontrolclient.h \
-           wakeonlanpacket.h \
-    platformdetails.h \
-    qtrialversion.h
+SOURCES += src/main.cpp \
+            src/qremotecontrolclient.cpp \
+            src/wakeonlanpacket.cpp \
+            src/platformdetails.cpp
+HEADERS += src/qremotecontrolclient.h \
+           src/wakeonlanpacket.h \
+           src/platformdetails.h
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)

@@ -21,11 +21,23 @@
     </message>
     <message>
         <source>Copyright 2012-2013 &lt;br&gt;by Alexander Rössler &lt;br&gt;Version: </source>
-        <translation type="unfinished">Авторское право (с) 2012-2013 &lt;br&gt;by Alexander Rössler &lt;br&gt;Версия: </translation>
+        <translation type="obsolete">Авторское право (с) 2012-2013 &lt;br&gt;by Alexander Rössler &lt;br&gt;Версия: </translation>
     </message>
     <message>
         <source>If you find bugs and errors or want to give feedback please contact: &lt;a href=&quot;mailto:support@qremote.org&quot;&gt;support@qremote.org&lt;/a&gt;&lt;br&gt;</source>
         <translation type="unfinished">Перевод: Алексей &apos;the_aLeXiS&apos; Ситников, по вопросам перевода пишите на: &lt;a href=&quot;mailto:alexis_4spam@mail.ru&quot;&gt;alexis_4spam@mail.ru&lt;/a&gt;&lt;br&gt;Если вы нашли ошибку или хотите оставить отзыв, пишите на: &lt;a href=&quot;mailto:support@qremote.org&quot;&gt;support@qremote.org&lt;/a&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>About QRemoteControl Trial</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright 2012-2013&lt;br&gt;by Alexander Rössler&lt;br&gt;Version: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This trial version expires at: </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -92,7 +104,7 @@
     </message>
     <message>
         <source>Quick Guide</source>
-        <translation type="unfinished">Быстрое руководство</translation>
+        <translation type="unfinished">Краткое руководство</translation>
     </message>
     <message>
         <source>&lt;br&gt;&lt;b&gt;Before Starting&lt;/b&gt;&lt;br&gt;</source>
@@ -143,7 +155,7 @@
     </message>
     <message>
         <source>Errortext</source>
-        <translation type="unfinished">Ошибка</translation>
+        <translation type="obsolete">Ошибка</translation>
     </message>
     <message>
         <source>Password Incorrect!</source>
@@ -171,7 +183,7 @@
     </message>
     <message>
         <source>Establishing connection to &lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Установка соединения с &lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -291,6 +303,21 @@
     <message>
         <source>Shift</source>
         <translation type="unfinished">Shift</translation>
+    </message>
+</context>
+<context>
+    <name>TrialPage</name>
+    <message>
+        <source>QRemoteControl Trial has expired!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your trial version of QRemoteControl has expired. Get the full version now.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get Full Version</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

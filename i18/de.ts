@@ -21,11 +21,23 @@
     </message>
     <message>
         <source>Copyright 2012-2013 &lt;br&gt;by Alexander Rössler &lt;br&gt;Version: </source>
-        <translation>Copyright 2012-2013 &lt;br&gt;von Alexander Rössler &lt;br&gt;Version:</translation>
+        <translation type="obsolete">Copyright 2012-2013 &lt;br&gt;von Alexander Rössler &lt;br&gt;Version:</translation>
     </message>
     <message>
         <source>If you find bugs and errors or want to give feedback please contact: &lt;a href=&quot;mailto:support@qremote.org&quot;&gt;support@qremote.org&lt;/a&gt;&lt;br&gt;</source>
         <translation>Wenn du Bugs oder Fehler findest oder Feedback geben willst kontaktiere: &lt;a href=&quot;mailto:support@qremote.org&quot;&gt;support@qremote.org&lt;/a&gt;&lt;br&gt; </translation>
+    </message>
+    <message>
+        <source>About QRemoteControl Trial</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright 2012-2013&lt;br&gt;by Alexander Rössler&lt;br&gt;Version: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This trial version expires at: </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -138,10 +150,6 @@
     <message>
         <source>Establishing connection...</source>
         <translation type="obsolete">Verbindungsaufbau...</translation>
-    </message>
-    <message>
-        <source>Errortext</source>
-        <translation></translation>
     </message>
     <message>
         <source>Password Incorrect!</source>
@@ -283,6 +291,21 @@
     <message>
         <source>Shift</source>
         <translation>Shift</translation>
+    </message>
+</context>
+<context>
+    <name>TrialPage</name>
+    <message>
+        <source>QRemoteControl Trial has expired!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your trial version of QRemoteControl has expired. Get the full version now.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get Full Version</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

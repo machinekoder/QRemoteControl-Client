@@ -48,7 +48,7 @@ Rectangle {
 
                     Image {
                         id: logoImg
-                        source: "images/qrc.png"
+                        source: client.trialVersion?"images/qrc_trial.png":"images/qrc.png"
                         smooth: true
                         width: parent.width*0.2
                         height: width
@@ -58,12 +58,12 @@ Rectangle {
                     }
 
                     Text {
-                        text: qsTr("About QRemoteControl") + client.emptyString
+                        text: client.trialVersion?(qsTr("About QRemoteControl Trial") + client.emptyString):(qsTr("About QRemoteControl") + client.emptyString)
                         id: aboutText
                         color: theme.primaryTextColor
                         anchors {
                             left: logoImg.right
-                            leftMargin: 25
+                            leftMargin: master.generalMargin*2
                             top: parent.top
                         }
 
@@ -75,16 +75,16 @@ Rectangle {
 
                     Text {
                         textFormat: Text.RichText
-                        text: qsTr("Copyright 2012-2013 <br>by Alexander Rössler <br>Version: ") + client.version + client.emptyString
+                        text: qsTr("Copyright 2012-2013<br>by Alexander Rössler<br>Version: ") + client.version + client.emptyString
                         color: theme.primaryTextColor
                         anchors {
                             left: logoImg.right
-                            leftMargin: 25
+                            leftMargin: master.generalMargin*2
                             top: aboutText.bottom
                         }
 
                         font {
-                            pixelSize: theme.hintFontSize//aboutPage.width*0.03
+                            pixelSize: theme.hintFontSize   //aboutPage.width*0.03
                         }
                     }
 
@@ -97,10 +97,9 @@ Rectangle {
                           qsTr("or visit <a href=\"http://qremote.org\">qremote.org</a> <br> <br>") +
                           qsTr("If you find this application useful please show it to your friends and vote for it.") + client.emptyString
 
-
                     anchors {
                         top: aboutContainer.bottom
-                        topMargin: 20
+                        topMargin: master.generalMargin*2
                         horizontalCenter: parent.horizontalCenter
                     }
                     wrapMode: Text.WordWrap
@@ -109,7 +108,28 @@ Rectangle {
                     color: theme.primaryTextColor
 
                     font {
-                        pixelSize: theme.labelFontSize//aboutPage.width * 0.025
+                        pixelSize: theme.labelFontSize
+                    }
+
+                    onLinkActivated : Qt.openUrlExternally(link);
+                }
+
+                Text {
+                    id: trialText
+                    text: qsTr("This trial version expires at: ") + Qt.formatDateTime(client.trialExpirationTime,"ddd dd.MM.yy hh:mmAP") + client.emptyString
+
+                    anchors {
+                        top: moreText.bottom
+                        topMargin: master.generalMargin*2
+                        horizontalCenter: parent.horizontalCenter
+                    }
+                    wrapMode: Text.WordWrap
+                    width: parent.width
+                    textFormat: Text.RichText
+                    color: theme.primaryTextColor
+
+                    font {
+                        pixelSize: theme.labelFontSize
                     }
 
                     onLinkActivated : Qt.openUrlExternally(link);

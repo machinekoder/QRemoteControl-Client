@@ -1,3 +1,10 @@
+qremotecontrol2 (2.4.3) stable; urgency=high
+
+  * Made UI landscape ready
+  * Added german, russian and ukrainian translation
+  * Fixed a few glitches
+
+ -- Strahlex <mail.aroessler@gmail.com>  Sat, 20 Apr 2013 00:00:00 +0100
 qremotecontrol2 (2.4.2) stable; urgency=high
 
   * A few fixes to UI

@@ -99,4 +99,25 @@ Rectangle {
             }
         }
     }
+
+    function forceFocus()
+    {
+        input.focus = true
+    }
+
+    function toggleFocus()
+    {
+        if (input.focus)
+        {
+            label.forceActiveFocus()
+        }
+        else
+        {
+            input.focus = true
+        }
+    }
+    function removeFocus()
+    {
+        label.forceActiveFocus()
+    }
 }

@@ -28,6 +28,7 @@ Rectangle {
 
     id: device
     anchors.fill: parent
+
     Rectangle {
         property string backgroundImage: "images/background_grey.png"
         property alias  backgroundImageFillMode: backgroundImage.fillMode
@@ -38,6 +39,8 @@ Rectangle {
         property int generalMargin: Math.round(width*0.02)
         property int buttonWidth: Math.round(width*0.18)
         property int buttonHeight: Math.round(height*0.10)
+
+        property string platform: platform.platform
 
         id: master
         color: "black"
@@ -72,6 +75,18 @@ Rectangle {
             }
         }
 
+        Keys.onVolumeUpPressed: {
+            client.sendKeyPress(6)
+            client.sendKeyRelease(6)
+            event.accepted = true
+        }
+
+        Keys.onVolumeDownPressed: {
+            client.sendKeyPress(5)
+            client.sendKeyRelease(5)
+            event.accepted = true
+        }
+
         Details {
             id: platform
         }
@@ -88,12 +103,14 @@ Rectangle {
                 connectPage.password = client.password
                 connectPage.hostname = client.hostname
                 connectPage.port = client.port
+                connectPage.forceActiveFocus()  // close eventuall open keyboard
             }
             onFirstStart: master.state = "helpState"
             onConnectingStarted: master.state = "loadingState"
             onBroadcastingStarted: master.state = "broadcastState"
             onNetworkOpened: master.state = "startState"
             onNetworkClosed: master.state = "networkState"
+            onTrialExpired:  master.state = "trialState"
 
             Component.onDestruction: {
                 client.saveSettings()
@@ -138,6 +155,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             color: theme.primaryTextColor
             font.pixelSize: theme.hintFontSize
+            rotation: master.screenRotation
         }
 
         Row {
@@ -231,6 +249,12 @@ Rectangle {
                 height: parent.height
                 onDisconnectClicked: client.disconnect()
                 onAboutClicked: master.state = "aboutState"
+            }
+            TrialPage {
+                id: trailPage
+                width: master.width
+                height: parent.height
+                onExitClicked: Qt.quit()
             }
         }
 
@@ -355,7 +379,20 @@ Rectangle {
                         target: label
                         visible: false
                     }
-                }
+            },
+                State {
+                    name: "trialState"
+
+                    PropertyChanges {
+                        target: centerContainer
+                        x: -master.width*8
+                    }
+
+                    PropertyChanges {
+                        target: label
+                        visible: false
+                    }
+            }
         ]
         transitions: Transition {
                  PropertyAnimation { target: centerContainer; properties: "x"; easing.type: Easing.OutCubic }

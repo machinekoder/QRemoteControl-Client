@@ -53,6 +53,20 @@ Rectangle {
     }
 
     Button {
+        id:                 button20
+        width:              buttonwidth
+        height:             buttonheight
+        anchors.top:        parent.top
+        anchors.topMargin:  master.generalMargin
+        anchors.right:      button1.left
+        anchors.rightMargin:master.generalMargin
+        iconSource:         master.imagePath + master.iconTheme + "/keyboard.png"
+        onClicked:          keyboardPage.click()
+        rotation:           master.screenRotation
+        animated:           (mainRect.state == "buttonPageState")
+    }
+
+    Button {
         id:                 button1
         width:              buttonwidth
         height:             buttonheight
