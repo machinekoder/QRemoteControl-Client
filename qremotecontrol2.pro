@@ -17,6 +17,7 @@ QML_IMPORT_PATH =
 
 symbian: {
 TARGET.UID3 = 0x200629ab
+#TARGET.UID3 = 0xE0000001
 DEPLOYMENT.installer_header = 0x2002CCCF
 DEPLOYMENT.display_name += QRemoteControl2
 my_deployment.pkg_prerules += \
@@ -52,6 +53,8 @@ SOURCES += src/main.cpp \
 HEADERS += src/qremotecontrolclient.h \
            src/wakeonlanpacket.h \
            src/platformdetails.h
+
+INCLUDEPATH += src/
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
