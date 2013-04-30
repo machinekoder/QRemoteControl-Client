@@ -116,7 +116,7 @@ Rectangle {
 
                 Text {
                     id: trialText
-                    text: qsTr("This trial version expires at: ") + Qt.formatDateTime(client.trialExpirationTime,"ddd dd.MM.yy hh:mmAP") + client.emptyString
+                    text: client.trialVersion?qsTr("This trial version expires at: ") + Qt.formatDateTime(client.trialExpirationTime,"ddd dd.MM.yy hh:mmAP") + client.emptyString:""
 
                     anchors {
                         top: moreText.bottom
