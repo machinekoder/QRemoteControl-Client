@@ -256,6 +256,7 @@ Rectangle {
                 width: master.width
                 height: parent.height
                 onExitClicked: Qt.quit()
+                visible: master.state == "trialState"
             }
         }
 

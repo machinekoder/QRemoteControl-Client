@@ -1,13 +1,13 @@
 import QtQuick 1.1
 //import Platform 1.0
 Item {
-    id: mainAppLoaderItem
+    id: appWindow
 
     // Loaders for the main application and the splash screen.
     Loader {
         id: mainAppLoader
-        width: mainAppLoaderItem.width
-        height: mainAppLoaderItem.height
+        width: appWindow.width
+        height: appWindow.height
         onLoaded: {
             focus = true
             console.debug("Main application loaded.");

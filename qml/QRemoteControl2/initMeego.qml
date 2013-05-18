@@ -2,15 +2,16 @@ import QtQuick 1.1
 import com.nokia.meego 1.0
 
 PageStackWindow {
-    id: appWindow
 
+    property int orientationLock: 0
+
+    id: appWindow
     initialPage: mainAppLoaderItem
 
     Page {
-        orientationLock: PageOrientation.LockPortrait
-        anchors.fill: parent
-
         id: mainAppLoaderItem
+        orientationLock: appWindow.orientationLock == 0 ? PageOrientation.LockPortrait : PageOrientation.LockLandscape
+        anchors.fill: parent
 
         // Loaders for the main application and the splash screen.
         Loader {

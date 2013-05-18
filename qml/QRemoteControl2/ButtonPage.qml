@@ -9,9 +9,9 @@ Rectangle {
     signal infoButtonClicked
     signal disconnectClicked
 
-    property int buttonMargin: master.generalMargin//Math.round(width*0.03)
-    property int buttonwidth: master.buttonHeight//Math.round(width*0.18)
-    property int buttonheight: master.buttonHeight//Math.round(height*0.11)
+    property int buttonMargin: master.generalMargin
+    property int buttonwidth: master.buttonHeight
+    property int buttonheight: master.buttonHeight
 
     id:     main
     width:  480
@@ -61,7 +61,7 @@ Rectangle {
         anchors.right:      button1.left
         anchors.rightMargin:master.generalMargin
         iconSource:         master.imagePath + master.iconTheme + "/keyboard.png"
-        onClicked:          keyboardPage.click()
+        onClicked:          keyboardPage.toggleNativeKeyboard()
         rotation:           master.screenRotation
         animated:           (mainRect.state == "buttonPageState")
     }
