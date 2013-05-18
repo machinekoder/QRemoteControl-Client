@@ -33,7 +33,7 @@ Rectangle {
             id: text1
             x: 72
             y: 42
-            text: qsTr("Primary Text")
+            text: qsTr("Primary Text") + client.emptyString
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             font.pointSize: techStyle.buttonFontSize
@@ -56,7 +56,7 @@ Rectangle {
             id: text2
             x: 72
             y: 42
-            text: qsTr("Secondary Text")
+            text: qsTr("Secondary Text") + client.emptyString
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             font.pointSize: techStyle.labelFontSize
@@ -79,7 +79,7 @@ Rectangle {
             id: text3
             x: 72
             y: 42
-            text: qsTr("Edit Text")
+            text: qsTr("Edit Text") + client.emptyString
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             font.pointSize: techStyle.editFontSize
@@ -101,7 +101,7 @@ Rectangle {
             id: text4
             x: 72
             y: 42
-            text: qsTr("Hint Text")
+            text: qsTr("Hint Text") + client.emptyString
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             font.pointSize: techStyle.hintFontSize

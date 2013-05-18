@@ -6,6 +6,18 @@ import "orientationSensor.js" as OrientationSensor
 
 Rectangle {
     property bool   landscapeMode: (device.width < device.height)
+    property bool   active: Qt.application.active
+
+    TextEdit {
+        id: dummyEdit
+    }
+
+    onActiveChanged: {
+        if (active)
+        {
+            dummyEdit.closeSoftwareInputPanel()
+        }
+    }
 
     onLandscapeModeChanged: {
         if (device.landscapeMode)
@@ -16,6 +28,7 @@ Rectangle {
 
     id: device
     anchors.fill: parent
+
     Rectangle {
         property string backgroundImage: "images/background_grey.png"
         property alias  backgroundImageFillMode: backgroundImage.fillMode
@@ -26,6 +39,8 @@ Rectangle {
         property int generalMargin: Math.round(width*0.02)
         property int buttonWidth: Math.round(width*0.18)
         property int buttonHeight: Math.round(height*0.10)
+
+        property string platform: platform.platform
 
         id: master
         color: "black"
@@ -49,6 +64,7 @@ Rectangle {
             wakeOnLanPage.datagramNumber = client.wolDatagramNumber
 
             settingsPage.setScreenOrientation(client.screenOrientation)
+            settingsPage.setLanguage(client.language)
             if ((platform.platform === "MeeGo")
                     || (platform.platform === "Symbian")
                     || (platform.platform === "Android")
@@ -57,6 +73,18 @@ Rectangle {
             {
                 OrientationSensor.createOrientationSensor()
             }
+        }
+
+        Keys.onVolumeUpPressed: {
+            client.sendKeyPress(6)
+            client.sendKeyRelease(6)
+            event.accepted = true
+        }
+
+        Keys.onVolumeDownPressed: {
+            client.sendKeyPress(5)
+            client.sendKeyRelease(5)
+            event.accepted = true
         }
 
         Details {
@@ -75,12 +103,15 @@ Rectangle {
                 connectPage.password = client.password
                 connectPage.hostname = client.hostname
                 connectPage.port = client.port
+                connectPage.forceActiveFocus()  // close eventuall open keyboard
             }
             onFirstStart: master.state = "helpState"
             onConnectingStarted: master.state = "loadingState"
             onBroadcastingStarted: master.state = "broadcastState"
             onNetworkOpened: master.state = "startState"
             onNetworkClosed: master.state = "networkState"
+            onTrialExpired:  master.state = "trialState"
+            onClearActions: remotecontrolPage.clearActions();
 
             Component.onDestruction: {
                 client.saveSettings()
@@ -95,7 +126,7 @@ Rectangle {
 
         Text {
             id: label
-            text: qsTr("Warning!<br>No Wireless network connection found, local service discovery unavailable. Check your network connection or use advanced options.")
+            text: qsTr("Warning!<br>No Wireless network connection found, local service discovery unavailable. Check your network connection or use advanced options.") + client.emptyString
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
             anchors.right: parent.right
@@ -105,6 +136,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             color: theme.primaryTextColor
             font.pixelSize: theme.hintFontSize
+            rotation: master.screenRotation
         }
 
         Row {
@@ -198,6 +230,13 @@ Rectangle {
                 height: parent.height
                 onDisconnectClicked: client.disconnect()
                 onAboutClicked: master.state = "aboutState"
+            }
+            TrialPage {
+                id: trailPage
+                width: master.width
+                height: parent.height
+                onExitClicked: Qt.quit()
+                visible: master.state == "trialState"
             }
         }
 
@@ -322,7 +361,20 @@ Rectangle {
                         target: label
                         visible: false
                     }
-                }
+            },
+                State {
+                    name: "trialState"
+
+                    PropertyChanges {
+                        target: centerContainer
+                        x: -master.width*8
+                    }
+
+                    PropertyChanges {
+                        target: label
+                        visible: false
+                    }
+            }
         ]
         transitions: Transition {
                  PropertyAnimation { target: centerContainer; properties: "x"; easing.type: Easing.OutCubic }

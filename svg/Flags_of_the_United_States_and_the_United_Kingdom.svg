@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="1235"
+   height="650"
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Flags_of_the_United_States_and_the_United_Kingdom.svg"
+   inkscape:export-filename="/home/alexander/projects/qremotecontrol-client/qml/QRemoteControl2/images/lang/english.png"
+   inkscape:export-xdpi="13.846154"
+   inkscape:export-ydpi="13.846154">
+  <metadata
+     id="metadata84">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview82"
+     showgrid="false"
+     inkscape:zoom="0.27368421"
+     inkscape:cx="617.5"
+     inkscape:cy="325"
+     inkscape:window-x="0"
+     inkscape:window-y="26"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <desc
+     id="desc4">United States Flag</desc>
+  <defs
+     id="defs6">
+    <polygon
+       points="-0.16245985,0 0,0.5 0.16245985,0 -0.16245985,0 "
+       transform="scale(6.16e-2,6.16e-2)"
+       id="point" />
+    <g
+       id="star">
+      <use
+         transform="matrix(-0.309017,-0.951057,0.951057,-0.309017,0,0)"
+         id="use10"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#point" />
+      <use
+         transform="matrix(0.809017,-0.587785,0.587785,0.809017,0,0)"
+         id="use12"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#point" />
+      <use
+         transform="matrix(0.809017,0.587785,-0.587785,0.809017,0,0)"
+         id="use14"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#point" />
+      <use
+         transform="matrix(-0.309017,0.951057,-0.951057,-0.309017,0,0)"
+         id="use16"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#point" />
+      <use
+         transform="scale(-1,-1)"
+         id="use18"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#point" />
+    </g>
+    <g
+       id="row5">
+      <use
+         id="use21"
+         x="-0.252"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+      <use
+         id="use23"
+         x="-0.126"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+      <use
+         id="use25"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+      <use
+         id="use27"
+         x="0.126"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+      <use
+         id="use29"
+         x="0.252"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+    </g>
+    <g
+       id="row6">
+      <use
+         id="use32"
+         x="-0.063000001"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#row5" />
+      <use
+         id="use34"
+         x="0.315"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+    </g>
+    <g
+       id="rowx4">
+      <use
+         id="use37"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#row6" />
+      <use
+         id="use39"
+         x="0"
+         y="0.054000001"
+         width="1235"
+         height="650"
+         xlink:href="#row5" />
+      <use
+         id="use41"
+         x="0"
+         y="0.108"
+         width="1235"
+         height="650"
+         xlink:href="#row6" />
+      <use
+         id="use43"
+         x="0"
+         y="0.162"
+         width="1235"
+         height="650"
+         xlink:href="#row5" />
+    </g>
+    <g
+       id="union">
+      <use
+         id="use46"
+         x="0"
+         y="-0.21600001"
+         width="1235"
+         height="650"
+         xlink:href="#rowx4" />
+      <use
+         id="use48"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#rowx4" />
+      <use
+         id="use50"
+         x="0"
+         y="0.21600001"
+         width="1235"
+         height="650"
+         xlink:href="#row6" />
+    </g>
+    <rect
+       width="1235"
+       height="50"
+       x="0"
+       y="0"
+       id="stripe" />
+    <clipPath
+       id="border">
+      <rect
+         width="30"
+         height="15"
+         x="-15"
+         y="-7.5"
+         id="rect3875" />
+    </clipPath>
+    <clipPath
+       id="clipPath4145">
+      <rect
+         width="30"
+         height="15"
+         x="-15"
+         y="-7.5"
+         id="rect4147" />
+    </clipPath>
+    <rect
+       width="1235"
+       height="50"
+       x="0"
+       y="0"
+       style="fill:#bf0a30"
+       id="rect4143" />
+    <g
+       id="g4135">
+      <use
+         id="use4137"
+         x="0"
+         y="-0.21600001"
+         width="1235"
+         height="650"
+         xlink:href="#rowx4" />
+      <use
+         id="use4139"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#rowx4" />
+      <use
+         id="use4141"
+         x="0"
+         y="0.21600001"
+         width="1235"
+         height="650"
+         xlink:href="#row6" />
+    </g>
+    <g
+       id="g4125">
+      <use
+         id="use4127"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#row6" />
+      <use
+         id="use4129"
+         x="0"
+         y="0.054000001"
+         width="1235"
+         height="650"
+         xlink:href="#row5" />
+      <use
+         id="use4131"
+         x="0"
+         y="0.108"
+         width="1235"
+         height="650"
+         xlink:href="#row6" />
+      <use
+         id="use4133"
+         x="0"
+         y="0.162"
+         width="1235"
+         height="650"
+         xlink:href="#row5" />
+    </g>
+    <g
+       id="g4119">
+      <use
+         id="use4121"
+         x="-0.063000001"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#row5" />
+      <use
+         id="use4123"
+         x="0.315"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+    </g>
+    <g
+       id="g4107">
+      <use
+         id="use4109"
+         x="-0.252"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+      <use
+         id="use4111"
+         x="-0.126"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+      <use
+         id="use4113"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+      <use
+         id="use4115"
+         x="0.126"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+      <use
+         id="use4117"
+         x="0.252"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#star" />
+    </g>
+    <g
+       id="g4095">
+      <use
+         transform="matrix(-0.309017,-0.951057,0.951057,-0.309017,0,0)"
+         id="use4097"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#point" />
+      <use
+         transform="matrix(0.809017,-0.587785,0.587785,0.809017,0,0)"
+         id="use4099"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#point" />
+      <use
+         transform="matrix(0.809017,0.587785,-0.587785,0.809017,0,0)"
+         id="use4101"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#point" />
+      <use
+         transform="matrix(-0.309017,0.951057,-0.951057,-0.309017,0,0)"
+         id="use4103"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#point" />
+      <use
+         transform="scale(-1,-1)"
+         id="use4105"
+         x="0"
+         y="0"
+         width="1235"
+         height="650"
+         xlink:href="#point" />
+    </g>
+    <polygon
+       points="-0.16245985,0 0,0.5 0.16245985,0 -0.16245985,0 "
+       transform="scale(6.16e-2,6.16e-2)"
+       style="fill:white"
+       id="polygon4093" />
+  </defs>
+  <g
+     id="g4273">
+    <g
+       transform="matrix(41.16667,0,0,43.33333,617.5,325)"
+       clip-path="url(#border)"
+       id="g3877">
+      <circle
+         cx="0"
+         cy="0"
+         r="20"
+         style="fill:#00247d"
+         id="circle3879"
+         d="m 20,0 c 0,11.045695 -8.954305,20 -20,20 -11.045695,0 -20,-8.954305 -20,-20 0,-11.045695 8.954305,-20 20,-20 11.045695,0 20,8.954305 20,20 z" />
+      <path
+         d="M -20,-10 L 20,10 M -20,10 L 20,-10"
+         style="stroke:white;stroke-width:3"
+         id="diags_white" />
+      <path
+         d="M -20,-10 L 20,10 M -20,10 L 20,-10"
+         style="stroke:#cf142b;stroke-width:2"
+         id="diags_red" />
+      <path
+         d="M 0,0 L 20,10 L 17,10 L -3,0 M 0,0 L 20,-10 L 23,-10 L 3,0 M 0,0 L -20,10 L -23,10 L -3,0 M 0,0 L -20,-10 L -17,-10 L 3,0"
+         style="fill:white;stroke:none"
+         id="eraser_white" />
+      <path
+         d="M -20,0 L 20,0 M 0,-10 L 0,10"
+         style="stroke:white;stroke-width:5"
+         id="cross_white" />
+      <path
+         d="M -20,0 L 20,0 M 0,-10 L 0,10"
+         style="stroke:#cf142b;stroke-width:3"
+         id="cross_red" />
+    </g>
+    <path
+       d="M 0,0 L 0,650 L 1235,0 L 0,0 z "
+       style="fill:white"
+       id="rect53" />
+    <path
+       d="M 0,0 L 0,50 L 1140,50 L 1235,0 L 0,0 z "
+       style="fill:#bf0a30"
+       id="use55" />
+    <path
+       d="M 0,100 L 0,150 L 950,150 L 1045,100 L 0,100 z "
+       style="fill:#bf0a30"
+       id="use57" />
+    <path
+       d="M 0,200 L 0,250 L 760,250 L 855,200 L 0,200 z "
+       style="fill:#bf0a30"
+       id="use59" />
+    <path
+       d="M 0,300 L 0,350 L 570,350 L 665,300 L 0,300 z "
+       style="fill:#bf0a30"
+       id="use61" />
+    <path
+       d="M 0,400 L 0,450 L 380,450 L 475,400 L 0,400 z "
+       style="fill:#bf0a30"
+       id="use63" />
+    <path
+       d="M 0,500 L 0,550 L 190,550 L 285,500 L 0,500 z "
+       style="fill:#bf0a30"
+       id="use65" />
+    <path
+       d="M 0,600 L 0,650 L 95,600 L 0,600 z "
+       style="fill:#bf0a30"
+       id="use67" />
+    <rect
+       width="494"
+       height="350"
+       x="0"
+       y="0"
+       style="fill:#002868;fill-opacity:1"
+       id="rect69" />
+    <g
+       transform="matrix(650,0,0,650,247,175)"
+       style="fill:white"
+       id="use71">
+      <use
+         style="fill:white"
+         id="use3783"
+         x="0"
+         y="-0.21600001"
+         width="1"
+         height="1"
+         xlink:href="#rowx4" />
+      <use
+         style="fill:white"
+         id="use3785"
+         x="0"
+         y="0"
+         width="1"
+         height="1"
+         xlink:href="#rowx4" />
+      <use
+         style="fill:white"
+         id="use3787"
+         x="0"
+         y="0.21600001"
+         width="1"
+         height="1"
+         xlink:href="#row6" />
+    </g>
+  </g>
+</svg>

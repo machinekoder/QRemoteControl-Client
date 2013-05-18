@@ -7,6 +7,11 @@
 #include <QDesktopWidget>
 #include "wakeonlanpacket.h"
 
+#ifdef TRIAL
+#include <QSystemDeviceInfo>
+QTM_USE_NAMESPACE
+#endif
+
 typedef struct {
     QHostAddress hostAddress;
     QString      hostName;
@@ -31,6 +36,12 @@ class QRemoteControlClient : public QObject
     Q_PROPERTY(int screenDpi READ screenDpi NOTIFY screenDpiChanged)
     Q_PROPERTY(int networkTimeout READ networkTimeout WRITE setNetworkTimeout NOTIFY networkTimeoutChanged)
     Q_PROPERTY(ScreenOrientation screenOrientation READ screenOrientation WRITE screenOrientation NOTIFY screenOrientationChanged)
+    Q_PROPERTY(QString emptyString READ getEmptyString NOTIFY emptyStringChanged)
+    Q_PROPERTY(QString language READ language WRITE setLanguage NOTIFY languageChanged)
+    Q_PROPERTY(bool trialVersion READ isTrialVersion NOTIFY trialVersionChanged)
+#ifdef TRIAL
+    Q_PROPERTY(QDateTime trialExpirationTime READ trialExpirationTime NOTIFY trialExpirationTimeChanged)
+#endif
 
 public:
     enum ScreenOrientation {
@@ -123,6 +134,28 @@ public:
         return m_screenOrientation;
     }
 
+    QString getEmptyString() const
+    {
+        return m_emptyString;
+    }
+
+    QString language() const
+    {
+        return m_language;
+    }
+
+    bool isTrialVersion() const
+    {
+        return m_trialVersion;
+    }
+
+#ifdef TRIAL
+    QDateTime trialExpirationTime() const
+    {
+        return m_trialExpirationTime;
+    }
+#endif
+
 public slots:
     Q_INVOKABLE void sendKey (quint32 key, quint32 modifiers, bool keyPressed);
     Q_INVOKABLE void sendButton (quint8 id, bool keyPressed);
@@ -141,6 +174,7 @@ public slots:
     //void sendCharacter(quint32 character, quint32 modifiers);
     Q_INVOKABLE void sendAction (int id, bool pressed);
     Q_INVOKABLE void sendLight (int code);
+    Q_INVOKABLE void sendText (QString text);
     Q_INVOKABLE void disconnect();
     Q_INVOKABLE void clearServerList();
     Q_INVOKABLE void connectToServer(int id);
@@ -254,6 +288,37 @@ public slots:
         }
     }
 
+    void setLanguage(QString arg)
+    {
+        if (m_language != arg) {
+            m_language = arg;
+
+            if(m_language.contains(QString("de"))) {
+                m_language = "de";
+                translator1->load("de", ":/i18");
+                qApp->installTranslator(translator1);
+               }
+            else if(m_language.contains(QString("ru"))) {
+                m_language = "ru";
+                translator2->load("ru", ":/i18");
+                qApp->installTranslator(translator2);
+               }
+            else if(m_language.contains(QString("uk"))) {
+                m_language = "uk";
+                translator3->load("uk", ":/i18");
+                qApp->installTranslator(translator3);
+               }
+            else {                                          // english fall through
+                m_language = "en";
+                qApp->removeTranslator(translator1);
+                qApp->removeTranslator(translator2);
+                qApp->removeTranslator(translator3);
+               }
+            emit emptyStringChanged("");
+            emit languageChanged(m_language);
+        }
+    }
+
 signals:
     void hostnameChanged(QString arg);
     void hostAddressChanged(QHostAddress arg);
@@ -267,6 +332,7 @@ signals:
     void connectingStarted();
     void firstStart();
     void actionReceived(int id, QString text, QString imagePath);
+    void clearActions();
     void serversCleared();
     void serverFound(QString address, QString hostName, bool connected);
     void passwordIncorrect();
@@ -276,23 +342,28 @@ signals:
     void networkClosed();
 
     void macAddressChanged(QString arg);
-
     void wolHostnameChanged(QString arg);
-
     void wolPortChanged(int arg);
-
     void wolDatagramNumberChanged(int arg);
-
     void screenDpiChanged(int arg);
-
     void uiRoundnessChanged(double arg);
-
     void networkTimeoutChanged(int arg);
-
     void screenOrientationChanged(ScreenOrientation arg);
 
+    void emptyStringChanged(QString arg);
+
+    void languageChanged(QString arg);
+
+    // Trial
+    void trialExpired();
+#ifdef TRIAL
+    void trialExpirationTimeChanged(QDateTime arg);
+#endif
+
+    void trialVersionChanged(bool arg);
+
 private:
-    //Network
+    // Network
     QUdpSocket *udpSocket;
     QTcpServer *tcpServer;
     QTcpSocket *tcpSocket;
@@ -302,44 +373,51 @@ private:
     QNetworkConfigurationManager *netConfigManager;
     QTimer     *networkTimeoutTimer;
 
-    //General
+    // Trial
+#ifdef TRIAL
+    QNetworkAccessManager *networkAccesManager;
+    QTimer                *trialTimer;
+#endif
+
+    // General
     QByteArray passwordHash;
 
     // Servers
     QList<QRCServer> serverList;
+
+    // Translators
+    QTranslator *translator1;
+    QTranslator *translator2;
+    QTranslator *translator3;
 
     void incomingIcon(QByteArray data);
     void incomingAmarokData(QByteArray data);
 
     void addServer(QHostAddress hostAddress, bool connected);
 
-    QString m_hostname;
-    QString m_password;
-    int m_port;
-    QString m_version;
-
-    QHostAddress m_hostAddress;
-
-    QString m_uiColor;
-
-    QString m_wolMacAddress;
-
-    QString m_wolHostname;
-
-    int m_wolPort;
-
-    int m_wolDatagramNumber;
-
-    int m_screenDpi;
-
-    double m_uiRoundness;
+    QString         m_hostname;
+    QString         m_password;
+    int             m_port;
+    QString         m_version;
+    QHostAddress    m_hostAddress;
+    QString         m_uiColor;
+    QString         m_wolMacAddress;
+    QString         m_wolHostname;
+    int             m_wolPort;
+    int             m_wolDatagramNumber;
+    int             m_screenDpi;
+    double          m_uiRoundness;
+    int             m_networkTimeout;
+    ScreenOrientation m_screenOrientation;
+    QString m_emptyString;
+    QString m_language;
+    bool m_trialVersion;
+#ifdef TRIAL
+    QDateTime m_trialExpirationTime;
+#endif
 
     void initializeNetworkTimeoutTimer();
     void sendVersion();
-
-    int m_networkTimeout;
-
-    ScreenOrientation m_screenOrientation;
 
 private slots:
     void sendConnectionRequest();
@@ -350,6 +428,12 @@ private slots:
     void incomingData();
     void incomingUdpData();
     void saveResolvedHostName(QHostInfo hostInfo);
+
+#ifdef TRIAL
+    void checkTrialExpiration();
+    void replyFinished(QNetworkReply* reply);
+    void trialTimerTimeout();
+#endif
 
     void initialize();
 };

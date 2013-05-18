@@ -7,16 +7,16 @@
 QRemoteControlClient::QRemoteControlClient(QObject *parent)
     : QObject(parent)
 {
-//#ifndef LIGHTCONTROL
-//    ui->pushButton_5->setVisible(false);
-//#endif
-//    ui->stackedWidget->setCurrentIndex(0);
-//   ui->buttonStack->setCurrentIndex(0);
-//    ui->songLabel->setText("");
-
     m_screenOrientation = ScreenOrientationAuto;
     m_version = QString(VERSION);
     m_screenDpi = QApplication::desktop()->physicalDpiX();
+
+    // initialize translators
+    m_emptyString = "";
+    m_language = "en";
+    translator1 = new QTranslator(this);
+    translator2 = new QTranslator(this);
+    translator3 = new QTranslator(this);
 
     loadSettings();
 
@@ -40,6 +40,23 @@ QRemoteControlClient::QRemoteControlClient(QObject *parent)
     // initialize network timeout
     m_networkTimeout = 4500;
     initializeNetworkTimeoutTimer();
+
+    // trial
+#ifdef TRIAL
+    networkAccesManager = new QNetworkAccessManager(this);
+    connect(networkAccesManager, SIGNAL(finished(QNetworkReply*)),
+        this, SLOT(replyFinished(QNetworkReply*)));
+    trialTimer = new QTimer(this);
+    trialTimer->setInterval(10000);
+    trialTimer->start();
+    connect(trialTimer, SIGNAL(timeout()),
+            this, SLOT(trialTimerTimeout()));
+
+    m_trialVersion = true;
+    m_trialExpirationTime = QDateTime();
+#else
+    m_trialVersion = false;
+#endif
 }
 
 QRemoteControlClient::~QRemoteControlClient()
@@ -48,8 +65,6 @@ QRemoteControlClient::~QRemoteControlClient()
 
     if (tcpSocket)
         tcpSocket->disconnectFromHost();
-
-    //delete ui;
 }
 
 void QRemoteControlClient::openNetworkSession()
@@ -210,6 +225,7 @@ void QRemoteControlClient::saveSettings()
     settings.setValue("uiColor", m_uiColor);
     settings.setValue("uiRoundness", m_uiRoundness);
     settings.setValue("screenOrientation", static_cast<int>(m_screenOrientation));
+    settings.setValue("language", m_language);
 
     settings.beginGroup("wol");
         settings.setValue("macAddress", m_wolMacAddress);
@@ -231,6 +247,8 @@ void QRemoteControlClient::loadSettings()
     m_uiColor   = settings.value("uiColor", "black").toString();
     m_uiRoundness = settings.value("uiRoundness", 10).toDouble();
     m_screenOrientation = static_cast<ScreenOrientation>(settings.value("screenOrientation", ScreenOrientationAuto).toInt());
+
+    setLanguage(settings.value("language", QLocale::system().name()).toString());
 
     settings.beginGroup("wol");
         m_wolMacAddress     = settings.value("macAddress",QString()).toString();
@@ -419,6 +437,90 @@ void QRemoteControlClient::saveResolvedHostName(QHostInfo hostInfo)
     }
 }
 
+#ifdef TRIAL
+void QRemoteControlClient::checkTrialExpiration()
+{
+    QSystemDeviceInfo *deviceInfo;
+    QString imei;
+    QNetworkRequest *request;
+    bool valid;
+
+    if (m_trialExpirationTime.isNull())
+    {
+        deviceInfo  = new QSystemDeviceInfo(this);
+        imei        = deviceInfo->imei();
+        imei.remove("-");
+        request     = new QNetworkRequest(QUrl("http://qremote.org/trail.php?imei=" + imei));
+        networkAccesManager->get(*request);
+    }
+    else
+    {
+        if (QDateTime::currentDateTime() < m_trialExpirationTime)
+        {
+            valid = true;
+        } else
+        {
+            valid = false;
+        }
+
+        if (valid == false)
+        {
+            emit trialExpired();
+        }
+#ifdef QT_DEBUG
+        qDebug() <<  m_trialExpirationTime << valid;
+#endif
+    }
+}
+
+void QRemoteControlClient::replyFinished(QNetworkReply *reply)
+{
+    QByteArray  data;
+    QString     timeString;
+    QDateTime   dateTime;
+    bool        valid;
+
+    data        = reply->readAll();
+    timeString  = QString(data).trimmed();
+    dateTime    = QDateTime::fromString(timeString.trimmed(), Qt::ISODate);
+
+    if (dateTime.isValid())
+    {
+        m_trialExpirationTime = dateTime;
+        emit trialExpirationTimeChanged(m_trialExpirationTime);
+
+        if (QDateTime::currentDateTime() < dateTime)
+        {
+            valid = true;
+        } else
+        {
+            valid = false;
+        }
+
+        if (valid == false)
+        {
+            emit trialExpired();
+        }
+#ifdef QT_DEBUG
+        qDebug() << timeString << dateTime << valid;
+#endif
+    } else
+    {
+        emit trialExpired();
+#ifdef QT_DEBUG
+        qDebug() << "checking failed";
+#endif
+    }
+
+
+}
+
+void QRemoteControlClient::trialTimerTimeout()
+{
+    checkTrialExpiration();
+}
+#endif
+
 void QRemoteControlClient::clearServerList()
 {
     serverList.clear();
@@ -428,6 +530,8 @@ void QRemoteControlClient::clearServerList()
 void QRemoteControlClient::incomingIcon(QByteArray data)
 {
     QDataStream in(data);
+
+    emit clearActions();
     while (!in.atEnd()) {
         quint8 id;
         QPixmap icon;
@@ -444,7 +548,7 @@ void QRemoteControlClient::incomingIcon(QByteArray data)
             icon.save(filePath);
         }
 
-        actionReceived(id, name, filePath);
+        emit actionReceived(id, name, filePath);
     }
 }
 
@@ -611,6 +715,18 @@ void QRemoteControlClient::sendLight(int code)
     udpSocket->writeDatagram(data, tcpSocket->peerAddress(), m_port);
 }
 
+void QRemoteControlClient::sendText(QString text)
+{
+    quint8 mode1 = 8;
+
+    QByteArray data;
+    QDataStream streamOut(&data, QIODevice::WriteOnly);
+    streamOut << mode1;
+    streamOut << text;
+
+    udpSocket->writeDatagram(data, tcpSocket->peerAddress(), m_port);
+}
+
 void QRemoteControlClient::sendKeepAlive()
 {
     quint8 mode1 = 6;
@@ -638,169 +754,3 @@ void QRemoteControlClient::disconnect()
 {
     deleteConnection();
 }
-
-/*void QRemoteControlClient::on_closeButton_clicked()
-{
-    close();
-}
-
-void QRemoteControlClient::on_aboutButton_clicked()
-{
-    QMessageBox::about(this, tr("About QRemoteControl"), tr("<p align=center>"
-                                                 "<nobr><b>QRemoteControl %1</b></nobr> <br><br>"
-                                                 "<nobr>Copyright 2009-2012 by</nobr><br>"
-                                                 "<nobr>Alexander R&ouml;ssler</nobr>"
-                                                 "</p>").arg(VERSION));
-}
-
-void QRemoteControlClient::on_pushButton_1_clicked()
-{
-    ui->buttonStack->setCurrentIndex(0);
-    ui->pushButton_2->setChecked(false);
-    ui->pushButton_3->setChecked(false);
-    ui->pushButton_4->setChecked(false);
-    ui->pushButton_5->setChecked(false);
-    this->setOrientation(QRemoteControlClient::ScreenOrientationLockPortrait);
-}
-
-void QRemoteControlClient::on_pushButton_2_clicked()
-{
-    ui->buttonStack->setCurrentIndex(1);
-    ui->pushButton_1->setChecked(false);
-    ui->pushButton_3->setChecked(false);
-    ui->pushButton_4->setChecked(false);
-    ui->pushButton_5->setChecked(false);
-    this->setOrientation(QRemoteControlClient::ScreenOrientationLockPortrait);
-}
-
-void QRemoteControlClient::on_pushButton_3_clicked()
-{
-    ui->buttonStack->setCurrentIndex(2);
-    ui->pushButton_1->setChecked(false);
-    ui->pushButton_2->setChecked(false);
-    ui->pushButton_4->setChecked(false);
-    ui->pushButton_5->setChecked(false);
-    this->setOrientation(QRemoteControlClient::ScreenOrientationLockPortrait);
-}
-
-void QRemoteControlClient::on_pushButton_4_clicked()
-{
-    ui->buttonStack->setCurrentIndex(3);
-    ui->pushButton_1->setChecked(false);
-    ui->pushButton_2->setChecked(false);
-    ui->pushButton_3->setChecked(false);
-    ui->pushButton_5->setChecked(false);
-    this->setOrientation(QRemoteControlClient::ScreenOrientationAuto);
-
-    ui->keyboardEdit->setFocus();
-}
-
-void QRemoteControlClient::on_pushButton_5_clicked()
-{
-    ui->buttonStack->setCurrentIndex(4);
-    ui->pushButton_1->setChecked(false);
-    ui->pushButton_2->setChecked(false);
-    ui->pushButton_3->setChecked(false);
-    ui->pushButton_4->setChecked(false);
-    this->setOrientation(QRemoteControlClient::ScreenOrientationLockPortrait);
-}
-
-void QRemoteControlClient::on_leftMouseButton_pressed()
-{
-    sendMousePress(1);
-}
-
-void QRemoteControlClient::on_leftMouseButton_released()
-{
-    sendMouseRelease(1);
-}
-
-void QRemoteControlClient::on_middleMouseButton_pressed()
-{
-     sendMousePress(2);
-}
-
-void QRemoteControlClient::on_middleMouseButton_released()
-{
-    sendMouseRelease(2);
-}
-
-void QRemoteControlClient::on_rightMouseButton_pressed()
-{
-    sendMousePress(3);
-}
-
-void QRemoteControlClient::on_rightMouseButton_released()
-{
-    sendMouseRelease(3);
-}
-
-void QRemoteControlClient::on_redButton_clicked()
-{
-    sendLight(15);
-}
-
-void QRemoteControlClient::on_greenButton_clicked()
-{
-    sendLight(240);
-}
-
-void QRemoteControlClient::on_blueButton_clicked()
-{
-    sendLight(3840);
-}
-
-void QRemoteControlClient::on_yellowButton_clicked()
-{
-    sendLight(255);
-}
-
-void QRemoteControlClient::on_cyanButton_clicked()
-{
-    sendLight(4080);
-}
-
-void QRemoteControlClient::on_magentaButton_clicked()
-{
-    sendLight(3855);
-}
-
-void QRemoteControlClient::on_blackButton_clicked()
-{
-    sendLight(0);
-}
-
-void QRemoteControlClient::on_whiteButton_clicked()
-{
-    sendLight(4095);
-}
-
-void QRemoteControlClient::on_codeSpin_valueChanged(int value)
-{
-    sendLight(value);
-}
-
-void QRemoteControlClient::on_connectButton_clicked()
-{
-    setHostname(ui->hostnameEdit->text());
-    setPassword(ui->passwordEdit->text());
-    setPort(ui->portSpin->value());
-
-    connectToHost();
-}
-
-void QRemoteControlClient::on_abortButton_clicked()
-{
-    abortBroadcasting();
-    ui->stackedWidget->setCurrentIndex(0);  //GUI
-}
-
-void QRemoteControlClient::on_continueButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
-void QRemoteControlClient::on_helpButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(3);
-}*/

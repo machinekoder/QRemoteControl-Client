@@ -60,6 +60,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             Text {
                 id:             emptyLabel
+                elide:          Text.ElideRight
                 font.pixelSize: theme.hintFontSize
                 font.bold:      theme.hintFontBold
                 font.family:    theme.fontFamily
@@ -79,6 +80,7 @@ Rectangle {
                           }
             onAccepted: {
                 input.closeSoftwareInputPanel()
+                label.forceActiveFocus()                            // prevents keyboard from reopening
             }
         }
     }
@@ -96,5 +98,26 @@ Rectangle {
                 unedited = false
             }
         }
+    }
+
+    function forceFocus()
+    {
+        input.focus = true
+    }
+
+    function toggleFocus()
+    {
+        if (input.focus)
+        {
+            label.forceActiveFocus()
+        }
+        else
+        {
+            input.focus = true
+        }
+    }
+    function removeFocus()
+    {
+        label.forceActiveFocus()
     }
 }
