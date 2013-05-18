@@ -87,26 +87,6 @@ Rectangle {
             }
         }
 
-      /*OrientationSensor {
-            id: orientation
-            active: client.screenOrientation === 0    // No orientation lock
-
-            onReadingChanged: {
-
-                if (reading.orientation === OrientationReading.TopUp)
-                    master.screenRotation = 0
-                else if (reading.orientation === OrientationReading.TopDown)
-                    master.screenRotation = 180
-                else if (reading.orientation === OrientationReading.RightUp)
-                    master.screenRotation = 90
-                else if (reading.orientation === OrientationReading.LeftUp)
-                    master.screenRotation = -90
-
-                if (!device.landscapeMode)
-                    master.screenRotation += 90
-            }
-        }*/
-
         Image {
             id: backgroundImage
             anchors.fill: parent
@@ -119,9 +99,9 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
             anchors.right: parent.right
-            anchors.rightMargin: 20
+            anchors.rightMargin: parent.width * 0.05
             anchors.left: parent.left
-            anchors.leftMargin: 20
+            anchors.leftMargin: anchors.rightMargin
             anchors.verticalCenter: parent.verticalCenter
             color: theme.primaryTextColor
             font.pixelSize: theme.hintFontSize
@@ -232,7 +212,7 @@ Rectangle {
 
                 PropertyChanges {
                     target: label
-                    visible: true
+                    visible: !(platform.platform === "Android") // Deactivate the warning on Android as it seems not work properly
                 }
             },
             State {

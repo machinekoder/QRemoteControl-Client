@@ -42,6 +42,7 @@ contains(MEEGO_EDITION,harmattan): {
  MOBILITY += sensors
 
 QT += network
+QT -= svg
 
 SOURCES += main.cpp \
             qremotecontrolclient.cpp \
