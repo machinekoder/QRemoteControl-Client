@@ -111,6 +111,7 @@ Rectangle {
             onNetworkOpened: master.state = "startState"
             onNetworkClosed: master.state = "networkState"
             onTrialExpired:  master.state = "trialState"
+            onClearActions: remotecontrolPage.clearActions();
 
             Component.onDestruction: {
                 client.saveSettings()

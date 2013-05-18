@@ -14,6 +14,22 @@ Rectangle {
         id: wrapper
         anchors.fill: parent
 
+        Text {
+            id: label
+            text: qsTr("To see some items here add some commands in the User Commands Tab on the server.") + client.emptyString
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.WordWrap
+            anchors.right: parent.right
+            anchors.rightMargin: 20
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            anchors.verticalCenter: parent.verticalCenter
+            visible: listModel.count == 0
+            color: theme.primaryTextColor
+            font.pixelSize: theme.hintFontSize
+            rotation: master.screenRotation
+        }
+
         GridView {
             id:             gridView
 
@@ -64,14 +80,16 @@ Rectangle {
     }
     function addAction(id,name,image)
     {
-        if (id > listModel.count)
+        if (id === 1)
+            clearActions();
+        //if (id > listModel.count)
             listModel.append({"name": name, "image": image})
-        else
-        {
-            for (var i = id-1; i < listModel.count; i++)
-                listModel.remove(i)
-            listModel.insert(id-1,{"name": name, "image": image})
-        }
+        //else
+        //{
+            //for (var i = id-1; i < listModel.count; i++)
+            //    listModel.remove(i)
+            //listModel.insert(id-1,{"name": name, "image": image})
+        //}
     }
     function actionReceived(id,name,filePath)
     {

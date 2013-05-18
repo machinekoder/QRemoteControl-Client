@@ -530,6 +530,8 @@ void QRemoteControlClient::clearServerList()
 void QRemoteControlClient::incomingIcon(QByteArray data)
 {
     QDataStream in(data);
+
+    emit clearActions();
     while (!in.atEnd()) {
         quint8 id;
         QPixmap icon;
@@ -546,7 +548,7 @@ void QRemoteControlClient::incomingIcon(QByteArray data)
             icon.save(filePath);
         }
 
-        actionReceived(id, name, filePath);
+        emit actionReceived(id, name, filePath);
     }
 }
 

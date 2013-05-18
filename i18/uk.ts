@@ -29,15 +29,15 @@
     </message>
     <message>
         <source>About QRemoteControl Trial</source>
-        <translation type="unfinished"></translation>
+        <translation>Про QRemoteControl (пробна версія)</translation>
     </message>
     <message>
         <source>Copyright 2012-2013&lt;br&gt;by Alexander Rössler&lt;br&gt;Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>Авторське право (с) 2012-2013&lt;br&gt;by Alexander Rössler&lt;br&gt;Версія: </translation>
     </message>
     <message>
         <source>This trial version expires at: </source>
-        <translation type="unfinished"></translation>
+        <translation>Період пробної версії спливає через:</translation>
     </message>
 </context>
 <context>
@@ -307,15 +307,15 @@
     <name>TrialPage</name>
     <message>
         <source>QRemoteControl Trial has expired!</source>
-        <translation type="unfinished"></translation>
+        <translation>Період пробної версії QRemoteControl сплив!</translation>
     </message>
     <message>
         <source>Your trial version of QRemoteControl has expired. Get the full version now.</source>
-        <translation type="unfinished"></translation>
+        <translation>Період вашої пробної версії QRemoteControl закінчився. Придбайте повну версію.</translation>
     </message>
     <message>
         <source>Get Full Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Придбати повну версію</translation>
     </message>
 </context>
 <context>

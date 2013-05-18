@@ -134,4 +134,9 @@ Rectangle {
     transitions: Transition {
              PropertyAnimation { target: centerContainer; properties: "x"; easing.type: Easing.OutCubic; duration: 400 }
          }
+
+    function clearActions()
+    {
+        actionsPage.clearActions();
+    }
 }

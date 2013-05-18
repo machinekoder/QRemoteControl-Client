@@ -38,7 +38,7 @@ class QRemoteControlClient : public QObject
     Q_PROPERTY(ScreenOrientation screenOrientation READ screenOrientation WRITE screenOrientation NOTIFY screenOrientationChanged)
     Q_PROPERTY(QString emptyString READ getEmptyString NOTIFY emptyStringChanged)
     Q_PROPERTY(QString language READ language WRITE setLanguage NOTIFY languageChanged)
-    Q_PROPERTY(bool trialVersion READ isTrialVersion)
+    Q_PROPERTY(bool trialVersion READ isTrialVersion NOTIFY trialVersionChanged)
 #ifdef TRIAL
     Q_PROPERTY(QDateTime trialExpirationTime READ trialExpirationTime NOTIFY trialExpirationTimeChanged)
 #endif
@@ -332,6 +332,7 @@ signals:
     void connectingStarted();
     void firstStart();
     void actionReceived(int id, QString text, QString imagePath);
+    void clearActions();
     void serversCleared();
     void serverFound(QString address, QString hostName, bool connected);
     void passwordIncorrect();
@@ -358,6 +359,8 @@ signals:
 #ifdef TRIAL
     void trialExpirationTimeChanged(QDateTime arg);
 #endif
+
+    void trialVersionChanged(bool arg);
 
 private:
     // Network
