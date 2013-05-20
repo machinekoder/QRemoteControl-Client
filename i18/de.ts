@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>If you find this application useful please show it to your friends and vote for it.</source>
-        <translation>Wenn sie dieses Programm nützlich finden zeige sie es ihren Freunden oder bewerten sie es.</translation>
+        <translation>Wenn sie dieses Programm nützlich finden zeigen sie es ihren Freunden oder bewerten sie es.</translation>
     </message>
     <message>
         <source>Copyright 2012-2013 &lt;br&gt;by Alexander Rössler &lt;br&gt;Version: </source>
