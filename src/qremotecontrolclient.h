@@ -332,6 +332,7 @@ signals:
     void connectingStarted();
     void firstStart();
     void actionReceived(int id, QString text, QString imagePath);
+    void clearActions();
     void serversCleared();
     void serverFound(QString address, QString hostName, bool connected);
     void passwordIncorrect();

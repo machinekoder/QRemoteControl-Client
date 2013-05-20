@@ -22,8 +22,6 @@ Rectangle {
     height: 360
     color: "#00000000"
 
-
-
     Row {
         id: row6
         y: 100
@@ -39,8 +37,8 @@ Rectangle {
         KeyboardButton {
             width: keyboardButtonWidth
             height: parent.height
-            normalText: "Esc"
-            shiftedText: "Esc"
+            normalText: qsTr("Esc")
+            shiftedText: qsTr("Esc")
             key: Qt.Key_Escape
             topRow: true
         }
@@ -109,12 +107,11 @@ Rectangle {
             topRow: true
         }
         KeyboardButton {
-            width: keyboardButtonWidth
-            height: parent.height
-            normalText: "Print"
-            shiftedText: "Print"
-            key: Qt.Key_Print
-            topRow: true
+            width:          keyboardButtonWidth
+            height:         parent.height
+            icon:           master.imagePath + master.iconTheme + "/keyboard.png"
+            onClicked:      toggleNativeKeyboard()
+            showPreview:    false
         }
     }
     Row {
@@ -468,14 +465,14 @@ Rectangle {
             id: controlButton
             width: keyboardButtonWidth
             height: parent.height
-            text: "Ctrl"
+            text: qsTr("Ctrl")
             checkable: true
         }
         KeyboardButton2 {
             id: altButton
             width: keyboardButtonWidth
             height: parent.height
-            text: "Alt"
+            text: qsTr("Alt")
             checkable: true
         }
         KeyboardButton2 {

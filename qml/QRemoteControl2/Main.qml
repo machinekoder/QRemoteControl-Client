@@ -111,31 +111,12 @@ Rectangle {
             onNetworkOpened: master.state = "startState"
             onNetworkClosed: master.state = "networkState"
             onTrialExpired:  master.state = "trialState"
+            onClearActions: remotecontrolPage.clearActions();
 
             Component.onDestruction: {
                 client.saveSettings()
             }
         }
-
-      /*OrientationSensor {
-            id: orientation
-            active: client.screenOrientation === 0    // No orientation lock
-
-            onReadingChanged: {
-
-                if (reading.orientation === OrientationReading.TopUp)
-                    master.screenRotation = 0
-                else if (reading.orientation === OrientationReading.TopDown)
-                    master.screenRotation = 180
-                else if (reading.orientation === OrientationReading.RightUp)
-                    master.screenRotation = 90
-                else if (reading.orientation === OrientationReading.LeftUp)
-                    master.screenRotation = -90
-
-                if (!device.landscapeMode)
-                    master.screenRotation += 90
-            }
-        }*/
 
         Image {
             id: backgroundImage
@@ -220,41 +201,51 @@ Rectangle {
                 }
             }
             BroadcastPage {
-                id: broadcastPage
-                width: master.width
-                height: master.height
+                id:                 broadcastPage
+                width:              master.width
+                height:             master.height
                 onAbortClicked: {
                     master.state = "startState"
                     client.abortBroadcasting()
                 }
             }
             LoadingPage {
-                id: loadingPage
-                width: master.width
-                height: parent.height
+                id:                 loadingPage
+                width:              master.width
+                height:             parent.height
                 onAbortClicked: {
                     master.state = "startState"
                     client.abortConnectionRequest()
                 }
             }
             AboutPage {
-                id: aboutPage
-                width: master.width
-                height: parent.height
-                onContinueClicked: master.state = "startState"
+                id:                 aboutPage
+                width:              master.width
+                height:             parent.height
+                onContinueClicked:  master.state = "startState"
             }
             RemoteControlPage {
-                id: remotecontrolPage
-                width: master.width
-                height: parent.height
-                onDisconnectClicked: client.disconnect()
-                onAboutClicked: master.state = "aboutState"
+                id:                 remotecontrolPage
+                width:              master.width
+                height:             parent.height
+                onDisconnectClicked:client.disconnect()
+                onAboutClicked:     master.state = "aboutState"
+                opacity:            (master.state == "remoteControlState") * 1
+
+                Behavior on opacity {
+                                 NumberAnimation { easing.type: Easing.OutCubic; duration: 500 }
+                             }
             }
             TrialPage {
-                id: trailPage
-                width: master.width
-                height: parent.height
-                onExitClicked: Qt.quit()
+                id:                 trailPage
+                width:              master.width
+                height:             parent.height
+                onExitClicked:      Qt.quit()
+                visible:            (master.state == "trialState") * 1
+
+                Behavior on opacity {
+                                 NumberAnimation { easing.type: Easing.OutCubic; duration: 500 }
+                             }
             }
         }
 
@@ -385,7 +376,7 @@ Rectangle {
 
                     PropertyChanges {
                         target: centerContainer
-                        x: -master.width*8
+                        x: -master.width*7
                     }
 
                     PropertyChanges {
@@ -396,6 +387,7 @@ Rectangle {
         ]
         transitions: Transition {
                  PropertyAnimation { target: centerContainer; properties: "x"; easing.type: Easing.OutCubic }
+                 PropertyAnimation { target: centerContainer; properties: "opacity"; easing.type: Easing.OutCubic }
              }
     }
 }

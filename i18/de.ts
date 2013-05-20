@@ -13,11 +13,11 @@
     </message>
     <message>
         <source>or visit &lt;a href=&quot;http://qremote.org&quot;&gt;qremote.org&lt;/a&gt; &lt;br&gt; &lt;br&gt;</source>
-        <translation>oder besuche &lt;a href=&quot;http://qremote.org&quot;&gt;qremote.org&lt;/a&gt; &lt;br&gt; &lt;br&gt; </translation>
+        <translation>oder besuchen sie &lt;a href=&quot;http://qremote.org&quot;&gt;qremote.org&lt;/a&gt; &lt;br&gt; &lt;br&gt; </translation>
     </message>
     <message>
         <source>If you find this application useful please show it to your friends and vote for it.</source>
-        <translation>Wenn du dieses Programm nützlich findest zeige es deinen Freunden oder bewerte es.</translation>
+        <translation>Wenn sie dieses Programm nützlich finden zeige sie es ihren Freunden oder bewerten sie es.</translation>
     </message>
     <message>
         <source>Copyright 2012-2013 &lt;br&gt;by Alexander Rössler &lt;br&gt;Version: </source>
@@ -25,19 +25,26 @@
     </message>
     <message>
         <source>If you find bugs and errors or want to give feedback please contact: &lt;a href=&quot;mailto:support@qremote.org&quot;&gt;support@qremote.org&lt;/a&gt;&lt;br&gt;</source>
-        <translation>Wenn du Bugs oder Fehler findest oder Feedback geben willst kontaktiere: &lt;a href=&quot;mailto:support@qremote.org&quot;&gt;support@qremote.org&lt;/a&gt;&lt;br&gt; </translation>
+        <translation>Wenn sie Bugs oder Fehler finden oder Feedback geben wollen kontaktieren sie: &lt;a href=&quot;mailto:support@qremote.org&quot;&gt;support@qremote.org&lt;/a&gt;&lt;br&gt; </translation>
     </message>
     <message>
         <source>About QRemoteControl Trial</source>
-        <translation type="unfinished"></translation>
+        <translation>Über QRemoteControl Testversion</translation>
     </message>
     <message>
         <source>Copyright 2012-2013&lt;br&gt;by Alexander Rössler&lt;br&gt;Version: </source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright 2012-2013 &lt;br&gt;von Alexander Rössler &lt;br&gt;Version:</translation>
     </message>
     <message>
         <source>This trial version expires at: </source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Testversion läuft ab am: </translation>
+    </message>
+</context>
+<context>
+    <name>ActionsPage</name>
+    <message>
+        <source>To see some items here add some commands in the User Commands Tab on the server.</source>
+        <translation>Um hier Einträge zu sehen fügen sie Befehle im Benutzerbefehle Tab in der Server-Software hinzu. </translation>
     </message>
 </context>
 <context>
@@ -130,7 +137,7 @@
     </message>
     <message>
         <source>- Click on the server you want to use.&lt;br&gt;</source>
-        <translation type="unfinished">- Wählen Sie den Server aus den Sie benutzen wollen. &lt;br&gt;</translation>
+        <translation>- Wählen Sie den Server aus den Sie benutzen wollen. &lt;br&gt;</translation>
     </message>
     <message>
         <source>- Start using QRemoteControl.&lt;br&gt;</source>
@@ -143,6 +150,21 @@
     <message>
         <source>Make shure you have the server software installed on the computer you want to remote control. You can download the software at: &lt;a href=&quot;http://qremote.org/download.php#Download&quot;&gt;qremote.org&lt;/a&gt; &lt;br&gt; &lt;br&gt;</source>
         <translation>Installieren Sie die Server Software auf den Computer den Sie fernsteuern wollen. Sie können die Software hier herunterladen: &lt;a href=&quot;http://qremote.org/download.php#Download&quot;&gt;qremote.org&lt;/a&gt; &lt;br&gt; &lt;br&gt; </translation>
+    </message>
+</context>
+<context>
+    <name>Keyboard</name>
+    <message>
+        <source>Esc</source>
+        <translation>Esc</translation>
+    </message>
+    <message>
+        <source>Ctrl</source>
+        <translation>Strg</translation>
+    </message>
+    <message>
+        <source>Alt</source>
+        <translation>Alt</translation>
     </message>
 </context>
 <context>
@@ -297,15 +319,15 @@
     <name>TrialPage</name>
     <message>
         <source>QRemoteControl Trial has expired!</source>
-        <translation type="unfinished"></translation>
+        <translation>QRemoteControl Testversion ist abgelaufen!</translation>
     </message>
     <message>
         <source>Your trial version of QRemoteControl has expired. Get the full version now.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ihre Testversion von QRemoteControl ist abgelaufen. Laden sie jetzt die Vollversion herunter.</translation>
     </message>
     <message>
         <source>Get Full Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Vollversion herunterladen</translation>
     </message>
 </context>
 <context>

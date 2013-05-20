@@ -120,7 +120,7 @@ void QmlApplicationViewer::addImportPath(const QString &path)
     engine()->addImportPath(QmlApplicationViewerPrivate::adjustPath(path));
 }
 
-void QmlApplicationViewer::setOrientation(ScreenOrientation orientation)
+void QmlApplicationViewer::setOrientation(int orientation)
 {
 #if QT_VERSION < 0x050000
     Qt::WidgetAttribute attribute;

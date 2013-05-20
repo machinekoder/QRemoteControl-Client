@@ -111,7 +111,6 @@ Rectangle {
                     anchors.right:      parent.right
                     anchors.left:       parent.left
                     anchors.bottom:     parent.bottom
-                    //anchors.topMargin:  master.generalMargin*2
                     icon:               ""
 
                     onClicked: {
