@@ -18,6 +18,12 @@ typedef struct {
     bool connected;
 } QRCServer;
 
+typedef struct {
+    QString      hostName;
+    QString      password;
+    int          port;
+} QRCConnection;
+
 class QRemoteControlClient : public QObject
 {
     Q_OBJECT
@@ -180,6 +186,7 @@ public slots:
     Q_INVOKABLE void connectToServer(int id);
     Q_INVOKABLE void openNetworkSession();
     Q_INVOKABLE bool sendWakeOnLan();
+    Q_INVOKABLE void updateLastConnections();
 
     void setHostname(QString arg)
     {
@@ -338,6 +345,9 @@ signals:
     void passwordIncorrect();
     void serverConnecting();
 
+    void lastConnectionAdded(QString hostName, QString password, int port);
+    void lastConnectionsCleared();
+
     void networkOpened();
     void networkClosed();
 
@@ -385,6 +395,9 @@ private:
     // Servers
     QList<QRCServer> serverList;
 
+    // Last Connections
+    QList<QRCConnection> lastConnectionList;
+
     // Translators
     QTranslator *translator1;
     QTranslator *translator2;
@@ -409,15 +422,19 @@ private:
     double          m_uiRoundness;
     int             m_networkTimeout;
     ScreenOrientation m_screenOrientation;
-    QString m_emptyString;
-    QString m_language;
-    bool m_trialVersion;
+    QString         m_emptyString;
+    QString         m_language;
+    bool            m_trialVersion;
 #ifdef TRIAL
     QDateTime m_trialExpirationTime;
 #endif
 
     void initializeNetworkTimeoutTimer();
     void sendVersion();
+
+    // Last connection
+    void addLastConnection(QString hostName, QString password, int port);
+    void clearLastConnections();
 
 private slots:
     void sendConnectionRequest();

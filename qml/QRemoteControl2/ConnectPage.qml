@@ -21,6 +21,12 @@ Rectangle {
     height: 640
     color: "#00000000"
 
+    Component.onCompleted: {
+        client.lastConnectionAdded.connect(addLastConnection)
+        client.lastConnectionsCleared.connect(clearLastConnections)
+        client.updateLastConnections()
+    }
+
     Button {
         id: settingsButton
         width: master.buttonHeight
@@ -192,6 +198,86 @@ Rectangle {
                     }
                 }
 
+                Rectangle {
+                    id:                 listRect
+                    radius:             exitButton.radius
+                    border.color:       theme.buttonBorderColor
+                    border.width:       2
+                    smooth:             true
+                    gradient:           theme.defaultGradient
+                    anchors.top:        column1.bottom
+                    anchors.topMargin:  master.generalMargin
+                    anchors.right:      parent.right
+                    anchors.rightMargin:master.generalMargin
+                    anchors.left:       parent.left
+                    anchors.leftMargin: master.generalMargin
+                    height:             enabled ? master.height * 0.5 : 0
+                    enabled:            false
+
+                    Behavior on height {
+                                     NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                                 }
+
+                    ListView {
+                        id: listVew
+                        anchors.fill: parent
+                        clip: true
+
+                        delegate: Item {
+                                height: master.buttonHeight
+                                width:  listVew.width
+
+                                Button {
+                                anchors.fill:           parent
+                                anchors.leftMargin:     master.generalMargin/2
+                                anchors.rightMargin:    master.generalMargin/2
+                                anchors.topMargin:      master.generalMargin/2
+                                border.color:           theme.buttonBorderColor
+
+                                Row {
+                                    id:         row1
+                                    x:          master.generalMargin
+                                    spacing:    master.generalMargin*2
+                                    height:     parent.height
+                                    Image {
+                                        width:      parent.height * 0.8
+                                        height:     width
+                                        source:     master.imagePath + master.iconTheme + "/computer.png"
+                                        fillMode:   Image.PreserveAspectFit
+                                        anchors.verticalCenter: parent.verticalCenter
+                                    }
+
+                                    Text {
+                                        text:           hostName + " : " + port
+                                        font.bold:      theme.buttonFontBold
+                                        font.pixelSize: theme.buttonFontSize
+                                        font.family:    theme.fontFamily
+                                        color:          theme.primaryTextColor
+                                        anchors.verticalCenter: parent.verticalCenter
+                                    }
+                                }
+
+                                onClicked: {
+
+                                    connectPage.password = password
+                                    connectPage.hostname = hostName
+                                    connectPage.port = port
+                                    connectClicked()
+                                }
+
+                            }
+                        }
+                        model: ListModel {
+                            id: listModel
+                            ListElement {
+                                hostName: "10.0.0.1"
+                                password: ""
+                                port:     5487
+                            }
+                        }
+                    }
+                }
+
                 Column {
                     id: column1
                     spacing: master.generalMargin/2
@@ -220,22 +306,35 @@ Rectangle {
                         }
                     }
 
-                    Button {
-                        id: connectButton
-                        height: master.buttonHeight
-                        text: advancedColumn.enabled?qsTr("Connect") + client.emptyString :qsTr("Use last Connection") + client.emptyString
+                    Row {
                         anchors.right: parent.right
                         anchors.rightMargin: 0
                         anchors.left: parent.left
                         anchors.leftMargin: 0
-                        icon: ""
-                        onClicked: {
-                            connectClicked()
-                            main.forceActiveFocus() // remove the focus from all inputs
+                        Button {
+                            id: connectButton
+                            height: master.buttonHeight
+                            text: advancedColumn.enabled?qsTr("Connect") + client.emptyString :qsTr("Use last Connection") + client.emptyString
+                            width: advancedColumn.enabled ? parent.width : parent.width * 0.8
+                            icon: ""
+                            onClicked: {
+                                connectClicked()
+                                main.forceActiveFocus() // remove the focus from all inputs
+                            }
+                        }
+                        Button {
+                            id: lastConnectionButton
+                            height: master.buttonHeight
+                            width: advancedColumn.enabled ? 0 : parent.width * 0.2
+                            icon: listRect.enabled ? master.imagePath + master.iconTheme + "/up.png" : master.imagePath + master.iconTheme + "/down.png"
+                            onClicked: {
+                                listRect.enabled = !listRect.enabled
+                            }
                         }
                     }
                 }
             }
+
             Button {
                 id: upDownButton
                 height: master.buttonHeight * 0.8
@@ -250,10 +349,21 @@ Rectangle {
                 border.color: master.border.color
                 onClicked: {
                     advancedColumn.enabled = !advancedColumn.enabled
+                    listRect.enabled = false
                     advancedClicked()
                 }
             }
         }
+    }
+
+    function addLastConnection(hostName, password, port)
+    {
+        listModel.append({"hostName":hostName, "password":password, "port":port})
+    }
+
+    function clearLastConnections()
+    {
+        listModel.clear()
     }
 
 }
