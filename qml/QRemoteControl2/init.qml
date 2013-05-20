@@ -2,6 +2,7 @@ import QtQuick 1.1
 //import Platform 1.0
 Item {
     id: mainAppLoaderItem
+    anchors.fill: parent
 
     // Loaders for the main application and the splash screen.
     Loader {

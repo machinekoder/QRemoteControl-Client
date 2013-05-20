@@ -25,7 +25,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
     qDebug() << "MEEGO";
 #endif
+#if !defined(Q_OS_SYMBIAN)
     viewer.showExpanded();
-
+#else
+    viewer.showFullScreen();
+#endif
     return app->exec();
 }
