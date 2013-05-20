@@ -315,7 +315,7 @@ Rectangle {
                             id: connectButton
                             height: master.buttonHeight
                             text: advancedColumn.enabled?qsTr("Connect") + client.emptyString :qsTr("Use last Connection") + client.emptyString
-                            width: advancedColumn.enabled ? parent.width : parent.width * 0.8
+                            width: advancedColumn.enabled ? parent.width : parent.width - master.buttonHeight*0.9
                             icon: ""
                             onClicked: {
                                 connectClicked()
@@ -325,7 +325,7 @@ Rectangle {
                         Button {
                             id: lastConnectionButton
                             height: master.buttonHeight
-                            width: advancedColumn.enabled ? 0 : parent.width * 0.2
+                            width: advancedColumn.enabled ? 0 : master.buttonHeight*0.9
                             icon: listRect.enabled ? master.imagePath + master.iconTheme + "/up.png" : master.imagePath + master.iconTheme + "/down.png"
                             onClicked: {
                                 listRect.enabled = !listRect.enabled
