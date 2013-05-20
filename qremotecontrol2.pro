@@ -28,7 +28,6 @@ ICON = qremotecontrol2.svg
 
 # Allow network access on Symbian
 TARGET.CAPABILITY += NetworkServices
-#TARGET.CAPABILITY += ReadUserData
 TARGET.CAPABILITY += WriteDeviceData
 TARGET.CAPABILITY += ReadDeviceData
 TARGET.CAPABILITY += ReadUserData

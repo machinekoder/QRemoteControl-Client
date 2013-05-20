@@ -27,14 +27,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 #if !defined(Q_OS_SYMBIAN)
     viewer.showExpanded();
-<<<<<<< HEAD
 #else
     viewer.showFullScreen();
 #endif
-=======
 
     viewer.rootContext()->setContextProperty("viewer", &viewer);
 
->>>>>>> 037f9a77d90a22e0bb224982d3caf81fef431646
     return app->exec();
 }
