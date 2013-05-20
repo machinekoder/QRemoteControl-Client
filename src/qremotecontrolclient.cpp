@@ -162,6 +162,43 @@ bool QRemoteControlClient::sendWakeOnLan()
     return status;
 }
 
+void QRemoteControlClient::updateLastConnections()
+{
+    emit lastConnectionsCleared();
+    for (int i = lastConnectionList.count()-1; i >= 0; --i)
+    {
+        emit lastConnectionAdded(lastConnectionList.at(i).hostName,
+                                 lastConnectionList.at(i).password,
+                                 lastConnectionList.at(i).port);
+    }
+}
+
+void QRemoteControlClient::addLastConnection(QString hostName, QString password, int port)
+{
+    QRCConnection connection;
+
+    for (int i = lastConnectionList.count()-1; i >= 0; --i)
+    {
+        if ((lastConnectionList.at(i).hostName == hostName)
+             && (lastConnectionList.at(i).port == port) )
+        {
+            lastConnectionList.removeAt(i);
+        }
+    }
+
+    connection.hostName = hostName;
+    connection.password = password;
+    connection.port = port;
+    lastConnectionList.append(connection);
+
+    updateLastConnections();
+}
+
+void QRemoteControlClient::clearLastConnections()
+{
+    lastConnectionList.clear();
+}
+
 void QRemoteControlClient::initialize()
 {
     tcpServer->close();
@@ -184,6 +221,8 @@ void QRemoteControlClient::connectToHost()
 
     sendConnectionRequest();
     connectionRequestTimer->start(5000);
+
+    addLastConnection(m_hostname, m_password, m_port);
 
     emit connectingStarted();
 }
@@ -234,6 +273,16 @@ void QRemoteControlClient::saveSettings()
         settings.setValue("datagramNumber", m_wolDatagramNumber);
     settings.endGroup();
 
+    settings.beginWriteArray("lastConnection");
+    for (int i = 0; i < lastConnectionList.count(); ++i)
+    {
+        settings.setArrayIndex(i);
+        settings.setValue("hostName", lastConnectionList.at(i).hostName);
+        settings.setValue("password", lastConnectionList.at(i).password);
+        settings.setValue("port", lastConnectionList.at(i).port);
+    }
+    settings.endArray();
+
     settings.setValue("firstStart", false);
 }
 
@@ -256,6 +305,19 @@ void QRemoteControlClient::loadSettings()
         m_wolPort           = settings.value("port",80).toInt();
         m_wolDatagramNumber = settings.value("datagramNumber",5).toInt();
     settings.endGroup();
+
+    int count = settings.beginReadArray("lastConnection");
+    for (int i = 0; i < count; ++i)
+    {
+        QRCConnection connection;
+
+        settings.setArrayIndex(i);
+        connection.hostName = settings.value("hostName", "test").toString();
+        connection.password = settings.value("password", "").toString();
+        connection.port = settings.value("port", 5487).toInt();
+        lastConnectionList.append(connection);
+    }
+    settings.endArray();
 
     if (settings.value("firstStart", true).toBool())
     {
