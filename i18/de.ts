@@ -13,11 +13,11 @@
     </message>
     <message>
         <source>or visit &lt;a href=&quot;http://qremote.org&quot;&gt;qremote.org&lt;/a&gt; &lt;br&gt; &lt;br&gt;</source>
-        <translation>oder besuchen sie &lt;a href=&quot;http://qremote.org&quot;&gt;qremote.org&lt;/a&gt; &lt;br&gt; &lt;br&gt; </translation>
+        <translation>oder besuchen Sie &lt;a href=&quot;http://qremote.org&quot;&gt;qremote.org&lt;/a&gt; &lt;br&gt; &lt;br&gt; </translation>
     </message>
     <message>
         <source>If you find this application useful please show it to your friends and vote for it.</source>
-        <translation>Wenn sie dieses Programm nützlich finden zeigen sie es ihren Freunden oder bewerten sie es.</translation>
+        <translation>Wenn Sie dieses Programm nützlich finden zeigen Sie es Ihren Freunden oder bewerten Sie es.</translation>
     </message>
     <message>
         <source>Copyright 2012-2013 &lt;br&gt;by Alexander Rössler &lt;br&gt;Version: </source>
@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>If you find bugs and errors or want to give feedback please contact: &lt;a href=&quot;mailto:support@qremote.org&quot;&gt;support@qremote.org&lt;/a&gt;&lt;br&gt;</source>
-        <translation>Wenn sie Bugs oder Fehler finden oder Feedback geben wollen kontaktieren sie: &lt;a href=&quot;mailto:support@qremote.org&quot;&gt;support@qremote.org&lt;/a&gt;&lt;br&gt; </translation>
+        <translation>Wenn Sie Bugs oder Fehler finden oder Feedback geben wollen kontaktieren Sie bitte: &lt;a href=&quot;mailto:support@qremote.org&quot;&gt;support@qremote.org&lt;/a&gt;&lt;br&gt; </translation>
     </message>
     <message>
         <source>About QRemoteControl Trial</source>
@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Copyright 2012-2013&lt;br&gt;by Alexander Rössler&lt;br&gt;Version: </source>
-        <translation>Copyright 2012-2013 &lt;br&gt;von Alexander Rössler &lt;br&gt;Version:</translation>
+        <translation>Copyright 2012-2013 &lt;br&gt;von Alexander Rössler &lt;br&gt;Version: </translation>
     </message>
     <message>
         <source>This trial version expires at: </source>

@@ -152,7 +152,7 @@ Rectangle {
                    anchors.topMargin:           master.generalMargin
                    anchors.horizontalCenter:    parent.horizontalCenter
                    width:                       master.buttonHeight * 0.9 * 5 + 4 * master.generalMargin
-                   height:                      master.buttonHeight
+                   height:                      master.buttonHeight*0.9
                    Button {
                        id:              noLockButton
                        checkable:       true
@@ -406,7 +406,7 @@ Rectangle {
                         id: grid1
                         rows: 4
                         columns: 3
-                        spacing: master.generalMargin/2
+                        spacing: master.generalMargin
                         anchors.top: label1.bottom
                         anchors.topMargin: master.generalMargin
                         anchors.right: parent.right

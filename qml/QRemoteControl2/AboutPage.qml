@@ -99,7 +99,7 @@ Rectangle {
 
                     anchors {
                         top: aboutContainer.bottom
-                        topMargin: master.generalMargin*2
+                        topMargin: master.generalMargin*3
                         horizontalCenter: parent.horizontalCenter
                     }
                     wrapMode: Text.WordWrap

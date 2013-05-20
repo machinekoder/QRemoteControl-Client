@@ -61,12 +61,12 @@ Rectangle {
             anchors.centerIn: parent
             width: parent.width - master.generalMargin
             height: parent.height - master.generalMargin
-            spacing: master.generalMargin/2
+            spacing: master.generalMargin
 
             Button {
                 id:         button1
                 height:     parent.height
-                width:      (barRow.width) / 4 - barRow.spacing
+                width:      (barRow.width) / 4 - barRow.spacing*0.75
                 iconSource: master.imagePath + master.iconTheme + "/remote.png"
                 onClicked:  mainRect.state = "buttonPageState"
                 iconRotation: master.screenRotation
@@ -75,7 +75,7 @@ Rectangle {
             Button {
                 id:         button2
                 height:     parent.height
-                width:      (barRow.width) / 4 - barRow.spacing
+                width:      (barRow.width) / 4 - barRow.spacing*0.75
                 iconSource: master.imagePath + master.iconTheme + "/apps.png"
                 onClicked:  mainRect.state = "actionsPageState"
                 iconRotation: master.screenRotation
@@ -84,7 +84,7 @@ Rectangle {
             Button {
                 id:         button3
                 height:     parent.height
-                width:      (barRow.width) / 4 - barRow.spacing
+                width:      (barRow.width) / 4 - barRow.spacing*0.75
                 iconSource: master.imagePath + master.iconTheme + "/mouse.png"
                 onClicked:  mainRect.state = "touchpadPageState"
                 iconRotation: master.screenRotation
@@ -93,7 +93,7 @@ Rectangle {
             Button {
                 id:         button4
                 height:     parent.height
-                width:      (barRow.width) / 4 - barRow.spacing
+                width:      (barRow.width) / 4 - barRow.spacing*0.75
                 iconSource: master.imagePath + master.iconTheme + "/keyboard.png"
                 onClicked:  mainRect.state = "keyboardPageState"
                 iconRotation: master.screenRotation

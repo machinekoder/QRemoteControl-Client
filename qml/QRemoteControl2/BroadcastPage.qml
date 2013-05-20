@@ -172,7 +172,7 @@ Rectangle {
                                 }
                             }
 
-                            onClicked: {
+                            onReleased: {
                                 loadingPage.showNormalText()
                                 client.connectToServer(index)
                             }
