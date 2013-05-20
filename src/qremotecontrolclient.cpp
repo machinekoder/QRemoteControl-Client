@@ -816,3 +816,13 @@ void QRemoteControlClient::disconnect()
 {
     deleteConnection();
 }
+
+bool QRemoteControlClient::isConnected()
+{
+    if (tcpSocket == NULL)
+    {
+        return false;
+    }
+
+    return (tcpSocket->state() == QAbstractSocket::ConnectedState);
+}

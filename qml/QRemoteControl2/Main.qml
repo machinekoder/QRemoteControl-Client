@@ -165,7 +165,7 @@ Rectangle {
                 width: master.width
                 height: parent.height
                 onContinueClicked: {
-                    if (client.connected)
+                    if (client.isConnected())
                     {
                         master.state = "remoteControlState";
                     }
