@@ -8,6 +8,7 @@ Rectangle {
     signal buttonReleased(int id)
     signal disconnectClicked
     signal aboutClicked
+    signal settingsClicked
 
     id: mainRect
     width: 380
@@ -19,6 +20,7 @@ Rectangle {
         buttonPage.buttonPressed.connect(buttonPressed)
         buttonPage.buttonReleased.connect(buttonReleased)
         buttonPage.disconnectClicked.connect(disconnectClicked)
+        buttonPage.settingsClicked.connect(settingsClicked)
     }
 
     Row {

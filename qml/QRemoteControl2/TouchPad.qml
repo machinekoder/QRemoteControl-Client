@@ -14,7 +14,7 @@ Rectangle {
     color: "#00000000"
 
     property int clickTime: 150
-    property int buttonTime: 400
+    property int buttonTime: 500
 
     signal leftButtonClicked
     signal leftButtonPressed
@@ -230,7 +230,7 @@ Rectangle {
                 else
                 {
                     checkable = true
-                    checked = false
+                    checked = true
                     longpress = true
                 }
             }
@@ -271,7 +271,7 @@ Rectangle {
                 else
                 {
                     checkable = true
-                    checked = false
+                    checked = true
                     longpress = true
                 }
             }
@@ -311,7 +311,7 @@ Rectangle {
                 else
                 {
                     checkable = true
-                    checked = false
+                    checked = true
                     longpress = true
                 }
             }
