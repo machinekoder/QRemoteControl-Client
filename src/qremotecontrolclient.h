@@ -182,6 +182,7 @@ public slots:
     Q_INVOKABLE void sendLight (int code);
     Q_INVOKABLE void sendText (QString text);
     Q_INVOKABLE void disconnect();
+    Q_INVOKABLE bool isConnected();
     Q_INVOKABLE void clearServerList();
     Q_INVOKABLE void connectToServer(int id);
     Q_INVOKABLE void openNetworkSession();
