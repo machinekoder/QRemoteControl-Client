@@ -173,7 +173,7 @@ Rectangle {
                                client.screenOrientation = 0
                            }
                            else
-                               checked = true
+                               checked = false
                        }
                    }
 
@@ -201,7 +201,7 @@ Rectangle {
                                     master.screenRotation += 90
                            }
                            else
-                               checked = true
+                               checked = false
                        }
                    }
 
@@ -229,7 +229,7 @@ Rectangle {
                                     master.screenRotation += 90
                            }
                            else
-                               checked = true
+                               checked = false
                        }
                    }
 
@@ -257,7 +257,7 @@ Rectangle {
                                     master.screenRotation += 90
                            }
                            else
-                               checked = true
+                               checked = false
                        }
                    }
 
@@ -285,7 +285,7 @@ Rectangle {
                                     master.screenRotation += 90
                            }
                            else
-                               checked = true
+                               checked = false
                        }
                    }
                }
@@ -328,7 +328,7 @@ Rectangle {
                                client.language = "en"
                            }
                            else
-                               checked = true
+                               checked = false
                        }
                    }
                    Button {
@@ -351,7 +351,7 @@ Rectangle {
                                client.language = "de"
                            }
                            else
-                               checked = true
+                               checked = false
                        }
                    }
                    Button {
@@ -374,7 +374,7 @@ Rectangle {
                                client.language = "ru"
                            }
                            else
-                               checked = true
+                               checked = false
                        }
                    }
                    Button {
@@ -397,7 +397,7 @@ Rectangle {
                                client.language = "uk"
                            }
                            else
-                               checked = true
+                               checked = false
                        }
                    }
 

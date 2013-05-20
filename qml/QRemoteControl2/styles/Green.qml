@@ -44,24 +44,24 @@ Style {
                 id: hoveredGrad
                 GradientStop {
                     position: 0
-                    color: "#db3939"
+                    color: "#A3B884"
                 }
 
                 GradientStop {
                     position: 1
-                    color: "#730000"
+                    color: "#5EA600"
                 }
                 }
     Gradient {
                 id: pressedGrad
                 GradientStop {
                     position: 0
-                    color: "#ddc7c2"
+                    color: "#A3B884"
                 }
 
                 GradientStop {
                     position: 1
-                    color: "#d36a6a"
+                    color: "#5EA600"
                 }
                 }
     Gradient {

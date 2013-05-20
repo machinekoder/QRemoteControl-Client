@@ -66,17 +66,17 @@ Style {
                 id: pressedGrad
                 GradientStop {
                     position: 0
-                    color: "#f79d00"
+                    color: "#e79200"
                 }
 
                 GradientStop {
                     position: 0.400
-                    color: "#ffd475"
+                    color: "#e6bf69"
                 }
 
                 GradientStop {
                     position: 1
-                    color: "#ec9e18"
+                    color: "#d28a15"
                 }
                 }
     Gradient {

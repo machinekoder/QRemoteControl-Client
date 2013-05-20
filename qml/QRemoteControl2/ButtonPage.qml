@@ -8,6 +8,7 @@ Rectangle {
     signal buttonReleased(int id)
     signal infoButtonClicked
     signal disconnectClicked
+    signal settingsClicked
 
     property int buttonMargin: master.generalMargin
     property int buttonwidth: master.buttonHeight
@@ -43,6 +44,20 @@ Rectangle {
         width:              buttonwidth
         height:             buttonheight
         anchors.left:       parent.left
+        anchors.leftMargin: master.generalMargin
+        anchors.top:        parent.top
+        anchors.topMargin:  master.generalMargin
+        iconSource:         master.imagePath + master.iconTheme + "/settings.png"
+        onClicked:          settingsClicked()
+        rotation:            master.screenRotation
+        animated:           (mainRect.state == "buttonPageState")
+    }
+
+    Button {
+        id:                 button21
+        width:              buttonwidth
+        height:             buttonheight
+        anchors.left:       button0.right
         anchors.leftMargin: master.generalMargin
         anchors.top:        parent.top
         anchors.topMargin:  master.generalMargin

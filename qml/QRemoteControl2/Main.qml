@@ -164,7 +164,16 @@ Rectangle {
                 id: settingsPage
                 width: master.width
                 height: parent.height
-                onContinueClicked: master.state = "startState"
+                onContinueClicked: {
+                    if (client.connected)
+                    {
+                        master.state = "remoteControlState";
+                    }
+                    else
+                    {
+                        master.state = "startState";
+                    }
+            }
             }
             HelpPage {
                 id: helpPage
@@ -230,6 +239,7 @@ Rectangle {
                 height:             parent.height
                 onDisconnectClicked:client.disconnect()
                 onAboutClicked:     master.state = "aboutState"
+                onSettingsClicked:  master.state = "settingsState"
                 opacity:            (master.state == "remoteControlState") * 1
 
                 Behavior on opacity {
