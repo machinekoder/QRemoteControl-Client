@@ -19,9 +19,9 @@ class QmlApplicationViewer : public QDeclarativeView
 
 public:
     enum ScreenOrientation {
-        ScreenOrientationLockPortrait,
-        ScreenOrientationLockLandscape,
-        ScreenOrientationAuto
+        ScreenOrientationLockPortrait = 0,
+        ScreenOrientationLockLandscape = 1,
+        ScreenOrientationAuto = 2
     };
 
     explicit QmlApplicationViewer(QWidget *parent = 0);
@@ -33,7 +33,7 @@ public:
     void addImportPath(const QString &path);
 
     // Note that this will only have an effect on Fremantle.
-    void setOrientation(ScreenOrientation orientation);
+    Q_INVOKABLE void setOrientation(int orientation);
 
     void showExpanded();
 

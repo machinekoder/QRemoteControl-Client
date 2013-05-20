@@ -4,7 +4,7 @@ VERSION = 2.4.3
 TRANSLATIONS = i18/de.ts i18/ru.ts i18/uk.ts
 
 DEFINES += VERSION=\"\\\"$$VERSION\\\"\"
-#DEFINES += TRIAL
+DEFINES += TRIAL
 
 # Add more folders to ship with the application, here
 folder_01.source += qml/QRemoteControl2

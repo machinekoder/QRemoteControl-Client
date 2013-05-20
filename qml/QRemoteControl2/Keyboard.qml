@@ -22,8 +22,6 @@ Rectangle {
     height: 360
     color: "#00000000"
 
-
-
     Row {
         id: row6
         y: 100
