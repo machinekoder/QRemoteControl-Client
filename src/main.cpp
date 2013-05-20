@@ -18,14 +18,20 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #if defined(Q_WS_X11) || defined(Q_WS_WIN) // On Desktop skip the Splash screen
     viewer.setGeometry(0,0, 400, 600);
 #endif
-    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
+    viewer.setOrientation((int)QmlApplicationViewer::ScreenOrientationLockPortrait);
     qDebug() << "not MEEGO";
 #else   //MEEGO!?
     viewer.setMainQmlFile(QLatin1String("qml/QRemoteControl2/initMeego.qml"));
-    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
+    viewer.setOrientation((int)QmlApplicationViewer::ScreenOrientationLockPortrait);
     qDebug() << "MEEGO";
 #endif
+#if !defined(Q_OS_SYMBIAN)
     viewer.showExpanded();
+#else
+    viewer.showFullScreen();
+#endif
+
+    viewer.rootContext()->setContextProperty("viewer", &viewer);
 
     return app->exec();
 }

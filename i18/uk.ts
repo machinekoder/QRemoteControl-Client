@@ -41,6 +41,13 @@
     </message>
 </context>
 <context>
+    <name>ActionsPage</name>
+    <message>
+        <source>To see some items here add some commands in the User Commands Tab on the server.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BroadcastPage</name>
     <message>
         <source>Searching Servers...</source>
@@ -143,6 +150,21 @@
     <message>
         <source>Make shure you have the server software installed on the computer you want to remote control. You can download the software at: &lt;a href=&quot;http://qremote.org/download.php#Download&quot;&gt;qremote.org&lt;/a&gt; &lt;br&gt; &lt;br&gt;</source>
         <translation>Переконайтеся, що серверна програма встановлена на комп&apos;ютері, яким потрібно керувати. Ви можете завантажити цю програму тут: &lt;a href=&quot;http://qremote.org/download.php#Download&quot;&gt;qremote.org&lt;/a&gt; &lt;br&gt; &lt;br&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>Keyboard</name>
+    <message>
+        <source>Esc</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl</source>
+        <translation type="unfinished">Ctrl</translation>
+    </message>
+    <message>
+        <source>Alt</source>
+        <translation type="unfinished">Alt</translation>
     </message>
 </context>
 <context>

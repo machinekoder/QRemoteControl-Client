@@ -1,7 +1,14 @@
 import QtQuick 1.1
-//import Platform 1.0
+
 Item {
+    property int orientationLock: 0
+
     id: appWindow
+    anchors.fill: parent
+
+    onOrientationLockChanged: {
+            viewer.setOrientation(orientationLock)
+    }
 
     // Loaders for the main application and the splash screen.
     Loader {
@@ -21,8 +28,8 @@ Item {
     Loader {
         id: splashScreenLoader
         source: Qt.resolvedUrl("SplashScreen.qml");
-        width: mainAppLoaderItem.width
-        height: mainAppLoaderItem.height
+        width: appWindow.width
+        height: appWindow.height
     }
 
     // Timers for starting to load the main application and eventually deleting
