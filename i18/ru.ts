@@ -44,7 +44,7 @@
     <name>ActionsPage</name>
     <message>
         <source>To see some items here add some commands in the User Commands Tab on the server.</source>
-        <translation type="unfinished"></translation>
+        <translation>Чтобы увидеть какие-либо элементы здесь, добавьте соответствующие команды во вкладке Пользовательские команды на сервере.</translation>
     </message>
 </context>
 <context>
@@ -156,15 +156,15 @@
     <name>Keyboard</name>
     <message>
         <source>Esc</source>
-        <translation type="unfinished"></translation>
+        <translation>Esc</translation>
     </message>
     <message>
         <source>Ctrl</source>
-        <translation type="unfinished">Ctrl</translation>
+        <translation>Ctrl</translation>
     </message>
     <message>
         <source>Alt</source>
-        <translation type="unfinished">Alt</translation>
+        <translation>Alt</translation>
     </message>
 </context>
 <context>

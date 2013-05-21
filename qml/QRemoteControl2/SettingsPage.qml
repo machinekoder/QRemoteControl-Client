@@ -4,7 +4,7 @@ import "MyComponents/"
 import "styles" as Styles
 
 Rectangle {
-    id: rectangle1
+    id: main
     width: 400
     height: 600
     color: "#00000000"
@@ -77,6 +77,15 @@ Rectangle {
             width:          ((rotation === 0) || (rotation === 180)) ? parent.width : parent.height
             height:         ((rotation === 0) || (rotation === 180)) ? parent.height : parent.width
             anchors.centerIn: parent
+
+            Behavior on width {
+                             enabled: master.state == "settingsState"
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+            Behavior on height {
+                             enabled: master.state == "settingsState"
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
 
             Flickable {
                 id: flicker

@@ -21,6 +21,15 @@ Rectangle {
             height:         ((rotation === 0) || (rotation === 180)) ? parent.height : parent.width
             anchors.centerIn: parent
 
+            Behavior on width {
+                             enabled: master.state == "helpState"
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+            Behavior on height {
+                             enabled: master.state == "helpState"
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+
             Flickable {
                 id: flickable
                 flickableDirection: Flickable.VerticalFlick

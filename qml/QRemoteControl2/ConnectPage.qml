@@ -119,7 +119,17 @@ Rectangle {
             height:         ((rotation === 0) || (rotation === 180)) ? parent.height : parent.width
             anchors.centerIn: parent
 
+            Behavior on width {
+                             enabled: (master.state == "networkState") || (master.state == "startState")
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+            Behavior on height {
+                             enabled: (master.state == "networkState") || (master.state == "startState")
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+
             Flickable {
+                id: flickable
                 anchors.top: parent.top
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -144,7 +154,7 @@ Rectangle {
                     anchors.leftMargin: master.generalMargin
 
                     Behavior on height {
-                                     NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                                     NumberAnimation { id: advancedColumnAnimation; easing.type: Easing.OutCubic; duration: 300 }
                                  }
 
                     Label {
@@ -210,7 +220,7 @@ Rectangle {
                     anchors.rightMargin:master.generalMargin
                     anchors.left:       parent.left
                     anchors.leftMargin: master.generalMargin
-                    height:             enabled ? master.height * 0.55 : 0
+                    height:             enabled ? master.buttonHeight * 5.45 : 0
                     enabled:            false
 
                     Behavior on height {
@@ -323,6 +333,7 @@ Rectangle {
                             }
 
                             Behavior on width {
+                                            enabled: advancedColumnAnimation.running
                                              NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
                                          }
                         }
@@ -337,6 +348,7 @@ Rectangle {
                             }
 
                             Behavior on width {
+                                            enabled: advancedColumnAnimation.running
                                              NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
                                          }
                         }
