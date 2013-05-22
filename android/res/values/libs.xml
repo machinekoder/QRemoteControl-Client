@@ -10,6 +10,7 @@
         <item>QtSensors</item>
         <item>QtSql</item>
         <item>QtSvg</item>
+        <item>QtSystemInfo</item>
         <item>QtXmlPatterns</item>
         <item>QtDeclarative</item>
     </array>
