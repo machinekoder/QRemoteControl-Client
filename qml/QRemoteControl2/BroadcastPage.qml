@@ -29,6 +29,11 @@ Rectangle {
         smooth: true
         source: master.imagePath + master.iconTheme + "/remote.png"
         rotation: master.screenRotation
+
+        Behavior on rotation {
+                         enabled: master.state == "broadcastState"
+                         NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                     }
     }
 
 
@@ -45,6 +50,11 @@ Rectangle {
         source: master.imagePath + master.iconTheme + "/computer.png"
         fillMode: Image.PreserveAspectFit
         rotation: master.screenRotation
+
+        Behavior on rotation {
+                         enabled: master.state == "broadcastState"
+                         NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                     }
     }
 
 
@@ -103,6 +113,15 @@ Rectangle {
             width:          ((rotation === 0) || (rotation === 180)) ? parent.width : parent.height
             height:         ((rotation === 0) || (rotation === 180)) ? parent.height : parent.width
             anchors.centerIn: parent
+
+            Behavior on width {
+                             enabled: master.state == "broadcastState"
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+            Behavior on height {
+                             enabled: master.state == "broadcastState"
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
 
             Button {
                     id: exitButton
@@ -172,7 +191,7 @@ Rectangle {
                                 }
                             }
 
-                            onClicked: {
+                            onReleased: {
                                 loadingPage.showNormalText()
                                 client.connectToServer(index)
                             }

@@ -13,6 +13,10 @@ Rectangle {
     Item {
         id: wrapper
         anchors.fill: parent
+        anchors.leftMargin:     master.generalMargin/2
+        anchors.rightMargin:    master.generalMargin/2
+        anchors.topMargin:      master.generalMargin/2
+        anchors.bottomMargin:   master.generalMargin/2
 
         Text {
             id: label
@@ -20,9 +24,9 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
             anchors.right: parent.right
-            anchors.rightMargin: 20
+            anchors.rightMargin: master.buttonHeight*0.5
             anchors.left: parent.left
-            anchors.leftMargin: 20
+            anchors.leftMargin: master.buttonHeight*0.5
             anchors.verticalCenter: parent.verticalCenter
             visible: listModel.count == 0
             color: theme.primaryTextColor
@@ -81,15 +85,12 @@ Rectangle {
     function addAction(id,name,image)
     {
         if (id === 1)
+        {
             clearActions();
-        //if (id > listModel.count)
-            listModel.append({"name": name, "image": image})
-        //else
-        //{
-            //for (var i = id-1; i < listModel.count; i++)
-            //    listModel.remove(i)
-            //listModel.insert(id-1,{"name": name, "image": image})
-        //}
+        }
+
+        listModel.append({"name": name, "image": image})
+
     }
     function actionReceived(id,name,filePath)
     {

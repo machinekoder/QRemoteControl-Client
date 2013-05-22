@@ -8,6 +8,9 @@ Rectangle {
     property bool   landscapeMode: (device.width < device.height)
     property bool   active: Qt.application.active
 
+    id: device
+    anchors.fill: parent
+
     TextEdit {
         id: dummyEdit
     }
@@ -26,8 +29,7 @@ Rectangle {
             master.screenRotation = 90
     }
 
-    id: device
-    anchors.fill: parent
+
 
     Rectangle {
         property string backgroundImage: "images/background_grey.png"
@@ -41,6 +43,8 @@ Rectangle {
         property int buttonHeight: Math.round(height*0.10)
 
         property string platform: platform.platform
+
+        property string lastState: ""
 
         id: master
         color: "black"
@@ -171,7 +175,7 @@ Rectangle {
                     }
                     else
                     {
-                        master.state = "startState";
+                        master.state = master.lastState;
                     }
             }
             }
@@ -179,16 +183,26 @@ Rectangle {
                 id: helpPage
                 width: master.width
                 height: parent.height
-                onContinueClicked: master.state = "startState"
+                onContinueClicked: master.state = master.lastState
             }
             ConnectPage {
                 id: connectPage
                 width: master.width
                 height: parent.height
-                onHelpClicked: master.state = "helpState"
-                onSettingsClicked: master.state = "settingsState"
-                onInfoClicked: master.state = "aboutState"
+                onHelpClicked: {
+                    master.lastState = master.state
+                    master.state = "helpState"
+                }
+                onSettingsClicked: {
+                    master.lastState = master.state
+                    master.state = "settingsState"
+                }
+                onInfoClicked: {
+                    master.lastState = master.state
+                    master.state = "aboutState"
+                }
                 onBroadcastClicked: {
+                    master.lastState = master.state
                     client.password = connectPage.password
                     //client.hostname = connectPage.hostname
                     client.port = connectPage.port
@@ -196,6 +210,7 @@ Rectangle {
                     client.startBroadcasting()
                 }
                 onConnectClicked: {
+                    master.lastState = master.state
                     client.password = connectPage.password
                     client.hostname = connectPage.hostname
                     client.port = connectPage.port
@@ -206,6 +221,7 @@ Rectangle {
                     label.visible = !connectPage.advancedSelected && master.state == "networkState"
                 }
                 onWolClicked: {
+                    master.lastState = master.state
                     master.state = "wakeOnLanState"
                 }
             }
@@ -214,7 +230,7 @@ Rectangle {
                 width:              master.width
                 height:             master.height
                 onAbortClicked: {
-                    master.state = "startState"
+                    master.state = master.lastState
                     client.abortBroadcasting()
                 }
             }
@@ -223,7 +239,7 @@ Rectangle {
                 width:              master.width
                 height:             parent.height
                 onAbortClicked: {
-                    master.state = "startState"
+                    master.state = master.lastState
                     client.abortConnectionRequest()
                 }
             }
@@ -231,7 +247,7 @@ Rectangle {
                 id:                 aboutPage
                 width:              master.width
                 height:             parent.height
-                onContinueClicked:  master.state = "startState"
+                onContinueClicked:  master.state = master.lastState
             }
             RemoteControlPage {
                 id:                 remotecontrolPage

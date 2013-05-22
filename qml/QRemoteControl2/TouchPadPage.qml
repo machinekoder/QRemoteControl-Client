@@ -36,8 +36,8 @@ Rectangle {
         anchors.left:           parent.left
         anchors.rightMargin:    master.generalMargin
         anchors.leftMargin:     master.generalMargin
-        anchors.bottomMargin:   master.generalMargin/2
-        anchors.topMargin:      master.generalMargin/2
+        anchors.bottomMargin:   master.generalMargin
+        anchors.topMargin:      master.generalMargin
         TouchPad {
             id: touchpad
 
@@ -78,7 +78,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: master.generalMargin
-        spacing: master.generalMargin/2
+        spacing: master.generalMargin
 
         Button {
             id: controlButton

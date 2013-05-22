@@ -32,7 +32,7 @@ Rectangle {
     Rectangle {
         id: rectangle1
         width: parent.width
-        height: parent.height - buttonRow.height - master.generalMargin/2
+        height: parent.height - buttonRow.height - master.generalMargin
         radius: leftButton.radius
         smooth: true
         gradient: theme.defaultGradient
@@ -192,7 +192,7 @@ Rectangle {
         id: buttonRow
         width: parent.width
         height: parent.height*0.13
-        spacing: master.generalMargin/2
+        spacing: master.generalMargin
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
 

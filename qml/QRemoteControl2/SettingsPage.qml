@@ -4,7 +4,7 @@ import "MyComponents/"
 import "styles" as Styles
 
 Rectangle {
-    id: rectangle1
+    id: main
     width: 400
     height: 600
     color: "#00000000"
@@ -77,6 +77,15 @@ Rectangle {
             width:          ((rotation === 0) || (rotation === 180)) ? parent.width : parent.height
             height:         ((rotation === 0) || (rotation === 180)) ? parent.height : parent.width
             anchors.centerIn: parent
+
+            Behavior on width {
+                             enabled: master.state == "settingsState"
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+            Behavior on height {
+                             enabled: master.state == "settingsState"
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
 
             Flickable {
                 id: flicker
@@ -152,7 +161,7 @@ Rectangle {
                    anchors.topMargin:           master.generalMargin
                    anchors.horizontalCenter:    parent.horizontalCenter
                    width:                       master.buttonHeight * 0.9 * 5 + 4 * master.generalMargin
-                   height:                      master.buttonHeight
+                   height:                      master.buttonHeight*0.9
                    Button {
                        id:              noLockButton
                        checkable:       true
@@ -406,7 +415,7 @@ Rectangle {
                         id: grid1
                         rows: 4
                         columns: 3
-                        spacing: master.generalMargin/2
+                        spacing: master.generalMargin
                         anchors.top: label1.bottom
                         anchors.topMargin: master.generalMargin
                         anchors.right: parent.right

@@ -111,7 +111,6 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.top: exitButton.bottom
-        anchors.topMargin: master.generalMargin
 
         Item {
             id: rotator
@@ -120,7 +119,17 @@ Rectangle {
             height:         ((rotation === 0) || (rotation === 180)) ? parent.height : parent.width
             anchors.centerIn: parent
 
+            Behavior on width {
+                             enabled: (master.state == "networkState") || (master.state == "startState")
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+            Behavior on height {
+                             enabled: (master.state == "networkState") || (master.state == "startState")
+                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                         }
+
             Flickable {
+                id: flickable
                 anchors.top: parent.top
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -145,7 +154,7 @@ Rectangle {
                     anchors.leftMargin: master.generalMargin
 
                     Behavior on height {
-                                     NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                                     NumberAnimation { id: advancedColumnAnimation; easing.type: Easing.OutCubic; duration: 300 }
                                  }
 
                     Label {
@@ -211,7 +220,7 @@ Rectangle {
                     anchors.rightMargin:master.generalMargin
                     anchors.left:       parent.left
                     anchors.leftMargin: master.generalMargin
-                    height:             enabled ? master.height * 0.5 : 0
+                    height:             enabled ? master.buttonHeight * 5.45 : 0
                     enabled:            false
 
                     Behavior on height {
@@ -257,7 +266,7 @@ Rectangle {
                                     }
                                 }
 
-                                onClicked: {
+                                onReleased: {
 
                                     connectPage.password = password
                                     connectPage.hostname = hostName
@@ -280,7 +289,7 @@ Rectangle {
 
                 Column {
                     id: column1
-                    spacing: master.generalMargin/2
+                    spacing: master.generalMargin
                     anchors.top: parent.top
                     anchors.topMargin: master.generalMargin
                     anchors.right: parent.right
@@ -311,25 +320,37 @@ Rectangle {
                         anchors.rightMargin: 0
                         anchors.left: parent.left
                         anchors.leftMargin: 0
+                        spacing: master.generalMargin/2
                         Button {
                             id: connectButton
                             height: master.buttonHeight
                             text: advancedColumn.enabled?qsTr("Connect") + client.emptyString :qsTr("Use last Connection") + client.emptyString
-                            width: advancedColumn.enabled ? parent.width : parent.width - master.buttonHeight*0.9
+                            width: advancedColumn.enabled ? parent.width : parent.width - master.buttonHeight*0.9 - master.generalMargin/2
                             icon: ""
                             onClicked: {
                                 connectClicked()
                                 main.forceActiveFocus() // remove the focus from all inputs
                             }
+
+                            Behavior on width {
+                                            enabled: advancedColumnAnimation.running
+                                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                                         }
                         }
                         Button {
                             id: lastConnectionButton
                             height: master.buttonHeight
                             width: advancedColumn.enabled ? 0 : master.buttonHeight*0.9
-                            icon: listRect.enabled ? master.imagePath + master.iconTheme + "/up.png" : master.imagePath + master.iconTheme + "/down.png"
+                            icon:  master.imagePath + master.iconTheme + "/up.png"
+                            iconRotation: listRect.enabled ? 0 : 180
                             onClicked: {
                                 listRect.enabled = !listRect.enabled
                             }
+
+                            Behavior on width {
+                                            enabled: advancedColumnAnimation.running
+                                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
+                                         }
                         }
                     }
                 }
