@@ -102,9 +102,10 @@ Rectangle {
 
                 Text {
                     id: moreText
-                    text: qsTr("If you find bugs and errors or want to give feedback please contact: <a href=\"mailto:support@qremote.org\">support@qremote.org</a><br>") +
+                    text: "<html><head><style>a:link{color:" + theme.linkTextColor + "} a:visited{color:" + theme.linkTextColor + "}</style></head> <body>" +
+                          qsTr("If you find bugs and errors or want to give feedback please contact: <a href=\"mailto:support@qremote.org\">support@qremote.org</a><br>") +
                           qsTr("or visit <a href=\"http://qremote.org\">qremote.org</a> <br> <br>") +
-                          qsTr("If you find this application useful please show it to your friends and vote for it.") + client.emptyString
+                          qsTr("If you find this application useful please show it to your friends and vote for it.") + client.emptyString + "</body></html>"
 
                     anchors {
                         top: aboutContainer.bottom

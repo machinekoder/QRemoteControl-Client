@@ -18,6 +18,7 @@ Style {
     secondaryTextColor:   "white"
     editTextColor:        "black"
     hintTextColor:        "grey"
+    linkTextColor:        "#1e8de7"
     buttonFontSize:       master.width * 0.05
     buttonFontBold:       true
     labelFontSize:        master.width * 0.04

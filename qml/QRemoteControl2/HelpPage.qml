@@ -71,7 +71,8 @@ Rectangle {
 
                 Text {
                     id: moreText
-                    text: qsTr("<br><b>Before Starting</b><br>") +
+                    text: "<html><head><style>a:link{color:" + theme.linkTextColor + "} a:visited{color:" + theme.linkTextColor + "}</style></head><body>" +
+                          qsTr("<br><b>Before Starting</b><br>") +
                           qsTr("Make shure you have the server software installed on the computer you want to remote control. You can download the software at: <a href=\"http://qremote.org/download.php#Download\">qremote.org</a> <br> <br>") +
                           qsTr("<b>Connecting</b><br>") +
                           qsTr("- Connect your smart phone and your computer to a wireless network. <br>") +
@@ -80,8 +81,7 @@ Rectangle {
                           qsTr("- Sometimes the client can not find the server automatically, you have to type in the IP-address manually in the advanced tab.<br>") +
                           qsTr("- Click on the server you want to use.<br>") +
                           qsTr("- Start using QRemoteControl.<br>") +
-                          qsTr("- If the connection does not work, try to open port 5487 for UDP and TCP protocol on your firewall.<br>") + client.emptyString
-
+                          qsTr("- If the connection does not work, try to open port 5487 for UDP and TCP protocol on your firewall.<br>") + client.emptyString + "</body></html>"
 
                     anchors {
                         top: aboutContainer.bottom

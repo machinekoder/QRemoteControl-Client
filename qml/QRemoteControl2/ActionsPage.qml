@@ -63,10 +63,6 @@ Rectangle {
             model: ListModel {
                 id: listModel
             }
-            Behavior on rotation {
-                            enabled: (mainRect.state == "actionsPageState")
-                            NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }
-            }
             Behavior on width {
                             enabled: (mainRect.state == "actionsPageState")
                             NumberAnimation { easing.type: Easing.OutCubic; duration: 300 }

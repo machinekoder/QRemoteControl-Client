@@ -18,6 +18,7 @@ Item {
     property color    secondaryTextColor:   "white"
     property color    editTextColor:        "black"
     property color    hintTextColor:        "grey"
+    property color    linkTextColor:        "blue"
     property int      buttonFontSize:       10
     property bool     buttonFontBold:       true
     property int      labelFontSize:        10
@@ -138,6 +139,7 @@ Item {
         main.secondaryTextColor = newTheme.secondaryTextColor
         main.editTextColor = newTheme.editTextColor
         main.hintTextColor = newTheme.hintTextColor
+        main.linkTextColor = newTheme.linkTextColor
         main.buttonFontSize = newTheme.buttonFontSize
         main.buttonFontBold = newTheme.buttonFontBold
         main.labelFontSize = newTheme.labelFontSize

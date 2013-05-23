@@ -220,7 +220,7 @@ Rectangle {
                     anchors.rightMargin:master.generalMargin
                     anchors.left:       parent.left
                     anchors.leftMargin: master.generalMargin
-                    height:             enabled ? master.buttonHeight * 5.45 : 0
+                    height:             enabled ? master.buttonHeight * 5.43 : 0
                     enabled:            false
 
                     Behavior on height {
