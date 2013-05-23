@@ -134,9 +134,9 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
             anchors.right: parent.right
-            anchors.rightMargin: 20
+            anchors.rightMargin: parent.width * 0.05
             anchors.left: parent.left
-            anchors.leftMargin: 20
+            anchors.leftMargin: anchors.rightMargin
             anchors.verticalCenter: parent.verticalCenter
             color: theme.primaryTextColor
             font.pixelSize: theme.hintFontSize
@@ -286,7 +286,7 @@ Rectangle {
 
                 PropertyChanges {
                     target: label
-                    visible: true
+                    visible: !(platform.platform === "Android") // Deactivate the warning on Android as it seems not work properly
                 }
             },
             State {

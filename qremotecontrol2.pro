@@ -45,6 +45,7 @@ contains(MEEGO_EDITION,harmattan): {
  MOBILITY += systeminfo
 
 QT += network
+QT -= svg
 
 SOURCES += src/main.cpp \
             src/qremotecontrolclient.cpp \
