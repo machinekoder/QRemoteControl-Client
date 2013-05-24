@@ -29,7 +29,7 @@ Rectangle {
         id: label
         text: "Test:"
         anchors.left: parent.left
-        anchors.leftMargin: 10
+        anchors.leftMargin: parent.height * 0.15
         anchors.verticalCenter: parent.verticalCenter
         font.pixelSize: theme.editFontSize
         font.bold:      theme.editFontBold
@@ -43,14 +43,14 @@ Rectangle {
         id: rect1
         height: parent.height
         color: "#00000000"
-        width: parent.width - label.width - 20
+        width: parent.width - label.width - parent.height * 0.3
         anchors.left: label.right
         anchors.leftMargin: 0
 
 
         TextInput {
             id:             input
-            width:          parent.width -20
+            width:          parent.width - parent.height * 0.3
             text:           "Test"
             color:          theme.editTextColor
             font.pixelSize: theme.editFontSize

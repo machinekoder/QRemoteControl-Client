@@ -21,7 +21,7 @@ Rectangle {
 
     LineEdit {
         id: lineEdit
-        width: parent.width - parent.height*2 -10
+        width: parent.width - parent.height*2 - parent.height * 0.2
         height: parent.height
         labelEnabled: false
         border.width: minusButton.border.width
@@ -51,7 +51,7 @@ Rectangle {
         height: parent.height
         text: "-"
         anchors.left: lineEdit.right
-        anchors.leftMargin: 4
+        anchors.leftMargin: parent.height * 0.1
         onClicked: {
             if ((value-step) >= min)
                 value = value - step
@@ -64,7 +64,7 @@ Rectangle {
         height: parent.height
         text: "+"
         anchors.left: minusButton.right
-        anchors.leftMargin: 5
+        anchors.leftMargin: parent.height * 0.1
         border.width: minusButton.border.width
         border.color: minusButton.border.color
         onClicked: {
