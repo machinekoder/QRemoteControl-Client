@@ -220,7 +220,7 @@ Rectangle {
                     client.connectToHost()
                 }
                 onAdvancedClicked: {
-                    label.visible = !connectPage.advancedSelected && master.state == "networkState"
+                    label.visible = !connectPage.advancedSelected && (master.state == "networkState") && !(platform.platform === "Android")
                 }
                 onWolClicked: {
                     master.lastState = master.state
