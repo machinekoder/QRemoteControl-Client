@@ -324,7 +324,7 @@ Rectangle {
                        width:           master.buttonHeight * 0.9
                        height:          width
                        text:            ""
-                       icon:            master.imagePath + "/lang/english.png"
+                       icon:            master.imagePath + "lang/english.png"
                        anchors.top:     parent.top
                        anchors.left:    parent.left
                        onClicked: {
@@ -346,7 +346,7 @@ Rectangle {
                        width:           master.buttonHeight * 0.9
                        height:          width
                        text:            ""
-                       icon:            master.imagePath + "/lang/german.png"
+                       icon:            master.imagePath + "lang/german.png"
                        anchors.top:     parent.top
                        anchors.left:    englishButton.right
                        anchors.leftMargin:  master.generalMargin
@@ -369,7 +369,7 @@ Rectangle {
                        width:           master.buttonHeight * 0.9
                        height:          width
                        text:            ""
-                       icon:            master.imagePath + "/lang/russian.png"
+                       icon:            master.imagePath + "lang/russian.png"
                        anchors.top:     parent.top
                        anchors.left:    germanButton.right
                        anchors.leftMargin:  master.generalMargin
@@ -392,7 +392,7 @@ Rectangle {
                        width:           master.buttonHeight * 0.9
                        height:          width
                        text:            ""
-                       icon:            master.imagePath + "/lang/ukrainian.png"
+                       icon:            master.imagePath + "lang/ukrainian.png"
                        anchors.top:     parent.top
                        anchors.left:    russianButton.right
                        anchors.leftMargin:  master.generalMargin
