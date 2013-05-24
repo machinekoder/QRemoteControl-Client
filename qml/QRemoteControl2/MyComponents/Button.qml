@@ -139,5 +139,12 @@ Rectangle {
         if (feedbackAvailable)
             Feedback.playHaptic()
     }
+
+    function click()
+    {
+        if (checkable)
+            checked = !checked;
+        base.clicked()
+    }
 }
 

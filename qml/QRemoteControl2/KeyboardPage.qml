@@ -5,8 +5,6 @@ Rectangle {
     property bool nativeKeyboardActivated: nativeTextInput.focus
     property bool autoOrientation: (remotecontrolPage.state == "keyboardPageState") && nativeKeyboardActivated
     property int orientationLock: 0
-    property int oldScreenOrientation: 0
-    property int oldScreenRotation: 0
 
     id: keyboardPageMain
     width: 400
@@ -164,21 +162,12 @@ Rectangle {
         if (nativeTextInput.focus)
         {
             keyboardPageMain.forceActiveFocus()
-
-            client.screenOrientation = keyboardPageMain.oldScreenOrientation
-            master.screenRotation = keyboardPageMain.oldScreenRotation
+            master.releaseScreenOrientation()
         }
         else
         {
             nativeTextInput.forceActiveFocus()
-
-            keyboardPageMain.oldScreenOrientation = client.screenOrientation
-            keyboardPageMain.oldScreenRotation = master.screenRotation
-
-            client.screenOrientation = 1
-            master.screenRotation = 0
-            if (!device.landscapeMode)
-                 master.screenRotation += 90
+            master.lockScreenOrientation()
         }
     }
 }

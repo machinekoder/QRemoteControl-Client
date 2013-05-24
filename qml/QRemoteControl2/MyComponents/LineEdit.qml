@@ -72,10 +72,12 @@ Rectangle {
                               if (!input.activeFocus)
                               {
                                   input.closeSoftwareInputPanel()
+                                  master.releaseScreenOrientation()
                               }
                               else
                               {
                                   input.openSoftwareInputPanel()
+                                  master.lockScreenOrientation()
                               }
                           }
             onAccepted: {

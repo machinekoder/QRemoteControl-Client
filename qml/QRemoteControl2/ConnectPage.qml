@@ -41,6 +41,10 @@ Rectangle {
         onClicked: {
             settingsClicked()
             main.forceActiveFocus() // remove the focus from all inputs
+            if (advancedColumn.enabled && (master.state == "networkState"))
+            {
+                upDownButton.click()
+            }
         }
     }
     Button {
@@ -57,6 +61,10 @@ Rectangle {
         onClicked: {
             helpClicked()
             main.forceActiveFocus() // remove the focus from all inputs
+            if (advancedColumn.enabled && (master.state == "networkState"))
+            {
+                upDownButton.click()
+            }
         }
     }
     Button {
@@ -72,6 +80,10 @@ Rectangle {
         onClicked: {
             infoClicked()
             main.forceActiveFocus() // remove the focus from all inputs
+            if (advancedColumn.enabled && (master.state == "networkState"))
+            {
+                upDownButton.click()
+            }
         }
     }
     Button {

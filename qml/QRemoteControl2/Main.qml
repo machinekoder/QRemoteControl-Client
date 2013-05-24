@@ -37,6 +37,8 @@ Rectangle {
         property string imagePath: "images/"
         property string iconTheme: "black"
         property int    screenRotation: 0
+        property int    oldScreenOrientation: 0
+        property int    oldScreenRotation: 0
 
         property int generalMargin: Math.round(width*0.02)
         property int buttonWidth: Math.round(width*0.18)
@@ -415,5 +417,22 @@ Rectangle {
                  PropertyAnimation { target: centerContainer; properties: "x"; easing.type: Easing.OutCubic }
                  PropertyAnimation { target: centerContainer; properties: "opacity"; easing.type: Easing.OutCubic }
              }
+
+        function lockScreenOrientation()
+        {
+            master.oldScreenOrientation = client.screenOrientation
+            master.oldScreenRotation = master.screenRotation
+
+            client.screenOrientation = 1
+            master.screenRotation = 0
+            if (!device.landscapeMode)
+                 master.screenRotation += 90
+        }
+
+        function releaseScreenOrientation()
+        {
+            client.screenOrientation = master.oldScreenOrientation
+            master.screenRotation = master.oldScreenRotation
+        }
     }
 }
