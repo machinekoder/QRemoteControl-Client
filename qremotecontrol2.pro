@@ -42,7 +42,9 @@ contains(MEEGO_EDITION,harmattan): {
 # lines and add the respective components to the MOBILITY variable.
  CONFIG += mobility
  MOBILITY += sensors
+contains(DEFINES,TRIAL): {
  MOBILITY += systeminfo
+}
 
 QT += network
 QT -= svg
