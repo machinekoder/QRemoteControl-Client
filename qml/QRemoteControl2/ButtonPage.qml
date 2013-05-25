@@ -48,7 +48,10 @@ Rectangle {
         anchors.top:        parent.top
         anchors.topMargin:  master.generalMargin
         iconSource:         master.imagePath + master.iconTheme + "/settings.png"
-        onClicked:          settingsClicked()
+        onClicked:          {
+            settingsClicked()
+            keyboardPage.closeNativeKeyboard()
+        }
         rotation:            master.screenRotation
         animated:           (mainRect.state == "buttonPageState")
     }

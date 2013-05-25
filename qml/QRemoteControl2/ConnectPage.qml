@@ -39,12 +39,12 @@ Rectangle {
         anchors.leftMargin: master.generalMargin
         rotation:           master.screenRotation
         onClicked: {
-            settingsClicked()
             main.forceActiveFocus() // remove the focus from all inputs
             if (advancedColumn.enabled && (master.state == "networkState"))
             {
                 upDownButton.click()
             }
+            settingsClicked()
         }
     }
     Button {
@@ -59,12 +59,12 @@ Rectangle {
         anchors.leftMargin: master.generalMargin
         rotation:           master.screenRotation
         onClicked: {
-            helpClicked()
             main.forceActiveFocus() // remove the focus from all inputs
             if (advancedColumn.enabled && (master.state == "networkState"))
             {
                 upDownButton.click()
             }
+            helpClicked()
         }
     }
     Button {
@@ -78,12 +78,12 @@ Rectangle {
         anchors.leftMargin: master.generalMargin
         rotation:           master.screenRotation
         onClicked: {
-            infoClicked()
             main.forceActiveFocus() // remove the focus from all inputs
             if (advancedColumn.enabled && (master.state == "networkState"))
             {
                 upDownButton.click()
             }
+            infoClicked()
         }
     }
     Button {

@@ -170,4 +170,11 @@ Rectangle {
             master.lockScreenOrientation()
         }
     }
+
+    function closeNativeKeyboard() {
+        if (nativeTextInput.focus)
+        {
+            toggleNativeKeyboard()
+        }
+    }
 }
