@@ -316,7 +316,7 @@ Rectangle {
                    anchors.top:                 label4.bottom
                    anchors.topMargin:           master.generalMargin
                    anchors.horizontalCenter:    parent.horizontalCenter
-                   width:                       master.buttonHeight * 0.9 * 4 + 3 * master.generalMargin
+                   width:                       master.buttonHeight * 0.9 * 5 + 4 * master.generalMargin
 
                    Button {
                        id:              englishButton
@@ -330,11 +330,36 @@ Rectangle {
                        onClicked: {
                            if (!checked)
                            {
+                               spanishButton.checked = false
                                germanButton.checked = false
                                russianButton.checked = false
                                ukrainianButton.checked = false
 
                                client.language = "en"
+                           }
+                           else
+                               checked = false
+                       }
+                   }
+                   Button {
+                       id:              spanishButton
+                       checkable:       true
+                       width:           master.buttonHeight * 0.9
+                       height:          width
+                       text:            ""
+                       icon:            master.imagePath + "lang/spanish.png"
+                       anchors.top:     parent.top
+                       anchors.left:    englishButton.right
+                       anchors.leftMargin:  master.generalMargin
+                       onClicked: {
+                           if (!checked)
+                           {
+                               englishButton.checked = false
+                               germanButton.checked = false
+                               russianButton.checked = false
+                               ukrainianButton.checked = false
+
+                               client.language = "es"
                            }
                            else
                                checked = false
@@ -348,11 +373,12 @@ Rectangle {
                        text:            ""
                        icon:            master.imagePath + "lang/german.png"
                        anchors.top:     parent.top
-                       anchors.left:    englishButton.right
+                       anchors.left:    spanishButton.right
                        anchors.leftMargin:  master.generalMargin
                        onClicked: {
                            if (!checked)
                            {
+                               spanishButton.checked = false
                                englishButton.checked = false
                                russianButton.checked = false
                                ukrainianButton.checked = false
@@ -376,6 +402,7 @@ Rectangle {
                        onClicked: {
                            if (!checked)
                            {
+                               spanishButton.checked = false
                                germanButton.checked = false
                                englishButton.checked = false
                                ukrainianButton.checked = false
@@ -399,6 +426,7 @@ Rectangle {
                        onClicked: {
                            if (!checked)
                            {
+                               spanishButton.checked = false
                                germanButton.checked = false
                                russianButton.checked = false
                                englishButton.checked = false
@@ -744,6 +772,7 @@ Rectangle {
     function setLanguage(language)
     {
         englishButton.checked   = false
+        spanishButton.checked   = false
         germanButton.checked    = false
         russianButton.checked   = false
         ukrainianButton.checked = false
@@ -751,6 +780,8 @@ Rectangle {
         switch (language)
         {
             case "en": englishButton.checked = true
+                    break
+            case "es": spanishButton.checked = true
                     break
             case "de": germanButton.checked = true
                     break

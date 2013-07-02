@@ -306,6 +306,12 @@ public slots:
                 translator1->load("de", ":/i18");
                 qApp->installTranslator(translator1);
                }
+            else if (m_language.contains(QString("es")))
+            {
+                m_language = "es";
+                translator1->load("es", ":/i18");
+                qApp->installTranslator(translator1);
+            }
             else if(m_language.contains(QString("ru"))) {
                 m_language = "ru";
                 translator2->load("ru", ":/i18");
