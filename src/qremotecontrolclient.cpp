@@ -86,7 +86,7 @@ void QRemoteControlClient::openNetworkSession()
         {
             networkConfig = config;
 #ifdef QT_DEBUG
-            qDebug() << config.bearerTypeName() << config.bearerName() << config.name();
+            //qDebug() << config.bearerTypeName() << config.bearerName() << config.name();
 #endif
         }
     }

@@ -3,28 +3,27 @@
 PlatformDetails::PlatformDetails(QObject *parent) :
     QObject(parent)
 {
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
     m_platform = "Linux";
-#endif
-#ifdef Q_OS_OSX
+#elif defined(Q_OS_OSX)
     m_platform = "OSX";
-#endif
-#ifdef Q_WS_WIN
+#elif (defined(Q_WS_WIN) || defined(Q_OS_WIN))
     m_platform = "Windows";
-#endif
-#ifdef Q_OS_SYMBIAN
+#elif defined(Q_OS_SYMBIAN)
     m_platform = "Symbian";
-#endif
-#ifdef Q_OS_MEEGO
+#elif defined(Q_OS_MEEGO)
     m_platform = "MeeGo";
-#endif
-#ifdef Q_WS_SIMULATOR
+#elif defined(Q_WS_SIMULATOR)
     m_platform = "Simulator";
-#endif
-#ifdef Q_OS_ANDROID
+#elif defined(Q_OS_ANDROID)
     m_platform = "Android";
-#endif
-#ifdef Q_OS_BLACKBERRY
+#elif defined(Q_OS_BLACKBERRY)
     m_platform = "BlackBerry";
+#elif defined(Q_OS_SAILFISH)    // TODO: This is not supported
+    m_platform = "SailfishOS"
+#elif defined(Q_OS_IOS)
+    m_platform = "iOS";
+#else
+    m_platform = "Other";
 #endif
 }
