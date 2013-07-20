@@ -2,12 +2,13 @@
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
     <id>org.qremote.qremotecontrol-client</id>
     <name>QRemoteControl Client</name>
-    <versionNumber>2.4.0</versionNumber>
-    <icon><image>qml/QRemoteControl2/images/qrc.png</image></icon>
+    <versionNumber>2.5.0</versionNumber>
+    <icon>
+        <image>qrc_green_meego114.png</image>
+    </icon>
     <description>With QRemoteControl you can remotely control your computer.</description>
     <initialWindow>
-        <aspectRatio>landscape</aspectRatio>
-        <autoOrients>false</autoOrients>
+        <autoOrients>true</autoOrients>
         <systemChrome>none</systemChrome>
         <transparent>false</transparent>
     </initialWindow>
@@ -19,8 +20,10 @@
     <arg>-style</arg>
     <arg>qnxlight</arg>
     <action system="true">run_native</action>
+    <action>access_internet</action>
     <!-- qremotecontrol2 should point to the project binary, path can be relative -->
     <asset path="qremotecontrol2" type="Qnx/Elf" entry="true">qremotecontrol2</asset>
     <asset path="%SRC_DIR%/qml">qml</asset>
+    <asset path="/home/alexander/projects/qremotecontrol-client/svg/qrc_green_meego114.png">qrc_green_meego114.png</asset>
     <authorId>gYAAgFPlfKdPddZH5EdJnaAtSGI</authorId>
 </qnx>
