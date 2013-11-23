@@ -165,5 +165,7 @@
         <file>qml/QRemoteControl2/images/white/vscroll.png</file>
         <file>qml/QRemoteControl2/images/white/zoom_in.png</file>
         <file>qml/QRemoteControl2/images/white/zoom_out.png</file>
+        <file>qml/QRemoteControl2/NavigationPanel.qml</file>
+        <file>qml/QRemoteControl2/MusicControl.qml</file>
     </qresource>
 </RCC>

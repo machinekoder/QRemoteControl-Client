@@ -1,7 +1,5 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import "MyComponents/"
-//import MyComponents 1.0
 
 Rectangle {
     signal buttonPressed(int id)
@@ -13,6 +11,8 @@ Rectangle {
     property int buttonMargin: master.generalMargin
     property int buttonwidth: master.buttonHeight
     property int buttonheight: master.buttonHeight
+    property bool buttonAnimated: (mainRect.state == "buttonPageState")
+    property bool buttonRotation: master.screenRotation
 
     id:     main
     width:  480
@@ -21,10 +21,10 @@ Rectangle {
 
     NavigationButton {
         id:             navigationbutton1
-        width:          master.buttonHeight*3
-        height:         width
-        y:              (row1.y + button2.y+button2.height)/2 - height/2//parent.verticalCenter
-        anchors.horizontalCenter: parent.horizontalCenter
+        width:          getButtonWidth(3)
+        height:         getButtonHeight(3)
+        x:              getButtonX(17)
+        y:              getButtonY(17)
         onOkPressed:    buttonPressed(15)
         onOkReleased:   buttonReleased(15)
         onRightPressed: buttonPressed(14)
@@ -35,260 +35,245 @@ Rectangle {
         onUpReleased:   buttonReleased(11)
         onDownPressed:  buttonPressed(12)
         onDownReleased: buttonReleased(12)
-        rotation:       master.screenRotation
-        animated:       (mainRect.state == "buttonPageState")
+        rotation:       buttonRotation
+        animated:       buttonAnimated
     }
 
     Button {
-        id:                 button0
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.left:       parent.left
-        anchors.leftMargin: master.generalMargin
-        anchors.top:        parent.top
-        anchors.topMargin:  master.generalMargin
-        iconSource:         master.imagePath + master.iconTheme + "/settings.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("settings")
+        x:                  getButtonX(1)
+        y:                  getButtonY(1)
         onClicked:          {
             settingsClicked()
             keyboardPage.closeNativeKeyboard()
         }
-        rotation:            master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
 
     Button {
-        id:                 button21
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.left:       button0.right
-        anchors.leftMargin: master.generalMargin
-        anchors.top:        parent.top
-        anchors.topMargin:  master.generalMargin
-        iconSource:         master.imagePath + master.iconTheme + "/disconnect.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("disconnect")
+        x:                  getButtonX(2)
+        y:                  getButtonY(2)
         onClicked:          disconnectClicked()
-        rotation:            master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
 
     Button {
-        id:                 button20
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.top:        parent.top
-        anchors.topMargin:  master.generalMargin
-        anchors.right:      button1.left
-        anchors.rightMargin:master.generalMargin
-        iconSource:         master.imagePath + master.iconTheme + "/keyboard.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("keyboard")
+        x:                  getButtonX(4)
+        y:                  getButtonY(4)
         onClicked:          keyboardPage.toggleNativeKeyboard()
-        rotation:           master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
 
     Button {
-        id:                 button1
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.top:        parent.top
-        anchors.topMargin:  master.generalMargin
-        anchors.right:      parent.right
-        anchors.rightMargin:master.generalMargin
-        iconSource:         master.imagePath + master.iconTheme + "/power.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("power")
+        x:                  getButtonX(5)
+        y:                  getButtonY(5)
         onPressed:          buttonPressed(1)
         onReleased:         buttonReleased(1)
-        rotation:           master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
 
     Button {
-        id:                 button3
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.top:        button0.bottom
-        anchors.topMargin:  master.generalMargin
-        anchors.left:       button2.right
-        anchors.leftMargin: master.generalMargin
-        iconSource:         master.imagePath + master.iconTheme + "/zoom_in.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("zoom_in")
+        x:                  getButtonX(6)
+        y:                  getButtonY(6)
         onPressed:          buttonPressed(3)
         onReleased:         buttonReleased(3)
-        rotation:           master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
 
     Button {
-        id:                 button2
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.top:        button0.bottom
-        anchors.topMargin:  master.generalMargin
-        anchors.left:       parent.left
-        anchors.leftMargin: master.generalMargin
-        iconSource:         master.imagePath + master.iconTheme + "/zoom_out.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("zoom_out")
+        x:                  getButtonX(7)
+        y:                  getButtonY(7)
         onPressed:          buttonPressed(2)
         onReleased:         buttonReleased(2)
-        rotation:           master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
 
     }
 
     Button {
-        id:                 button6
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.right:      parent.right
-        anchors.rightMargin:master.generalMargin
-        anchors.top:        button0.bottom
-        anchors.topMargin:  master.generalMargin
-        iconSource:         master.imagePath + master.iconTheme + "/volume_up.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("volume_up")
+        x:                  getButtonX(8)
+        y:                  getButtonY(8)
         onPressed:          buttonPressed(6)
         onReleased:         buttonReleased(6)
-        rotation:           master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
 
     Button {
-        id:                 button5
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.top:        button0.bottom
-        anchors.topMargin:  master.generalMargin
-        anchors.right:      button6.left
-        anchors.rightMargin:master.generalMargin
-        iconSource:         master.imagePath + master.iconTheme + "/volume_down.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("volume_down")
+        x:                  getButtonX(9)
+        y:                  getButtonY(9)
         onPressed:          buttonPressed(5)
         onReleased:         buttonReleased(5)
-        rotation:           master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
 
     Button {
-        id:                 button4
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.top:        button1.bottom
-        anchors.topMargin:  master.generalMargin
-        anchors.right:      button5.left
-        anchors.rightMargin:master.generalMargin
-        iconSource:         master.imagePath + master.iconTheme + "/volume_mute.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("volume_mute")
+        x:                  getButtonX(10)
+        y:                  getButtonY(10)
         onPressed:          buttonPressed(4)
         onReleased:         buttonReleased(4)
-        rotation:           master.screenRotation
-        animated:          (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
 
     Button {
-        id:                 button8
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.bottom:     navigationbutton1.top
-        anchors.bottomMargin: anchors.leftMargin
-        anchors.left:       navigationbutton1.right
-        anchors.leftMargin: -Math.round(master.width * 0.04)
-        iconSource:         master.imagePath + master.iconTheme + "/backspace.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("backspace")
+        x:                  getButtonX(14)
+        y:                  getButtonY(14)
         onPressed:          buttonPressed(8)
         onReleased:         buttonReleased(8)
-        rotation:           master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
-
     Button {
-        id:                 button7
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.bottom:     navigationbutton1.top
-        anchors.bottomMargin: anchors.rightMargin
-        anchors.right:      navigationbutton1.left
-        anchors.rightMargin: -Math.round(master.width * 0.04)
-        iconSource:         master.imagePath + master.iconTheme + "/exit.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("exit")
+        x:                  getButtonX(12)
+        y:                  getButtonY(12)
         onPressed:          buttonPressed(7)
         onReleased:         buttonReleased(7)
-        rotation:           master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
-
     Button {
-        id:                 button9
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.right:      navigationbutton1.left
-        anchors.rightMargin: anchors.topMargin
-        anchors.top:        navigationbutton1.bottom
-        anchors.topMargin: -Math.round(master.width * 0.04)
-        iconSource:         master.imagePath + master.iconTheme + "/switch_window.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("switch_window")
+        x:                  getButtonX(32)
+        y:                  getButtonY(32)
         onPressed:          buttonPressed(9)
         onReleased:         buttonReleased(9)
-        rotation:           master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
+    }
+    Button {
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("menu")
+        x:                  getButtonX(34)
+        y:                  getButtonY(34)
+        onPressed:          buttonPressed(10)
+        onReleased:         buttonReleased(10)
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
 
     Button {
-        id:                 button10
-        width:              buttonwidth
-        height:             buttonheight
-        anchors.left:       navigationbutton1.right
-        anchors.leftMargin: anchors.topMargin
-        anchors.top:        navigationbutton1.bottom
-        anchors.topMargin: -Math.round(master.width * 0.04)
-        iconSource:         master.imagePath + master.iconTheme + "/menu.png"
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("menu")
+        x:                  getButtonX(16)
+        y:                  getButtonY(16)
         onPressed:          buttonPressed(10)
         onReleased:         buttonReleased(10)
-        rotation:           master.screenRotation
-        animated:           (mainRect.state == "buttonPageState")
+        rotation:           buttonRotation
+        animated:           buttonAnimated
     }
 
-    Row {
-        id: row1
-        width: button18.width + button16.width + button19.width + button17.width + spacing * 3
-        height: button18.height
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: master.generalMargin
-        spacing: master.generalMargin
+    Button {
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("menu")
+        x:                  getButtonX(21)
+        y:                  getButtonY(21)
+        onPressed:          buttonPressed(10)
+        onReleased:         buttonReleased(10)
+        rotation:           buttonRotation
+        animated:           buttonAnimated
+    }
+    Button {
+        width:              getButtonWidth(1)
+        height:             getButtonHeight(1)
+        iconSource:         resolveImageUrl("menu")
+        x:                  getButtonX(26)
+        y:                  getButtonY(26)
+        onPressed:          buttonPressed(10)
+        onReleased:         buttonReleased(10)
+        rotation:           buttonRotation
+        animated:           buttonAnimated
+    }
 
+    MusicControl
+    {
+        width:              getButtonWidth(5)
+        height:             getButtonHeight(1)
+        x:                  getButtonX(36)
+        y:                  getButtonY(36)
+    }
 
+    function resolveImageUrl(name)
+    {
+        return master.imagePath + master.iconTheme + "/" + name + ".png"
+    }
 
-        Button {
-            id:                     button16
-            width:                  buttonwidth*1.2
-            height:                 buttonheight
-            anchors.verticalCenter: parent.verticalCenter
-            iconSource:             master.imagePath + master.iconTheme + "/seek_backward.png"
-            onPressed:              buttonPressed(16)
-            onReleased:             buttonReleased(16)
-            rotation:               master.screenRotation
-            animated:               (mainRect.state == "buttonPageState")
+    function getButtonX(buttonNumber)
+    {
+        var addition = 0
+        buttonNumber = ((buttonNumber-1) % 5)+1
+
+        if (buttonNumber >= 3)
+        {
+            addition = master.buttonMinimumAspectDifference
         }
 
-        Button {
-            id:                     button18
-            width:                  buttonwidth*1.4
-            height:                 buttonheight*1.3
-            anchors.verticalCenter: parent.verticalCenter
-            iconSource:             master.imagePath + master.iconTheme + "/play_pause.png"
-            onPressed:              buttonPressed(18)
-            onReleased:             buttonReleased(18)
-            rotation: master.screenRotation
+        return master.generalMargin*buttonNumber + master.buttonHeight*(buttonNumber-1) + addition
+    }
+
+    function getButtonY(buttonNumber)
+    {
+        buttonNumber = Math.floor((buttonNumber-1) / 5) + 1
+
+        return buttonNumber * master.generalMargin + master.buttonHeight * (buttonNumber-1)
+    }
+
+    function getButtonWidth(count)
+    {
+        var addition = 0
+        if (count >= 3)
+        {
+            addition = master.buttonMinimumAspectDifference
         }
-        Button {
-            id:                     button19
-            width:                  buttonwidth*1.2
-            height:                 buttonheight
-            anchors.verticalCenter: parent.verticalCenter
-            iconSource:             master.imagePath + master.iconTheme + "/stop.png"
-            onPressed:              buttonPressed(19)
-            onReleased:             buttonReleased(19)
-            rotation:               master.screenRotation
-            animated:               (mainRect.state == "buttonPageState")
-        }
-        Button {
-            id:                     button17
-            width:                  buttonwidth*1.2
-            height:                 buttonheight
-            anchors.verticalCenter: parent.verticalCenter
-            iconSource:             master.imagePath + master.iconTheme + "/seek_forward.png"
-            onPressed:              buttonPressed(17)
-            onReleased:             buttonReleased(17)
-            rotation:               master.screenRotation
-            animated:               (mainRect.state == "buttonPageState")
-        }
+
+        return master.buttonHeight * count + master.generalMargin * (count-1) + addition
+    }
+
+    function getButtonHeight(count)
+    {
+        return master.buttonHeight * count + master.generalMargin * (count-1)
     }
 }

@@ -41,7 +41,7 @@ Button {
 
     Image {
         id: image2
-        width: mainButton.width/5
+        width: mainButton.height/5
         height: width
         anchors.horizontalCenter: rightArea.horizontalCenter
         anchors.verticalCenterOffset: 0
@@ -53,7 +53,7 @@ Button {
 
     Image {
         id: image3
-        width: mainButton.width/5
+        width: mainButton.height/5
         height: width
         anchors.horizontalCenter: leftArea.horizontalCenter
         smooth: true
@@ -65,7 +65,7 @@ Button {
 
     Image {
         id: image4
-        width: mainButton.width/5
+        width: mainButton.height/5
         height: width
         anchors.verticalCenter: upArea.verticalCenter
         anchors.horizontalCenter: upArea.horizontalCenter
@@ -76,7 +76,7 @@ Button {
 
     Image {
         id: image5
-        width: mainButton.width/5
+        width: mainButton.height/5
         height: width
         anchors.horizontalCenter: downArea.horizontalCenter
         anchors.verticalCenter: downArea.verticalCenter

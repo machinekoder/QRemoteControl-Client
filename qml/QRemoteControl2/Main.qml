@@ -40,9 +40,13 @@ Rectangle {
         property int    oldScreenOrientation: 0
         property int    oldScreenRotation: 0
 
-        property int generalMargin: Math.round(width*0.02)
-        property int buttonWidth: Math.round(width*0.18)
-        property int buttonHeight: Math.round(height*0.10)
+        property double generalMarginFactor: 0.012
+        property double buttonWidthFactor: 0.18
+        property double buttonHeightFactor: 0.098
+        property int generalMargin: Math.round(height*generalMarginFactor) // configured for a maximum screen aspect ration of 16:9
+        property int buttonWidth: Math.round(width*buttonWidthFactor)
+        property int buttonHeight: Math.round(height*buttonHeightFactor)
+        property int buttonMinimumAspectDifference: master.width-generalMargin*6-buttonHeight*5
 
         property string platform: platform.platform
 

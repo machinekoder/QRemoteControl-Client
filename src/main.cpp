@@ -14,7 +14,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #if !defined(Q_OS_MEEGO)
     viewer.setSource(QUrl("qrc:/qml/QRemoteControl2/init.qml"));
-#if (defined(Q_WS_X11) || defined(Q_WS_WIN)) // On Desktop skip the Splash screen
+#if ((defined(Q_WS_X11) || defined(Q_WS_WIN) || defined(Q_OS_LINUX)) && !defined(Q_OS_ANDROID)) // On Desktop skip the Splash screen
     viewer.setGeometry(0,0, 400, 600);
 #endif
     viewer.setOrientation((int)QmlApplicationViewer::ScreenOrientationLockPortrait);
@@ -30,6 +30,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer.showFullScreen();
 #endif
 
+    viewer.setResizeMode(QDeclarativeView::SizeRootObjectToView);
     viewer.rootContext()->setContextProperty("viewer", &viewer);
 
     return app->exec();

@@ -16,7 +16,6 @@ Rectangle {
         client.serversCleared.connect(clearServers)
     }
 
-
     Image {
         id: leftImage
         width: parent.width*0.10
