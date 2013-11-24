@@ -1,10 +1,11 @@
-import QtQuick 1.1
+import QtQuick 2.0
 
 Item {
     property int orientationLock: 0
 
     id: appWindow
-    anchors.fill: parent
+    width: 360
+    height: 360
 
     onOrientationLockChanged: {
             viewer.setOrientation(orientationLock)

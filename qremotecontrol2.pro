@@ -1,5 +1,5 @@
 TARGET = qremotecontrol2
-VERSION = 2.5.1
+VERSION = 2.6.0
 
 TRANSLATIONS = i18/de.ts i18/ru.ts i18/uk.ts i18/es.ts
 
@@ -47,6 +47,7 @@ contains(DEFINES,TRIAL): {
 }
 
 QT += network
+QT += widgets
 QT -= svg
 
 SOURCES += src/main.cpp \
@@ -60,8 +61,11 @@ HEADERS += src/qremotecontrolclient.h \
 INCLUDEPATH += src/
 
 # Please do not modify the following two lines. Required for deployment.
-include(qmlapplicationviewer/qmlapplicationviewer.pri)
+# include(qmlapplicationviewer/qmlapplicationviewer.pri)
+include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
 qtcAddDeployment()
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 OTHER_FILES += \
     qtc_packaging/debian_harmattan/rules \
@@ -72,36 +76,7 @@ OTHER_FILES += \
     qtc_packaging/debian_harmattan/compat \
     qtc_packaging/debian_harmattan/changelog \
     bar-descriptor.xml \
-    android/src/org/qtproject/qt5/android/bindings/QtActivity.java \
-    android/src/org/qtproject/qt5/android/bindings/QtApplication.java \
-    android/src/org/qtproject/qt5/android/bindings/QtActivity.java \
-    android/src/org/qtproject/qt5/android/bindings/QtApplication.java \
-    android/src/org/kde/necessitas/ministro/IMinistro.aidl \
-    android/src/org/kde/necessitas/ministro/IMinistroCallback.aidl \
-    android/res/values/strings.xml \
-    android/res/layout/splash.xml \
-    android/res/values-et/strings.xml \
-    android/res/values-zh-rCN/strings.xml \
-    android/res/values-zh-rTW/strings.xml \
-    android/res/values-es/strings.xml \
-    android/res/values-nb/strings.xml \
-    android/res/values-ms/strings.xml \
-    android/res/values-it/strings.xml \
-    android/res/values-pl/strings.xml \
-    android/res/values-id/strings.xml \
-    android/res/values-pt-rBR/strings.xml \
-    android/res/values-rs/strings.xml \
-    android/res/values-fr/strings.xml \
-    android/res/values-ro/strings.xml \
-    android/res/values-nl/strings.xml \
-    android/res/values-de/strings.xml \
-    android/res/values-ja/strings.xml \
-    android/res/values-ru/strings.xml \
-    android/res/values-fa/strings.xml \
-    android/res/values-el/strings.xml \
-    android/version.xml \
     android/AndroidManifest.xml \
-    android/res/values/libs.xml \
     qml/QRemoteControl2/orientationSensor.js \
     qml/QRemoteControl2/AboutPage.qml \
     qml/QRemoteControl2/ActionsPage.qml \

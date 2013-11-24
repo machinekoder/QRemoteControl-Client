@@ -1,5 +1,6 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
-import QtQuick 1.1
+import QtQuick 2.0
+
 Rectangle {
     property alias border: minusButton.border
     //property alias defaultGradient: minusButton.defaultGradient

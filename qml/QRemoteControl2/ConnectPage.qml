@@ -1,4 +1,4 @@
-import QtQuick 1.1
+import QtQuick 2.0
 import "MyComponents/"
 
 Rectangle {
@@ -98,7 +98,7 @@ Rectangle {
         anchors.leftMargin: master.generalMargin
         rotation:           master.screenRotation
         onClicked: {
-            Qt.openUrlExternally("http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FQRemoteControl%3Fref%3Dstream&send=false&layout=standard&width=480&show_faces=true&action=like&colorscheme=light&font=arial&height=640")
+            Qt.openUrlExternally("http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FQRemote%3Fref%3Dstream&send=false&layout=standard&width=480&show_faces=true&action=like&colorscheme=light&font=arial&height=640")
             main.forceActiveFocus() // remove the focus from all inputs
         }
     }

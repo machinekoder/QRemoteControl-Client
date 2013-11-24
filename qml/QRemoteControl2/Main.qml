@@ -1,4 +1,4 @@
-import QtQuick 1.1
+import QtQuick 2.0
 import RemoteControl 2.0
 import Platform 1.0
 import "MyComponents"
@@ -18,7 +18,7 @@ Rectangle {
     onActiveChanged: {
         if (active)
         {
-            dummyEdit.closeSoftwareInputPanel()
+            //dummyEdit.closeSoftwareInputPanel() // TODO
         }
     }
 
