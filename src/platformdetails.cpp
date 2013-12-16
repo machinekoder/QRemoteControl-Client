@@ -3,9 +3,7 @@
 PlatformDetails::PlatformDetails(QObject *parent) :
     QObject(parent)
 {
-#if defined(Q_OS_LINUX)
-    m_platform = "Linux";
-#elif defined(Q_OS_OSX)
+#if defined(Q_OS_OSX)
     m_platform = "OSX";
 #elif (defined(Q_WS_WIN) || defined(Q_OS_WIN))
     m_platform = "Windows";
@@ -23,6 +21,8 @@ PlatformDetails::PlatformDetails(QObject *parent) :
     m_platform = "SailfishOS"
 #elif defined(Q_OS_IOS)
     m_platform = "iOS";
+#elif defined(Q_OS_LINUX)
+    m_platform = "Linux";
 #else
     m_platform = "Other";
 #endif

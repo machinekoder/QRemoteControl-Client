@@ -127,7 +127,8 @@ Rectangle {
     Component.onCompleted: {
         if ((platform.platform === "MeeGo")
                 || (platform.platform === "Symbian")
-                || (platform.platform === "Android"))
+                //|| (platform.platform === "Android")
+                )
         {
             Feedback.createHaptic()
             feedbackAvailable = true

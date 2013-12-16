@@ -36,14 +36,15 @@ import QtQuick 2.0
              GradientStop { position: 0.0; color: "#66343434" }
              GradientStop { position: 1.0; color: "#66000000" }
          }
+
      }
 
      Rectangle {
          id: handle; smooth: true
          y: 2; width: parent.width/8; height: slider.height-4;
-         gradient: defaultGradient
-         border.color: borderColor
-         radius:         (width < height)?width/radiusScaler:height/radiusScaler
+         gradient:      defaultGradient
+         border.color:  borderColor
+         radius:        (width < height)?width/radiusScaler:height/radiusScaler
 
          MouseArea {
              id: mouse

@@ -29,8 +29,6 @@ Rectangle {
             master.screenRotation = 90
     }
 
-
-
     Rectangle {
         property string backgroundImage: "images/background_grey.png"
         property alias  backgroundImageFillMode: backgroundImage.fillMode
@@ -77,9 +75,10 @@ Rectangle {
             settingsPage.setLanguage(client.language)
             if ((platform.platform === "MeeGo")
                     || (platform.platform === "Symbian")
-                    || (platform.platform === "Android")
+                    //|| (platform.platform === "Android")
                     || (platform.platform === "BlackBerry")
-                    || (platform.platform === "Simulator"))
+                    || (platform.platform === "Simulator")
+                    || (platform.platform === "Sailfish"))
             {
                 OrientationSensor.createOrientationSensor()
             }

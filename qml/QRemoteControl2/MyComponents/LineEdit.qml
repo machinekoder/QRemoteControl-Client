@@ -71,17 +71,20 @@ Rectangle {
             onActiveFocusChanged: {
                               if (!input.activeFocus)
                               {
-                                  input.closeSoftwareInputPanel()
+                                  Qt.inputMethod.hide();
+                                  //input.closeSoftwareInputPanel()
                                   master.releaseScreenOrientation()
                               }
                               else
                               {
-                                  input.openSoftwareInputPanel()
+                                  Qt.inputMethod.show()
+                                  //input.openSoftwareInputPanel()
                                   master.lockScreenOrientation()
                               }
                           }
             onAccepted: {
-                input.closeSoftwareInputPanel()
+                Qt.inputMethod.hide()
+                //input.closeSoftwareInputPanel()
                 label.forceActiveFocus()                            // prevents keyboard from reopening
             }
         }

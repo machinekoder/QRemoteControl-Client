@@ -40,14 +40,15 @@ contains(MEEGO_EDITION,harmattan): {
 
 # If your application uses the Qt Mobility libraries, uncomment the following
 # lines and add the respective components to the MOBILITY variable.
- CONFIG += mobility
- MOBILITY += sensors
+CONFIG += mobility
+MOBILITY += sensors
 contains(DEFINES,TRIAL): {
- MOBILITY += systeminfo
+MOBILITY += systeminfo
 }
 
 QT += network
 QT += widgets
+QT += sensors
 QT -= svg
 
 SOURCES += src/main.cpp \

@@ -379,7 +379,7 @@ Rectangle {
                 anchors.rightMargin: master.generalMargin
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: master.generalMargin
-                border.color: master.border.color
+                border.color: theme.buttonBorderColor
                 onClicked: {
                     advancedColumn.enabled = !advancedColumn.enabled
                     listRect.enabled = false
