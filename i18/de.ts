@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>If you find this application useful please show it to your friends and vote for it.</source>
-        <translation>Wenn Sie dieses Programm nützlich finden zeigen Sie es Ihren Freunden oder bewerten Sie es.</translation>
+        <translation type="obsolete">Wenn Sie dieses Programm nützlich finden zeigen Sie es Ihren Freunden oder bewerten Sie es.</translation>
     </message>
     <message>
         <source>Copyright 2012-2013 &lt;br&gt;by Alexander Rössler &lt;br&gt;Version: </source>
@@ -33,11 +33,27 @@
     </message>
     <message>
         <source>Copyright 2012-2013&lt;br&gt;by Alexander Rössler&lt;br&gt;Version: </source>
-        <translation>Copyright 2012-2013 &lt;br&gt;von Alexander Rössler &lt;br&gt;Version: </translation>
+        <translation type="obsolete">Copyright 2012-2013 &lt;br&gt;von Alexander Rössler &lt;br&gt;Version: </translation>
     </message>
     <message>
         <source>This trial version expires at: </source>
         <translation>Diese Testversion läuft ab am: </translation>
+    </message>
+    <message>
+        <source>Copyright 2012-2014&lt;br&gt;by Alexander Rössler&lt;br&gt;Version: </source>
+        <translation>Copyright 2012-2014 &lt;br&gt;von Alexander Rössler &lt;br&gt;Version: </translation>
+    </message>
+    <message>
+        <source>If you find this application useful please show it to your friends and vote for it.&lt;br&gt;</source>
+        <translation>Wenn du diese App nützlich findest zeige sie deinen Freunde und bewerte sie.&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>Visit website</source>
+        <translation>Webseite besuchen</translation>
+    </message>
+    <message>
+        <source>Get the source code</source>
+        <translation>Hol dir den Quellcode</translation>
     </message>
 </context>
 <context>
@@ -215,6 +231,13 @@
     </message>
 </context>
 <context>
+    <name>RemoteBoxPage</name>
+    <message>
+        <source>To see some items here add some commands on the client.</source>
+        <translation>Um hier Einträge zu sehen fügen sie der QRemoteBox Befehle hinzu. </translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <source>Color:</source>
@@ -226,39 +249,39 @@
     </message>
     <message>
         <source>Gold</source>
-        <translation>Gold</translation>
+        <translation type="obsolete">Gold</translation>
     </message>
     <message>
         <source>Grey</source>
-        <translation>Grau</translation>
+        <translation type="obsolete">Grau</translation>
     </message>
     <message>
         <source>Green</source>
-        <translation>Grün</translation>
+        <translation type="obsolete">Grün</translation>
     </message>
     <message>
         <source>Silver</source>
-        <translation>Silber</translation>
+        <translation type="obsolete">Silber</translation>
     </message>
     <message>
         <source>Pink</source>
-        <translation>Pink</translation>
+        <translation type="obsolete">Pink</translation>
     </message>
     <message>
         <source>Red</source>
-        <translation>Rot</translation>
+        <translation type="obsolete">Rot</translation>
     </message>
     <message>
         <source>White</source>
-        <translation>Weiss</translation>
+        <translation type="obsolete">Weiss</translation>
     </message>
     <message>
         <source>Black</source>
-        <translation>Schwarz</translation>
+        <translation type="obsolete">Schwarz</translation>
     </message>
     <message>
         <source>Blue</source>
-        <translation>Blau</translation>
+        <translation type="obsolete">Blau</translation>
     </message>
     <message>
         <source>Roundness:</source>
@@ -266,7 +289,7 @@
     </message>
     <message>
         <source>Nerdy</source>
-        <translation>Nerdig</translation>
+        <translation type="obsolete">Nerdig</translation>
     </message>
     <message>
         <source>Orientation Lock:</source>
@@ -274,11 +297,50 @@
     </message>
     <message>
         <source>Tech</source>
-        <translation>Technik</translation>
+        <translation type="obsolete">Technik</translation>
     </message>
     <message>
         <source>Language:</source>
         <translation>Sprache:</translation>
+    </message>
+</context>
+<context>
+    <name>SocialPage</name>
+    <message>
+        <source>Support Us</source>
+        <translation>Unterstütze uns</translation>
+    </message>
+    <message>
+        <source>If you like like this application please support us and share it with your friends.</source>
+        <translation>Wenn dir diese App gefällt unterstütze uns bitte und zeige sie deinen Freunden.</translation>
+    </message>
+    <message>
+        <source>Follow on facebook</source>
+        <translation>Folgen auf facebook</translation>
+    </message>
+    <message>
+        <source>Follow on Twitter</source>
+        <translation>Folgen auf Twitter</translation>
+    </message>
+    <message>
+        <source>Follow on Google+</source>
+        <translation>Folgen auf Google+</translation>
+    </message>
+    <message>
+        <source>Donate using Flattr</source>
+        <translation>Spenden mit Flattr</translation>
+    </message>
+    <message>
+        <source>Donate using PayPal</source>
+        <translation>Spenden mit PayPal</translation>
+    </message>
+    <message>
+        <source>Donate using Bitcoin</source>
+        <translation>Spenden mit Bitcoin</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Weiter</translation>
     </message>
 </context>
 <context>

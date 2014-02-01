@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>If you find this application useful please show it to your friends and vote for it.</source>
-        <translation>Якщо ви вважаєте цю програму корисною, розкажіть про неї своїм друзям і проголосуйте за неї.</translation>
+        <translation type="obsolete">Якщо ви вважаєте цю програму корисною, розкажіть про неї своїм друзям і проголосуйте за неї.</translation>
     </message>
     <message>
         <source>Copyright 2012-2013 &lt;br&gt;by Alexander Rössler &lt;br&gt;Version: </source>
@@ -33,11 +33,27 @@
     </message>
     <message>
         <source>Copyright 2012-2013&lt;br&gt;by Alexander Rössler&lt;br&gt;Version: </source>
-        <translation>Авторське право (с) 2012-2013&lt;br&gt;by Alexander Rössler&lt;br&gt;Версія: </translation>
+        <translation type="obsolete">Авторське право (с) 2012-2013&lt;br&gt;by Alexander Rössler&lt;br&gt;Версія: </translation>
     </message>
     <message>
         <source>This trial version expires at: </source>
         <translation>Період пробної версії спливає через:</translation>
+    </message>
+    <message>
+        <source>Copyright 2012-2014&lt;br&gt;by Alexander Rössler&lt;br&gt;Version: </source>
+        <translation type="unfinished">Авторське право (с) 2012-2013&lt;br&gt;by Alexander Rössler&lt;br&gt;Версія:  {2012-2014&lt;?}</translation>
+    </message>
+    <message>
+        <source>If you find this application useful please show it to your friends and vote for it.&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Visit website</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get the source code</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -225,6 +241,13 @@
     </message>
 </context>
 <context>
+    <name>RemoteBoxPage</name>
+    <message>
+        <source>To see some items here add some commands on the client.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <source>Color:</source>
@@ -236,39 +259,39 @@
     </message>
     <message>
         <source>Gold</source>
-        <translation>Золотий</translation>
+        <translation type="obsolete">Золотий</translation>
     </message>
     <message>
         <source>Grey</source>
-        <translation>Сірий</translation>
+        <translation type="obsolete">Сірий</translation>
     </message>
     <message>
         <source>Green</source>
-        <translation>Зелений</translation>
+        <translation type="obsolete">Зелений</translation>
     </message>
     <message>
         <source>Silver</source>
-        <translation>Срібний</translation>
+        <translation type="obsolete">Срібний</translation>
     </message>
     <message>
         <source>Pink</source>
-        <translation>Рожевий</translation>
+        <translation type="obsolete">Рожевий</translation>
     </message>
     <message>
         <source>Red</source>
-        <translation>Червоний</translation>
+        <translation type="obsolete">Червоний</translation>
     </message>
     <message>
         <source>White</source>
-        <translation>Білий</translation>
+        <translation type="obsolete">Білий</translation>
     </message>
     <message>
         <source>Black</source>
-        <translation>Чорний</translation>
+        <translation type="obsolete">Чорний</translation>
     </message>
     <message>
         <source>Blue</source>
-        <translation>Блакитний</translation>
+        <translation type="obsolete">Блакитний</translation>
     </message>
     <message>
         <source>Language:</source>
@@ -280,7 +303,7 @@
     </message>
     <message>
         <source>Nerdy</source>
-        <translation>Олдскул</translation>
+        <translation type="obsolete">Олдскул</translation>
     </message>
     <message>
         <source>Orientation Lock:</source>
@@ -288,7 +311,46 @@
     </message>
     <message>
         <source>Tech</source>
-        <translation>Техно</translation>
+        <translation type="obsolete">Техно</translation>
+    </message>
+</context>
+<context>
+    <name>SocialPage</name>
+    <message>
+        <source>Support Us</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you like like this application please support us and share it with your friends.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow on facebook</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow on Twitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow on Google+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donate using Flattr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donate using PayPal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donate using Bitcoin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">Продовжити</translation>
     </message>
 </context>
 <context>

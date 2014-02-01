@@ -17,8 +17,9 @@ PlatformDetails::PlatformDetails(QObject *parent) :
     m_platform = "Android";
 #elif defined(Q_OS_BLACKBERRY)
     m_platform = "BlackBerry";
-#elif defined(Q_OS_SAILFISH)    // TODO: This is not supported
-    m_platform = "SailfishOS"
+//#elif defined(Q_OS_SAILFISH)    // TODO: This is not supported
+#elif defined(Q_OS_SAILFISH)
+    m_platform = "SailfishOS";
 #elif defined(Q_OS_IOS)
     m_platform = "iOS";
 #elif defined(Q_OS_LINUX)

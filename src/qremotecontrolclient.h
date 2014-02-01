@@ -3,26 +3,13 @@
 
 #include <QObject>
 #include <QtNetwork>
-#include <QApplication>
-#include <QDesktopWidget>
+#include <QPixmap>
 #include "wakeonlanpacket.h"
 
 #ifdef TRIAL
 #include <QSystemDeviceInfo>
 QTM_USE_NAMESPACE
 #endif
-
-typedef struct {
-    QHostAddress hostAddress;
-    QString      hostName;
-    bool connected;
-} QRCServer;
-
-typedef struct {
-    QString      hostName;
-    QString      password;
-    int          port;
-} QRCConnection;
 
 class QRemoteControlClient : public QObject
 {
@@ -39,17 +26,37 @@ class QRemoteControlClient : public QObject
     Q_PROPERTY(QString wolHostname READ wolHostname WRITE setWolHostname NOTIFY wolHostnameChanged)
     Q_PROPERTY(int wolPort READ wolPort WRITE setWolPort NOTIFY wolPortChanged)
     Q_PROPERTY(int wolDatagramNumber READ wolDatagramNumber WRITE setWolDatagramNumber NOTIFY wolDatagramNumberChanged)
-    Q_PROPERTY(int screenDpi READ screenDpi NOTIFY screenDpiChanged)
     Q_PROPERTY(int networkTimeout READ networkTimeout WRITE setNetworkTimeout NOTIFY networkTimeoutChanged)
     Q_PROPERTY(ScreenOrientation screenOrientation READ screenOrientation WRITE screenOrientation NOTIFY screenOrientationChanged)
     Q_PROPERTY(QString emptyString READ getEmptyString NOTIFY emptyStringChanged)
     Q_PROPERTY(QString language READ language WRITE setLanguage NOTIFY languageChanged)
     Q_PROPERTY(bool trialVersion READ isTrialVersion NOTIFY trialVersionChanged)
+    Q_PROPERTY(int runCount READ runCount WRITE setRunCount NOTIFY runCountChanged)
 #ifdef TRIAL
     Q_PROPERTY(QDateTime trialExpirationTime READ trialExpirationTime NOTIFY trialExpirationTimeChanged)
 #endif
+    Q_ENUMS(QRCServerType)
+    Q_ENUMS(ScreenOrientation)
 
 public:
+    typedef enum {
+        QRCServerType_PC = 0,
+        QRCServerType_Box = 1
+    } QRCServerType;
+
+    typedef struct {
+        QHostAddress hostAddress;
+        QString      hostName;
+        QRCServerType serverType;
+        bool connected;
+    } QRCServer;
+
+    typedef struct {
+        QString      hostName;
+        QString      password;
+        int          port;
+    } QRCConnection;
+
     enum ScreenOrientation {
         ScreenOrientationAuto = 0,
         ScreenOrientationLockPortrait = 1,
@@ -69,11 +76,6 @@ public:
     Q_INVOKABLE void abortConnectionRequest();
     Q_INVOKABLE void saveSettings();
     Q_INVOKABLE void loadSettings();
-
-    int screenDpi() const
-    {
-        return m_screenDpi;
-    }
 
     QString hostname() const
     {
@@ -162,7 +164,12 @@ public:
     }
 #endif
 
-public slots:
+    int runCount() const
+    {
+        return m_runCount;
+    }
+
+    public slots:
     Q_INVOKABLE void sendKey (quint32 key, quint32 modifiers, bool keyPressed);
     Q_INVOKABLE void sendButton (quint8 id, bool keyPressed);
     Q_INVOKABLE void sendKeyPress (quint8 id);
@@ -333,7 +340,15 @@ public slots:
         }
     }
 
-signals:
+    void setRunCount(int arg)
+    {
+        if (m_runCount != arg) {
+            m_runCount = arg;
+            emit runCountChanged(arg);
+        }
+    }
+
+    signals:
     void hostnameChanged(QString arg);
     void hostAddressChanged(QHostAddress arg);
     void passwordChanged(QString arg);
@@ -348,7 +363,7 @@ signals:
     void actionReceived(int id, QString text, QString imagePath);
     void clearActions();
     void serversCleared();
-    void serverFound(QString address, QString hostName, bool connected);
+    void serverFound(QString address, QString hostName, QRCServerType serverType, bool connected);
     void passwordIncorrect();
     void serverConnecting();
 
@@ -362,13 +377,10 @@ signals:
     void wolHostnameChanged(QString arg);
     void wolPortChanged(int arg);
     void wolDatagramNumberChanged(int arg);
-    void screenDpiChanged(int arg);
     void uiRoundnessChanged(double arg);
     void networkTimeoutChanged(int arg);
     void screenOrientationChanged(ScreenOrientation arg);
-
     void emptyStringChanged(QString arg);
-
     void languageChanged(QString arg);
 
     // Trial
@@ -378,8 +390,9 @@ signals:
 #endif
 
     void trialVersionChanged(bool arg);
+    void runCountChanged(int arg);
 
-private:
+    private:
     // Network
     QUdpSocket *udpSocket;
     QTcpServer *tcpServer;
@@ -388,6 +401,7 @@ private:
     QTimer     *connectionRequestTimer;
     QNetworkSession *session;
     QNetworkConfigurationManager *netConfigManager;
+    QTimer     *netConfigTimer; // Timer for refreshing the network status
     QTimer     *networkTimeoutTimer;
 
     // Trial
@@ -413,7 +427,7 @@ private:
     void incomingIcon(QByteArray data);
     void incomingAmarokData(QByteArray data);
 
-    void addServer(QHostAddress hostAddress, bool connected);
+    void addServer(QHostAddress hostAddress, QRCServerType serverType, bool connected);
 
     QString         m_hostname;
     QString         m_password;
@@ -425,13 +439,13 @@ private:
     QString         m_wolHostname;
     int             m_wolPort;
     int             m_wolDatagramNumber;
-    int             m_screenDpi;
     double          m_uiRoundness;
     int             m_networkTimeout;
     ScreenOrientation m_screenOrientation;
     QString         m_emptyString;
     QString         m_language;
     bool            m_trialVersion;
+    int             m_runCount;
 #ifdef TRIAL
     QDateTime m_trialExpirationTime;
 #endif
@@ -443,7 +457,7 @@ private:
     void addLastConnection(QString hostName, QString password, int port);
     void clearLastConnections();
 
-private slots:
+    private slots:
     void sendConnectionRequest();
     void sendBroadcast();
     void sendKeepAlive();
@@ -452,6 +466,7 @@ private slots:
     void incomingData();
     void incomingUdpData();
     void saveResolvedHostName(QHostInfo hostInfo);
+    void updateNetConfig();
 
 #ifdef TRIAL
     void checkTrialExpiration();

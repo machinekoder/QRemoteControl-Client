@@ -9,7 +9,7 @@ QRemoteControlClient::QRemoteControlClient(QObject *parent)
 {
     m_screenOrientation = ScreenOrientationAuto;
     m_version = QString(VERSION);
-    m_screenDpi = QApplication::desktop()->physicalDpiX();
+    m_runCount = 0;
 
     // initialize translators
     m_emptyString = "";
@@ -32,10 +32,17 @@ QRemoteControlClient::QRemoteControlClient(QObject *parent)
     connect(connectionRequestTimer, SIGNAL(timeout()), this, SLOT(sendConnectionRequest()));
 
     // now begin the process of opening the network link
+    session = NULL;
     netConfigManager = new QNetworkConfigurationManager;
     connect(netConfigManager, SIGNAL(updateCompleted()),
             this, SLOT(openNetworkSession()));
     netConfigManager->updateConfigurations();
+    // update the connections cyclically
+    netConfigTimer = new QTimer(this);
+    netConfigTimer->setInterval(5000);
+    connect(netConfigTimer, SIGNAL(timeout()),
+            this, SLOT(updateNetConfig()));
+    netConfigTimer->start();
 
     // initialize network timeout
     m_networkTimeout = 4500;
@@ -93,6 +100,11 @@ void QRemoteControlClient::openNetworkSession()
 
     if (networkConfig.isValid())
     {
+        if (session != NULL)
+        {
+            session->deleteLater();
+        }
+
         session = new QNetworkSession(networkConfig);
 
         if (session->isOpen()) {
@@ -265,6 +277,7 @@ void QRemoteControlClient::saveSettings()
     settings.setValue("uiRoundness", m_uiRoundness);
     settings.setValue("screenOrientation", static_cast<int>(m_screenOrientation));
     settings.setValue("language", m_language);
+    settings.setValue("runCount", m_runCount);
 
     settings.beginGroup("wol");
         settings.setValue("macAddress", m_wolMacAddress);
@@ -293,9 +306,12 @@ void QRemoteControlClient::loadSettings()
     m_password  = settings.value("password", QString()).toString();
     m_hostname  = settings.value("hostname", QString()).toString();
     m_port      = settings.value("port", 5487).toInt();
-    m_uiColor   = settings.value("uiColor", "black").toString();
+    m_uiColor   = settings.value("uiColor", "fancyblack").toString();
     m_uiRoundness = settings.value("uiRoundness", 10).toDouble();
     m_screenOrientation = static_cast<ScreenOrientation>(settings.value("screenOrientation", ScreenOrientationAuto).toInt());
+    m_runCount = settings.value("runCount", 0).toInt();
+    m_runCount++;
+    emit runCountChanged(m_runCount);
 
     setLanguage(settings.value("language", QLocale::system().name()).toString());
 
@@ -409,24 +425,25 @@ void QRemoteControlClient::incomingUdpData()
 
     udpSocket->readDatagram(datagram.data(), datagram.size(), &hostAddress);
 
-    QString magicMessageConnected = "QRC:Connected";
-    QString magicMessageNotConnected = "QRC:NotConnected";
-    QString magicMessagePasswordIncorrect = "QRC:PasswordIncorrect";
-    QString magicMessageServerConnecting = "QRC:ServerConnecting";
+    const QString magicMessageConnected = "QRC:Connected";
+    const QString magicMessageNotConnected = "QRC:NotConnected";
+    const QString magicMessagePasswordIncorrect = "QRC:PasswordIncorrect";
+    const QString magicMessageServerConnecting = "QRC:ServerConnecting";
+    const QString magicMessageBoxNotConnected = "QRC:BoxNotConnected";
 
     if (datagram == magicMessageConnected)
     {
 #ifdef QT_DEBUG
         qDebug() << "Server found, State: connected";
 #endif
-        addServer(hostAddress, true);
+        addServer(hostAddress, QRCServerType_PC, true);
     }
     else if (datagram == magicMessageNotConnected)
     {
 #ifdef QT_DEBUG
         qDebug() << "Server found, State: not connected" << hostAddress;
 #endif
-        addServer(hostAddress, false);
+        addServer(hostAddress, QRCServerType_PC, false);
     }
     else if (datagram == magicMessagePasswordIncorrect)
     {
@@ -442,9 +459,16 @@ void QRemoteControlClient::incomingUdpData()
 #endif
         emit serverConnecting();
     }
+    else if (datagram == magicMessageBoxNotConnected)
+    {
+#ifdef QT_DEBUG
+        qDebug() << "Box found, State: not connected" << hostAddress;
+#endif
+        addServer(hostAddress, QRCServerType_Box, false);
+    }
 }
 
-void QRemoteControlClient::addServer(QHostAddress hostAddress, bool connected)
+void QRemoteControlClient::addServer(QHostAddress hostAddress, QRCServerType serverType, bool connected)
 {
     bool found = false;
     for (int i = 0; i < serverList.size(); i++)
@@ -460,6 +484,7 @@ void QRemoteControlClient::addServer(QHostAddress hostAddress, bool connected)
         QRCServer qrcServer;
         qrcServer.hostAddress = hostAddress;
         qrcServer.hostName = hostAddress.toString();
+        qrcServer.serverType = serverType;
         qrcServer.connected = connected;
         serverList.append(qrcServer);
 
@@ -470,7 +495,10 @@ void QRemoteControlClient::addServer(QHostAddress hostAddress, bool connected)
     emit serversCleared();
     for (int i = 0; i < serverList.size(); i++)
     {
-        emit serverFound(serverList.at(i).hostAddress.toString(), serverList.at(i).hostName, serverList.at(i).connected);
+        emit serverFound(serverList.at(i).hostAddress.toString(),
+                         serverList.at(i).hostName,
+                         serverList.at(i).serverType,
+                         serverList.at(i).connected);
     }
 }
 
@@ -495,7 +523,18 @@ void QRemoteControlClient::saveResolvedHostName(QHostInfo hostInfo)
     emit serversCleared();
     for (int i = 0; i < serverList.size(); i++)
     {
-        emit serverFound(serverList.at(i).hostAddress.toString(), serverList.at(i).hostName, serverList.at(i).connected);
+        emit serverFound(serverList.at(i).hostAddress.toString(),
+                         serverList.at(i).hostName,
+                         serverList.at(i).serverType,
+                         serverList.at(i).connected);
+    }
+}
+
+void QRemoteControlClient::updateNetConfig()
+{
+    if ((session == NULL) || (!session->isOpen()))
+    {
+        netConfigManager->updateConfigurations();
     }
 }
 

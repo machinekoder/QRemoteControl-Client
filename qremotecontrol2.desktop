@@ -1,11 +1,7 @@
 [Desktop Entry]
-Encoding=UTF-8
-Version=1.0
 Type=Application
-Terminal=false
-Name=QRemoteControl 2
-Exec=/opt/qremotecontrol2/bin/qremotecontrol2
-Icon=qremotecontrol264
-X-Window-Icon=
-X-HildonDesk-ShowInToolbar=true
-X-Osso-Type=application/x-executable
+X-Nemo-Application-Type=silica-qt5
+Name=QRemoteControl-Client
+Icon=qremotecontrol2
+Exec=qremotecontrol2
+
