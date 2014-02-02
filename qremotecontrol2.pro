@@ -48,11 +48,14 @@ sailfish: {
 }
 else
 {
+!android: !ios: {
     QML_IMPORT_PATH = qml/
-# Add more folders to ship with the application, here
+    # Add more folders to ship with the application, here
     folder_01.source = qml
     folder_01.target =
     DEPLOYMENTFOLDERS = folder_01
+}
+
     # Please do not modify the following two lines. Required for deployment.
     # include(qmlapplicationviewer/qmlapplicationviewer.pri)
     include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
@@ -61,8 +64,8 @@ else
 
 android: {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
-    RESOURCES += qml.qrc
     OTHER_FILES += android/AndroidManifest.xml
+    RESOURCES += qml.qrc 
 }
 
 # If your application uses the Qt Mobility libraries, uncomment the following

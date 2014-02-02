@@ -428,6 +428,59 @@ Item {
                    sortField: FolderListModel.Name
                }
 
+               ListModel {
+                    id: styleListModel
+
+                    ListElement {
+                        fileName: "DefaultBlack.qml"
+                    }
+                    ListElement {
+                        fileName: "DefaultBlue.qml"
+                    }
+                    ListElement {
+                        fileName: "DefaultGold.qml"
+                    }
+                    ListElement {
+                        fileName: "DefaultGreen.qml"
+                    }
+                    ListElement {
+                        fileName: "DefaultGrey.qml"
+                    }
+                    ListElement {
+                        fileName: "DefaultPink.qml"
+                    }
+                    ListElement {
+                        fileName: "DefaultRed.qml"
+                    }
+                    ListElement {
+                        fileName: "DefaultSilver.qml"
+                    }
+                    ListElement {
+                        fileName: "DefaultWhite.qml"
+                    }
+                    ListElement {
+                        fileName: "FancyBlack.qml"
+                    }
+                    ListElement {
+                        fileName: "FancyBlue.qml"
+                    }
+                    ListElement {
+                        fileName: "FancyBrown.qml"
+                    }
+                    ListElement {
+                        fileName: "FancyGreen.qml"
+                    }
+                    ListElement {
+                        fileName: "FancyPink.qml"
+                    }
+                    ListElement {
+                        fileName: "FancyRed.qml"
+                    }
+                    ListElement {
+                        fileName: "FancyYellow.qml"
+                    }
+               }
+
                 GridView {
                     id: grid1
                     cellWidth: width / 4
@@ -468,7 +521,7 @@ Item {
                             Button {
                                 id: button
 
-                                visible:  loadedTheme.item.themeName != null
+                                visible:  loadedTheme.item.themeName !== null
                                 anchors.fill: parent
                                 theme: loadedTheme.item
                                 text: loadedTheme.item.name
@@ -566,23 +619,24 @@ Item {
     function initThemes()
     {
         console.log("init themes")
-        styleFolderModel.folder = "styles"
-        styleFolderModel.nameFilters.pop()
-        if ((master.platform === "SailfishOS"))
+
+        if ((master.platform === "Android") || (master.platform == "iOS"))
         {
-            styleFolderModel.nameFilters.push("Sailfish*.qml")
-            console.log("Sailfish")
+            styleFolderModel.folder = "styles"
+            grid1.model = styleListModel
         }
         else
         {
-            if (master.platform !== "Android")
+            if ((master.platform === "SailfishOS"))
+            {
+                styleFolderModel.nameFilters.push("Sailfish*.qml")
+                console.log("Sailfish")
+            }
+            else
             {
                 styleFolderModel.nameFilters.push("Alpha*.qml")
             }
-        }
 
-        if (master.platform !== "Android")
-        {
             styleFolderModel.nameFilters.push("Default*.qml")
             styleFolderModel.nameFilters.push("Fancy*.qml")
         }
