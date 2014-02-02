@@ -59,24 +59,24 @@ Style {
                 id: hoveredGrad
                     GradientStop {
                         position: 0
-                        color: Theme.highlightColor
+                        color: "#00000000"
                     }
 
                     GradientStop {
                         position: 1
-                        color: Theme.highlightColor
+                        color: "#00000000"
                     }
                 }
     Gradient {
                 id: pressedGrad
                 GradientStop {
                         position: 0
-                        color: Theme.highlightColor
+                        color: "#00000000"
                     }
 
                     GradientStop {
                         position: 1
-                        color: Theme.highlightColor
+                        color: "#00000000"
                     }
                 }
     Gradient {

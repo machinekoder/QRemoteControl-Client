@@ -37,7 +37,7 @@ Item {
             id: brightness
             anchors.fill: blur
             source: blur
-            brightness: -0.3
+            brightness: -0.5
             visible: main.effectEnabled
         }
 

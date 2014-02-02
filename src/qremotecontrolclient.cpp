@@ -306,7 +306,11 @@ void QRemoteControlClient::loadSettings()
     m_password  = settings.value("password", QString()).toString();
     m_hostname  = settings.value("hostname", QString()).toString();
     m_port      = settings.value("port", 5487).toInt();
+#if !defined(Q_OS_SAILFISH)
     m_uiColor   = settings.value("uiColor", "fancyblack").toString();
+#else
+    m_uiColor   = settings.value("uiColor", "ambience").toString();
+#endif
     m_uiRoundness = settings.value("uiRoundness", 10).toDouble();
     m_screenOrientation = static_cast<ScreenOrientation>(settings.value("screenOrientation", ScreenOrientationAuto).toInt());
     m_runCount = settings.value("runCount", 0).toInt();

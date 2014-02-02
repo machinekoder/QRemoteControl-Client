@@ -25,8 +25,8 @@ Style {
     fontFamily:              "Arial"
     fontFamilyHeadig:        "Arial"
     primaryColor:            "white"
-    secondaryColor:          "white"
-    highlightColor:          "#1e8de7"
+    secondaryColor:          "black"
+    highlightColor:          "lightblue"
     secondaryHighlightColor: "grey"
     fontSizeExtraLarge:       master.width * 0.08
     fontSizeExtraSmall:       master.width * 0.02
@@ -92,12 +92,12 @@ Style {
                 id: editGrad
                     GradientStop {
                         position: 0
-                        color: "#fefdfd"
+                        color: "#555555"
                     }
 
                     GradientStop {
                         position: 1
-                        color: "#f4f5f5"
+                        color: "#555555"
                     }
                 }
     Gradient {

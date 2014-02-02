@@ -9,7 +9,6 @@ DEFINES += VERSION=\"\\\"$$VERSION\\\"\"
 
 # Additional import path used to resolve QML modules in Creator's code model
 #QML_IMPORT_PATH += ../
-QML_IMPORT_PATH = qml/
 
 symbian: {
     TARGET.UID3 = 0x200629ab
@@ -49,6 +48,7 @@ sailfish: {
 }
 else
 {
+    QML_IMPORT_PATH = qml/
 # Add more folders to ship with the application, here
     folder_01.source = qml
     folder_01.target =

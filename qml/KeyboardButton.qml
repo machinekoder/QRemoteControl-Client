@@ -40,7 +40,8 @@ Button {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: topRow?undefined:keyboardButton.top
         anchors.top: topRow?keyboardButton.bottom:undefined
-        gradient: theme.pressedGradient
+        //gradient: theme.pressedGradient
+        color: theme.secondaryHighlightColor
         border.width: 1
         border.color: theme.buttonBorderColor
         visible: false
@@ -52,6 +53,7 @@ Button {
             anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: keyboardButton.font.pixelSize+4
             font.bold: true
+            color: theme.primaryColor
         }
     }
 }
