@@ -41,7 +41,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 //#if defined(SAILFISH_OS)
 //    viewer.setSource(QUrl("qrc:/qml/initSailfishOs.qml"));
 //#else
-#if !defined(Q_OS_ANDROID)
+#if !(defined(Q_OS_ANDROID) || defined(Q_OS_IOS))
 viewer.setMainQmlFile(QStringLiteral("qml/init.qml"));
 #else
     viewer.setSource(QUrl("qrc:/qml/init.qml"));
