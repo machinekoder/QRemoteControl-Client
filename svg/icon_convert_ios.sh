@@ -14,7 +14,7 @@
 #   Konrad Siek 
 
 # Array of sizes to convert to
-sizes=(60 76 40 80 120 152 29 58 512 1024)
+sizes=(60 76 40 80 120 152 29 58 512 1024 57 114  72 144 50 100)
 
 # Check if any files were specified
 if [ $# -gt 0 ]; then
