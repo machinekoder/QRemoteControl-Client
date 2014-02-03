@@ -1,5 +1,4 @@
 import QtQuick 2.0
-import Qt.labs.folderlistmodel 1.0
 import "MyComponents/"
 
 import "styles" as Styles
@@ -417,68 +416,8 @@ Item {
 
                 }
 
-               FolderListModel
-               {
-                   id: styleFolderModel
-
-                   folder: "styles"
-                   nameFilters: [ "None*.qml" ]
-                   showDirs: false
-                   showOnlyReadable: true
-                   sortField: FolderListModel.Name
-               }
-
                ListModel {
                     id: styleListModel
-
-                    ListElement {
-                        fileName: "DefaultBlack.qml"
-                    }
-                    ListElement {
-                        fileName: "DefaultBlue.qml"
-                    }
-                    ListElement {
-                        fileName: "DefaultGold.qml"
-                    }
-                    ListElement {
-                        fileName: "DefaultGreen.qml"
-                    }
-                    ListElement {
-                        fileName: "DefaultGrey.qml"
-                    }
-                    ListElement {
-                        fileName: "DefaultPink.qml"
-                    }
-                    ListElement {
-                        fileName: "DefaultRed.qml"
-                    }
-                    ListElement {
-                        fileName: "DefaultSilver.qml"
-                    }
-                    ListElement {
-                        fileName: "DefaultWhite.qml"
-                    }
-                    ListElement {
-                        fileName: "FancyBlack.qml"
-                    }
-                    ListElement {
-                        fileName: "FancyBlue.qml"
-                    }
-                    ListElement {
-                        fileName: "FancyBrown.qml"
-                    }
-                    ListElement {
-                        fileName: "FancyGreen.qml"
-                    }
-                    ListElement {
-                        fileName: "FancyPink.qml"
-                    }
-                    ListElement {
-                        fileName: "FancyRed.qml"
-                    }
-                    ListElement {
-                        fileName: "FancyYellow.qml"
-                    }
                }
 
                 GridView {
@@ -491,7 +430,7 @@ Item {
                     anchors.margins: master.generalMargin
                     height: Math.ceil(count/4)*cellHeight
 
-                    model: styleFolderModel
+                    model: styleListModel
                     delegate: styleButtonDelegate
 
                     Component.onCompleted: {
@@ -540,7 +479,7 @@ Item {
 
                             Loader {
                                 id: loadedTheme
-                                source: styleFolderModel.folder + "/" + fileName
+                                source: "styles" + "/" + fileName
                                 Component.onCompleted: console.log(fileName)
                             }
                         }
@@ -620,27 +559,50 @@ Item {
     {
         console.log("init themes")
 
-        if ((master.platform === "Android") || (master.platform == "iOS"))
+        styleListModel.append({"fileName": "DefaultBlack.qml" })
+        styleListModel.append({"fileName": "DefaultBlue.qml" })
+        styleListModel.append({"fileName": "DefaultGold.qml" })
+        styleListModel.append({"fileName": "DefaultGreen.qml" })
+        styleListModel.append({"fileName": "DefaultGrey.qml" })
+        styleListModel.append({"fileName": "DefaultPink.qml" })
+        styleListModel.append({"fileName": "DefaultRed.qml" })
+        styleListModel.append({"fileName": "DefaultSilver.qml" })
+        styleListModel.append({"fileName": "DefaultWhite.qml" })
+
+        if ((master.platform === "SailfishOS"))
         {
-            styleFolderModel.folder = "styles"
-            grid1.model = styleListModel
+            styleListModel.append({"fileName": "SailfishAmbience.qml"})
+
         }
         else
         {
-            if ((master.platform === "SailfishOS"))
-            {
-                styleFolderModel.nameFilters.push("Sailfish*.qml")
-                console.log("Sailfish")
-            }
-            else
-            {
-                styleFolderModel.nameFilters.push("Alpha*.qml")
-            }
+            styleListModel.append({"fileName": "FancyBlack.qml" })
+            styleListModel.append({"fileName": "FancyBlue.qml" })
+            styleListModel.append({"fileName": "FancyBrown.qml" })
+            styleListModel.append({"fileName": "FancyGreen.qml" })
+            styleListModel.append({"fileName": "FancyPink.qml" })
+            styleListModel.append({"fileName": "FancyRed.qml" })
+            styleListModel.append({"fileName": "FancyYellow.qml" })
 
-            styleFolderModel.nameFilters.push("Default*.qml")
-            styleFolderModel.nameFilters.push("Fancy*.qml")
+            if (!((master.platform === "Android") || (master.platform === "iOS")))
+            {
+                styleListModel.append({"fileName":"AlphaNerdy.qml" })
+                styleListModel.append({"fileName": "AlphaTech.qml" })
+            }
         }
+
         console.log("init themes end")
+    }
+
+    function removeThemes(filter)
+    {
+        for (i = styleListModel.count(); i >= 0; --i)
+        {
+            if (styleListModel.get(i).fileName.indexOf(filter) === 0)
+            {
+                styleListModel.remove()
+            }
+        }
     }
 }
 

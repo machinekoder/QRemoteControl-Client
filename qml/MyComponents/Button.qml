@@ -1,8 +1,8 @@
 import QtQuick 2.0
-import Platform 1.0
 import QtGraphicalEffects 1.0
 import "gradients/"
 import "feedback.js" as Feedback
+//import "coloroverlay.js" as ColorOverlay
 
 Rectangle {
     property alias text:                text.text
@@ -123,17 +123,14 @@ Rectangle {
         visible: (checked || (mouseArea.containsMouse && mouseArea.pressed))
     }
 
-    Details {
-        id: platform
-    }
-
     Component.onCompleted: {
-        if ((platform.platform === "MeeGo")
-                || (platform.platform === "Symbian")
+        if ((platform === "MeeGo")
+                || (platform === "Symbian")
                 //|| (platform.platform === "Android")
                 )
         {
             Feedback.createHaptic()
+            //ColorOverlay.createColorOverlay()
             feedbackAvailable = true
         }
     }
