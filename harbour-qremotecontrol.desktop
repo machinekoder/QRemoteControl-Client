@@ -2,6 +2,6 @@
 Type=Application
 X-Nemo-Application-Type=silica-qt5
 Name=QRemoteControl-Client
-Icon=qremotecontrol2
-Exec=qremotecontrol2
+Icon=harbour-qremotecontrol
+Exec=harbour-qremotecontrol
 

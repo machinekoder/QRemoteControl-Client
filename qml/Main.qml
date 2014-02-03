@@ -1,8 +1,7 @@
 import QtQuick 2.0
-import RemoteControl 2.0 as RemoteControl
-import RemoteBox 1.0 as RemoteBox
-import Platform 1.0
-import QtGraphicalEffects 1.0
+import harbour.qremotecontrol.RemoteControl 2.0 as RemoteControl
+import harbour.qremotecontrol.RemoteBox 1.0 as RemoteBox
+import harbour.qremotecontrol.Platform 1.0 as Platform
 import "MyComponents"
 import "orientationSensor.js" as OrientationSensor
 import "styles" as Styles
@@ -112,7 +111,7 @@ Item {
             event.accepted = true
         }
 
-        Details {
+        Platform.Details {
             id: platform
         }
 
@@ -135,7 +134,6 @@ Item {
             onBroadcastingStarted: master.state = "broadcastState"
             onNetworkOpened: master.state = "startState"
             onNetworkClosed: master.state = "networkState"
-            onTrialExpired:  master.state = "trialState"
             onClearActions: remotecontrolPage.clearActions();
 
             Component.onDestruction: {
@@ -156,8 +154,6 @@ Item {
         }
 
         JollaImage {
-            //property bool effectEnabled: true
-
             id: backgroundImage
             anchors.fill: parent
             source: master.backgroundImage
@@ -303,12 +299,6 @@ Item {
                 onAboutClicked:     master.state = "aboutState"
                 onSettingsClicked:  master.state = "settingsState"
             }
-            TrialPage {
-                id:                 trialPage
-                width:              master.width
-                height:             parent.height
-                onExitClicked:      Qt.quit()
-            }
             RemoteBoxPage {
                 id:                 remoteBoxPage
                 anchors.fill:       parent
@@ -328,7 +318,6 @@ Item {
                 PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: trialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: true}
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
@@ -347,7 +336,6 @@ Item {
                 PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: trialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
@@ -362,7 +350,6 @@ Item {
                 PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: trialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
@@ -377,7 +364,6 @@ Item {
                 PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: trialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
@@ -392,7 +378,6 @@ Item {
                 PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: trialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
@@ -407,7 +392,6 @@ Item {
                 PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: trialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 1.0; z: 1 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
@@ -422,7 +406,6 @@ Item {
                 PropertyChanges { target: loadingPage; opacity: 1.0; z: 1 }
                 PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: trialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
@@ -437,7 +420,6 @@ Item {
                 PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remotecontrolPage; opacity: 1.0; z: 1 }
-                PropertyChanges { target: trialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
@@ -453,7 +435,6 @@ Item {
                 PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: trialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
@@ -468,22 +449,6 @@ Item {
                 PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: aboutPage; opacity: 1.0; z: 1 }
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: trialPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: label; visible: false}
-            },
-            State {
-                name: "trialState"
-                PropertyChanges { target: wakeOnLanPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: settingsPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: helpPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: connectPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: broadcastPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: trialPage; opacity: 1.0; z: 1 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
@@ -498,14 +463,13 @@ Item {
                 PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
-                PropertyChanges { target: trialPage; opacity: 0.0; z: 1 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 1.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
             }
         ]
         transitions: Transition {
-           NumberAnimation { targets: [wakeOnLanPage, settingsPage, helpPage, connectPage, broadcastPage, loadingPage, aboutPage, remotecontrolPage, trialPage]; properties: "opacity"; duration: 300}
+           NumberAnimation { targets: [wakeOnLanPage, settingsPage, helpPage, connectPage, broadcastPage, loadingPage, aboutPage, remotecontrolPage]; properties: "opacity"; duration: 300}
         }
 
         function lockScreenOrientation()

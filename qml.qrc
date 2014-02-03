@@ -14,7 +14,6 @@
         <file>qml/StyleTest.qml</file>
         <file>qml/TouchPad.qml</file>
         <file>qml/TouchPadPage.qml</file>
-        <file>qml/TrialPage.qml</file>
         <file>qml/WakeOnLanPage.qml</file>
         <file>qml/AboutPage.qml</file>
         <file>qml/ActionsPage.qml</file>
@@ -156,10 +155,8 @@
         <file>qml/images/white/zoom_out.png</file>
         <file>qml/NavigationPanel.qml</file>
         <file>qml/MusicControl.qml</file>
-        <file>qml/initSailfishOs.qml</file>
         <file>qml/sailfish/CoverPage.qml</file>
         <file>qml/ButtonPageItem.qml</file>
-        <file>qml/qremotecontrol2.qml</file>
         <file>qml/images/white2/apps.png</file>
         <file>qml/images/white2/backspace.png</file>
         <file>qml/images/white2/computer.png</file>
