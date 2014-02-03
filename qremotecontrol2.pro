@@ -70,6 +70,8 @@ android: {
 
 ios: {
     RESOURCES += qml.qrc
+    QMAKE_INFO_PLIST = qremotecontrol2.plist
+    OTHER_FILES += qremotecontrol2.plist
 }
 
 # If your application uses the Qt Mobility libraries, uncomment the following
