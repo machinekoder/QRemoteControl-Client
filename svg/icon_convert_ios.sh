@@ -14,7 +14,9 @@
 #   Konrad Siek 
 
 # Array of sizes to convert to
-sizes=(60 76 40 80 120 152 29 58 512 1024 57 114  72 144 50 100)
+sizes=(16 32 128 256 512)
+
+mkdir icon.iconset
 
 # Check if any files were specified
 if [ $# -gt 0 ]; then
@@ -30,7 +32,9 @@ if [ $# -gt 0 ]; then
             for s in $(seq 0 $((${#sizes[@]} - 1)))
             do
                 size=${sizes[$s]}
-                rsvg-convert -w $size -h $size $svg_file -o $svg_name$size.png
+                size2=`expr ${sizes[$s]} \* '2'`
+                rsvg-convert -w $size -h $size $svg_file -o icon.iconset/icon_"$size"x$size.png
+                rsvg-convert -w $size2 -h $size2 $svg_file -o icon.iconset/icon_"$size"x$size@2x.png
             done
         else
             # Warning message.
