@@ -1,4 +1,4 @@
-TARGET = qremotecontrol2
+TARGET = qremotecontrol-client
 VERSION = 2.6.0
 
 TRANSLATIONS = i18/de.ts i18/ru.ts i18/uk.ts i18/es.ts
@@ -208,9 +208,19 @@ android: {
 }
 
 ios: {
-    OTHER_FILES += qremotecontrol2.plist
-    QMAKE_INFO_PLIST = qremotecontrol2.plist
+    OTHER_FILES += qremotecontrol2.plist \
+                   icons/qremotecontrol.icns
+    QMAKE_INFO_PLIST = Info.plist
+    #QMAKE_INFO_PLIST_OUT = $${TARGET}.app/Contents/Info.plist
+    #RE_TARGETDEPS += $${TARGET}.app/Contents/Info.plist
+    #HC_ICONNAME = qremotecontrol.icns
+    #QMAKE_POST_LINK += mkdir -p $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/Contents/Resources/ $$escape_expand(\n\t)
+    #QMAKE_POST_LINK += cp -n $$PWD/icons/$${HC_ICONNAME} $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/. $$escape_expand(\n\t)
+    #QMAKE_POST_LINK += rm $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/Default* $$escape_expand(\n\t)
+    #QMAKE_POST_LINK += rm $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/Info.plist $$escape_expand(\n\t)
+    QMAKE_POST_LINK += cp -n $$PWD/icons/qremotecontrol.iconset/* $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/.
     RESOURCES += qml.qrc
+    ICON = $$PWD/icons/qremotecontrol.icns
 }
 
 # If your application uses the Qt Mobility libraries, uncomment the following
