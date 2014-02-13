@@ -219,6 +219,7 @@ ios: {
     #QMAKE_POST_LINK += rm $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/Default* $$escape_expand(\n\t)
     #QMAKE_POST_LINK += rm $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/Info.plist $$escape_expand(\n\t)
     QMAKE_POST_LINK += cp -n $$PWD/icons/qremotecontrol.iconset/* $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/.
+    #QMAKE_POST_LINK += cp -n $$PWD/icons/qremotecontrol.iconset/* $${OUT_PWD}/Release-iphoneos/$${TARGET}.app/.
     RESOURCES += qml.qrc
     ICON = $$PWD/icons/qremotecontrol.icns
 }
