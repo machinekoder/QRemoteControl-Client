@@ -309,6 +309,7 @@ Item {
                                spanishButton.checked = false
                                germanButton.checked = false
                                russianButton.checked = false
+                               turkishButton.checked = false
                                ukrainianButton.checked = false
 
                                client.language = "en"
@@ -333,6 +334,7 @@ Item {
                                englishButton.checked = false
                                germanButton.checked = false
                                russianButton.checked = false
+                               turkishButton.checked = false
                                ukrainianButton.checked = false
 
                                client.language = "es"
@@ -357,6 +359,7 @@ Item {
                                spanishButton.checked = false
                                englishButton.checked = false
                                russianButton.checked = false
+                               turkishButton.checked = false
                                ukrainianButton.checked = false
 
                                client.language = "de"
@@ -381,9 +384,35 @@ Item {
                                spanishButton.checked = false
                                germanButton.checked = false
                                englishButton.checked = false
+                               turkishButton.checked = false
                                ukrainianButton.checked = false
 
                                client.language = "ru"
+                           }
+                           else
+                               checked = false
+                       }
+                   }
+                   Button {
+                       id:              turkishButton
+                       checkable:       true
+                       width:           master.buttonHeight * 0.9
+                       height:          width
+                       text:            ""
+                       icon:            master.imagePath + "lang/turkish.png"
+                       anchors.top:     parent.top
+                       anchors.left:    russianButton.right
+                       anchors.leftMargin:  master.generalMargin
+                       onClicked: {
+                           if (!checked)
+                           {
+                               spanishButton.checked = false
+                               germanButton.checked = false
+                               englishButton.checked = false
+                               russianButton.checked = false
+                               ukrainianButton.checked = false
+
+                               client.language = "tr"
                            }
                            else
                                checked = false
@@ -397,7 +426,7 @@ Item {
                        text:            ""
                        icon:            master.imagePath + "lang/ukrainian.png"
                        anchors.top:     parent.top
-                       anchors.left:    russianButton.right
+                       anchors.left:    turkishButton.right
                        anchors.leftMargin:  master.generalMargin
                        onClicked: {
                            if (!checked)
@@ -405,6 +434,7 @@ Item {
                                spanishButton.checked = false
                                germanButton.checked = false
                                russianButton.checked = false
+                               turkishButton.checked = false
                                englishButton.checked = false
 
                                client.language = "uk"
@@ -538,6 +568,7 @@ Item {
         spanishButton.checked   = false
         germanButton.checked    = false
         russianButton.checked   = false
+        turkishButton.checked   = false
         ukrainianButton.checked = false
 
         switch (language)
@@ -549,6 +580,8 @@ Item {
             case "de": germanButton.checked = true
                     break
             case "ru": russianButton.checked = true
+                    break
+            case "tr": turkishButton.checked = true
                     break
             case "uk": ukrainianButton.checked = true
                     break
