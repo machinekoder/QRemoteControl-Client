@@ -12,7 +12,6 @@ Item {
     signal altClicked(bool down)
     signal controlClicked(bool down)
 
-
     width: 400
     height: 600
 

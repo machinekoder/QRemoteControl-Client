@@ -1,7 +1,7 @@
 TARGET = qremotecontrol2
 VERSION = 2.6.0
 
-TRANSLATIONS = i18/de.ts i18/ru.ts i18/uk.ts i18/es.ts
+TRANSLATIONS = i18/de.ts i18/ru.ts i18/uk.ts i18/es.ts i18/it.ts
 
 DEFINES += VERSION=\"\\\"$$VERSION\\\"\"
 
@@ -183,7 +183,11 @@ sailfish: {
     qml/images/white2/disconnect.png \
     qml/images/white2/computer.png \
     qml/images/white2/backspace.png \
-    qml/images/white2/apps.png
+    qml/images/white2/apps.png \
+    qml/harbour-qremotecontrol.qml \
+    qml/MyComponents/coloroverlay.js \
+    qml/tutorial/page2.qml \
+    qml/tutorial/page1.qml
 }
 !sailfish: {
 !android: !ios: {
@@ -202,7 +206,9 @@ sailfish: {
 
 android: {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
-    OTHER_FILES += android/AndroidManifest.xml
+    OTHER_FILES += android/AndroidManifest.xml \
+                    android/res/values/strings.xml \
+                    android/res/values/styles.xml
     RESOURCES += qml.qrc 
 }
 
@@ -213,6 +219,7 @@ MOBILITY += sensors
 
 QT += network
 QT += sensors
+QT += multimedia
 QT -= svg
 
 SOURCES += src/main.cpp \
@@ -233,9 +240,7 @@ HEADERS += src/qremotecontrolclient.h \
 INCLUDEPATH += src/
 
 OTHER_FILES += \
-    bar-descriptor.xml \
-    qml/harbour-qremotecontrol.qml \
-    qml/MyComponents/coloroverlay.js
+    bar-descriptor.xml
 
 RESOURCES += \
     i18.qrc

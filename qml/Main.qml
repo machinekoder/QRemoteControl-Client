@@ -10,6 +10,9 @@ Item {
     property bool   landscapeMode: (device.width < device.height)
     property bool   active: Qt.application.active
 
+    onWidthChanged: console.log(width +"x"+ height)
+    onHeightChanged: console.log(width +"x"+ height)
+
     id: device
     anchors.fill: parent
 
@@ -84,6 +87,11 @@ Item {
                 OrientationSensor.createOrientationSensor()
             }
 
+            if (client.runCount == 0)
+            {
+                firstStartTimer.running = true
+            }
+
             if ((client.runCount !== 0) && ((client.runCount % 10) == 0) )  // start social page at every 10th start
             {
                 socialTimer.running = true
@@ -97,6 +105,19 @@ Item {
             repeat: false
             interval: 1000
             onTriggered: connectPage.socialClicked()
+        }
+
+        /** Timer to trigger the tutorial or help on first start */
+        Timer {
+            id: firstStartTimer
+            running: false
+            repeat: false
+            interval: 1000
+            onTriggered: {
+                master.lastState = master.state
+                //master.state = "tutorialState"
+                master.state = "helpState"
+            }
         }
 
         Keys.onVolumeUpPressed: {
@@ -129,7 +150,6 @@ Item {
                 connectPage.port = client.port
                 connectPage.forceActiveFocus()  // close eventuall open keyboard
             }
-            onFirstStart: master.state = "helpState"
             onConnectingStarted: master.state = "loadingState"
             onBroadcastingStarted: master.state = "broadcastState"
             onNetworkOpened: master.state = "startState"
@@ -305,6 +325,12 @@ Item {
                 onDisconnectClicked:remoteBoxClient.closeNetwork()
                 onSettingsClicked:  master.state = "settingsState"
             }
+            TutorialPage {
+                id:                 tutorialPage
+                anchors.fill:       parent
+                onTutorialFinished: master.state = master.lastState
+                onTutorialAborted:  master.state = master.lastState
+            }
         }
 
         states: [
@@ -321,6 +347,7 @@ Item {
                 PropertyChanges { target: label; visible: true}
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 0.0; z: 0 }
                 StateChangeScript {
                     name: "closeAllSettings"
                     script:connectPage.closeAllSettings()
@@ -338,6 +365,7 @@ Item {
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
             },
             State {
@@ -352,6 +380,7 @@ Item {
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
             },
             State {
@@ -366,6 +395,7 @@ Item {
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
             },
             State {
@@ -380,6 +410,7 @@ Item {
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
             },
             State {
@@ -394,6 +425,7 @@ Item {
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 1.0; z: 1 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
             },
             State {
@@ -408,6 +440,7 @@ Item {
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
             },
             State {
@@ -422,6 +455,7 @@ Item {
                 PropertyChanges { target: remotecontrolPage; opacity: 1.0; z: 1 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
                 PropertyChanges { target: remotecontrolPage; state: "buttonPageState" }
             },
@@ -437,6 +471,7 @@ Item {
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
             },
             State {
@@ -451,6 +486,7 @@ Item {
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
             },
             State {
@@ -465,11 +501,27 @@ Item {
                 PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
                 PropertyChanges { target: remoteBoxPage; opacity: 1.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: label; visible: false}
+            },
+            State {
+                name: "tutorialState"
+                PropertyChanges { target: wakeOnLanPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: settingsPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: helpPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: connectPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: broadcastPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: loadingPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: aboutPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: remotecontrolPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: socialPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: remoteBoxPage; opacity: 0.0; z: 0 }
+                PropertyChanges { target: tutorialPage; opacity: 1.0; z: 0 }
                 PropertyChanges { target: label; visible: false}
             }
         ]
         transitions: Transition {
-           NumberAnimation { targets: [wakeOnLanPage, settingsPage, helpPage, connectPage, broadcastPage, loadingPage, aboutPage, remotecontrolPage]; properties: "opacity"; duration: 300}
+           NumberAnimation { targets: [wakeOnLanPage, settingsPage, helpPage, connectPage, broadcastPage, loadingPage, aboutPage, remotecontrolPage, tutorialPage]; properties: "opacity"; duration: 300}
         }
 
         function lockScreenOrientation()

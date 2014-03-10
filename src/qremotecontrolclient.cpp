@@ -268,7 +268,7 @@ void QRemoteControlClient::abortConnectionRequest()
 
 void QRemoteControlClient::saveSettings()
 {
-    QSettings settings("", "qremotecontrol", this);
+    QSettings settings("", "qremotecontrol-client", this);
 
     settings.setValue("password", m_password);
     settings.setValue("hostname", m_hostname);
@@ -295,13 +295,11 @@ void QRemoteControlClient::saveSettings()
         settings.setValue("port", lastConnectionList.at(i).port);
     }
     settings.endArray();
-
-    settings.setValue("firstStart", false);
 }
 
 void QRemoteControlClient::loadSettings()
 {
-    QSettings settings("", "qremotecontrol", this);
+    QSettings settings("", "qremotecontrol-client", this);
 
     m_password  = settings.value("password", QString()).toString();
     m_hostname  = settings.value("hostname", QString()).toString();
@@ -338,11 +336,6 @@ void QRemoteControlClient::loadSettings()
         lastConnectionList.append(connection);
     }
     settings.endArray();
-
-    if (settings.value("firstStart", true).toBool())
-    {
-        emit firstStart();
-    }
 }
 
 void QRemoteControlClient::sendConnectionRequest()

@@ -23,7 +23,6 @@
         <file>qml/ConnectPage.qml</file>
         <file>qml/HelpPage.qml</file>
         <file>qml/init.qml</file>
-        <file>qml/initMeego.qml</file>
         <file>qml/MyComponents/Button.qml</file>
         <file>qml/MyComponents/feedback.js</file>
         <file>qml/MyComponents/Label.qml</file>
@@ -228,5 +227,11 @@
         <file>qml/styles/FancyPink.qml</file>
         <file>qml/styles/FancyRed.qml</file>
         <file>qml/styles/FancyYellow.qml</file>
+        <file>qml/TutorialItem.qml</file>
+        <file>qml/TutorialMaster.qml</file>
+        <file>qml/TutorialPage.qml</file>
+        <file>qml/tutorial/page2.qml</file>
+        <file>qml/tutorial/page1.qml</file>
+        <file>qml/tutorial/browser_qremote.mp4</file>
     </qresource>
 </RCC>

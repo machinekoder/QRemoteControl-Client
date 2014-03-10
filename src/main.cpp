@@ -34,7 +34,7 @@ viewer.setMainQmlFile(QStringLiteral("qml/init.qml"));
     viewer.setSource(QUrl("qrc:/qml/init.qml"));
 #endif
 #if ((defined(Q_WS_X11) || defined(Q_WS_WIN) || defined(Q_OS_LINUX)) && !defined(Q_OS_ANDROID)) // On Desktop skip the Splash screen
-    viewer.setGeometry(0,0, 600, 900);
+    viewer.setGeometry(0,0, 640, 960);
 #endif
 
     viewer.showExpanded();

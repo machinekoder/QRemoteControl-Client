@@ -359,7 +359,6 @@ public:
     void disconnected();
     void broadcastingStarted();
     void connectingStarted();
-    void firstStart();
     void actionReceived(int id, QString text, QString imagePath);
     void clearActions();
     void serversCleared();
