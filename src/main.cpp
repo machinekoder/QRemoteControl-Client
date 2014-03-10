@@ -28,7 +28,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QtQuick2ApplicationViewer viewer;
     viewer.setDefaultAlphaBuffer(true);
 
-#if !defined(Q_OS_ANDROID)
+#if !(defined(Q_OS_ANDROID) || defined(Q_OS_IOS))
 viewer.setMainQmlFile(QStringLiteral("qml/init.qml"));
 #else
     viewer.setSource(QUrl("qrc:/qml/init.qml"));

@@ -1,0 +1,22 @@
+[Desktop Entry]
+Categories=Qt;Utility;
+Comment[en_US]=QRemoteControl is a remote control application for your mobile phone. This is the server part of QRemoteControl.
+Comment=QRemoteControl is a remote control application for your mobile phone. This is the server part of QRemoteControl.
+Encoding=UTF-8
+Exec=qremotecontrol-server
+GenericName[en_US]=Remonte Control Application
+GenericName=Remonte Control Application
+Icon=qremotecontrol
+MimeType=
+Name[en_US]=QRemoteControl-Server
+Name=QRemoteControl-Server
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
