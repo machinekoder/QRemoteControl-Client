@@ -339,7 +339,7 @@
         <translation type="obsolete">Técnico</translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="492"/>
+        <location filename="../qml/SettingsPage.qml" line="522"/>
         <source>Continue</source>
         <translation>Continuar</translation>
     </message>

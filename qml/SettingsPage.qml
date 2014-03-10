@@ -286,13 +286,16 @@ Item {
                     anchors.leftMargin: master.generalMargin
                 }
 
-               Item {
+               Grid {
                    id: languageButtons
                    anchors.top:                 label4.bottom
                    anchors.topMargin:           master.generalMargin
                    anchors.horizontalCenter:    parent.horizontalCenter
                    width:                       master.buttonHeight * 0.9 * 5 + 4 * master.generalMargin
-                   height: englishButton.height
+                   height:                      englishButton.height*2
+                   columns:                     5
+                   rows:                        2
+                   spacing:                     0
 
                    Button {
                        id:              englishButton
@@ -301,8 +304,6 @@ Item {
                        height:          width
                        text:            ""
                        icon:            master.imagePath + "lang/english.png"
-                       anchors.top:     parent.top
-                       anchors.left:    parent.left
                        onClicked: {
                            if (!checked)
                            {
@@ -325,9 +326,6 @@ Item {
                        height:          width
                        text:            ""
                        icon:            master.imagePath + "lang/spanish.png"
-                       anchors.top:     parent.top
-                       anchors.left:    englishButton.right
-                       anchors.leftMargin:  master.generalMargin
                        onClicked: {
                            if (!checked)
                            {
@@ -350,9 +348,6 @@ Item {
                        height:          width
                        text:            ""
                        icon:            master.imagePath + "lang/german.png"
-                       anchors.top:     parent.top
-                       anchors.left:    spanishButton.right
-                       anchors.leftMargin:  master.generalMargin
                        onClicked: {
                            if (!checked)
                            {
@@ -375,9 +370,6 @@ Item {
                        height:          width
                        text:            ""
                        icon:            master.imagePath + "lang/russian.png"
-                       anchors.top:     parent.top
-                       anchors.left:    germanButton.right
-                       anchors.leftMargin:  master.generalMargin
                        onClicked: {
                            if (!checked)
                            {
@@ -400,9 +392,6 @@ Item {
                        height:          width
                        text:            ""
                        icon:            master.imagePath + "lang/turkish.png"
-                       anchors.top:     parent.top
-                       anchors.left:    russianButton.right
-                       anchors.leftMargin:  master.generalMargin
                        onClicked: {
                            if (!checked)
                            {
@@ -425,9 +414,6 @@ Item {
                        height:          width
                        text:            ""
                        icon:            master.imagePath + "lang/ukrainian.png"
-                       anchors.top:     parent.top
-                       anchors.left:    turkishButton.right
-                       anchors.leftMargin:  master.generalMargin
                        onClicked: {
                            if (!checked)
                            {
