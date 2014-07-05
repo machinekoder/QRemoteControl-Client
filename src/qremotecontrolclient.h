@@ -321,25 +321,27 @@ public:
             }
             else if(m_language.contains(QString("ru"))) {
                 m_language = "ru";
-                translator2->load("ru", ":/i18");
-                qApp->installTranslator(translator2);
+                translator1->load("ru", ":/i18");
+                qApp->installTranslator(translator1);
                }
             else if(m_language.contains(QString("tr"))) {
                 m_language = "tr";
-                translator3->load("tr", ":/i18");
-                qApp->installTranslator(translator3);
+                translator1->load("tr", ":/i18");
+                qApp->installTranslator(translator1);
                }
             else if(m_language.contains(QString("uk"))) {
                 m_language = "uk";
-                translator4->load("uk", ":/i18");
-                qApp->installTranslator(translator4);
+                translator1->load("uk", ":/i18");
+                qApp->installTranslator(translator1);
+               }
+            else if(m_language.contains(QString("it"))) {
+                m_language = "it";
+                translator1->load("it", ":/i18");
+                qApp->installTranslator(translator1);
                }
             else {                                          // english fall through
                 m_language = "en";
                 qApp->removeTranslator(translator1);
-                qApp->removeTranslator(translator2);
-                qApp->removeTranslator(translator3);
-                qApp->removeTranslator(translator4);
                }
             emit emptyStringChanged("");
             emit languageChanged(m_language);
@@ -426,9 +428,6 @@ public:
 
     // Translators
     QTranslator *translator1;
-    QTranslator *translator2;
-    QTranslator *translator3;
-    QTranslator *translator4;
 
     void incomingIcon(QByteArray data);
     void incomingAmarokData(QByteArray data);

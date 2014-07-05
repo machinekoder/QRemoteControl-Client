@@ -5,3 +5,4 @@ lrelease ru.ts
 lrelease tr.ts
 lrelease uk.ts
 lrelease es.ts
+lrelease it.ts
