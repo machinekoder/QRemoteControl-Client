@@ -1,5 +1,5 @@
 TARGET = qremotecontrol-client
-VERSION = 2.6.0
+VERSION = 2.6.1
 
 TRANSLATIONS = i18/de.ts i18/ru.ts i18/uk.ts i18/es.ts i18/it.ts
 

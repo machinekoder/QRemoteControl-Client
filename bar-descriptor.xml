@@ -2,7 +2,7 @@
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
     <id>org.qremote.qremotecontrol-client</id>
     <name>QRemoteControl Client</name>
-    <versionNumber>2.5.0</versionNumber>
+    <versionNumber>2.6.1</versionNumber>
     <icon>
         <image>qrc_green_meego114.png</image>
     </icon>
@@ -14,15 +14,15 @@
     </initialWindow>
     <author>qremote.org</author>
     <copyright>Copyright 2012-2013 by Alexander Rössler</copyright>
-    <env var="QML_IMPORT_PATH" value="app/native/imports:/usr/lib/qt4/imports"/>
-    <env var="QT_PLUGIN_PATH" value="app/native/plugins:/usr/lib/qt4/plugins"/>
-    <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib/"/>
+    <env value="app/native/imports:/usr/lib/qt4/imports" var="QML_IMPORT_PATH"/>
+    <env value="app/native/plugins:/usr/lib/qt4/plugins" var="QT_PLUGIN_PATH"/>
+    <env value="app/native/lib:/usr/lib/qt4/lib/" var="LD_LIBRARY_PATH"/>
     <arg>-style</arg>
     <arg>qnxlight</arg>
     <action system="true">run_native</action>
     <action>access_internet</action>
     <!-- qremotecontrol2 should point to the project binary, path can be relative -->
-    <asset entry="true" type="Qnx/Elf" path="qremotecontrol2">qremotecontrol2</asset>
+    <asset type="Qnx/Elf" path="qremotecontrol2" entry="true">qremotecontrol2</asset>
     <asset path="%SRC_DIR%/qml">qml</asset>
     <asset path="/home/alexander/projects/qremotecontrol-client/svg/qrc_green_meego114.png">qrc_green_meego114.png</asset>
     <authorId>gYAAgFPlfKdPddZH5EdJnaAtSGI</authorId>
