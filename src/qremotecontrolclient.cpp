@@ -15,9 +15,6 @@ QRemoteControlClient::QRemoteControlClient(QObject *parent)
     m_emptyString = "";
     m_language = "en";
     translator1 = new QTranslator(this);
-    translator2 = new QTranslator(this);
-    translator3 = new QTranslator(this);
-    translator4 = new QTranslator(this);
 
     loadSettings();
 

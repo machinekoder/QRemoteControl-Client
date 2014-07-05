@@ -312,6 +312,7 @@ Item {
                                russianButton.checked = false
                                turkishButton.checked = false
                                ukrainianButton.checked = false
+                               italianButton.checked = false
 
                                client.language = "en"
                            }
@@ -334,6 +335,7 @@ Item {
                                russianButton.checked = false
                                turkishButton.checked = false
                                ukrainianButton.checked = false
+                               italianButton.checked = false
 
                                client.language = "es"
                            }
@@ -356,6 +358,7 @@ Item {
                                russianButton.checked = false
                                turkishButton.checked = false
                                ukrainianButton.checked = false
+                               italianButton.checked = false
 
                                client.language = "de"
                            }
@@ -378,6 +381,7 @@ Item {
                                englishButton.checked = false
                                turkishButton.checked = false
                                ukrainianButton.checked = false
+                               italianButton.checked = false
 
                                client.language = "ru"
                            }
@@ -400,6 +404,7 @@ Item {
                                englishButton.checked = false
                                russianButton.checked = false
                                ukrainianButton.checked = false
+                               italianButton.checked = false
 
                                client.language = "tr"
                            }
@@ -419,6 +424,7 @@ Item {
                            {
                                spanishButton.checked = false
                                germanButton.checked = false
+                               englishButton.checked = false
                                russianButton.checked = false
                                turkishButton.checked = false
                                englishButton.checked = false
@@ -430,6 +436,28 @@ Item {
                        }
                    }
 
+                   Button {
+                       id:              italianButton
+                       checkable:       true
+                       width:           master.buttonHeight * 0.9
+                       height:          width
+                       text:            ""
+                       icon:            master.imagePath + "lang/italian.png"
+                       onClicked: {
+                           if (!checked)
+                           {
+                               spanishButton.checked = false
+                               germanButton.checked = false
+                               russianButton.checked = false
+                               turkishButton.checked = false
+                               ukrainianButton.checked = false
+
+                               client.language = "it"
+                           }
+                           else
+                               checked = false
+                       }
+                   }
                 }
 
                ListModel {
