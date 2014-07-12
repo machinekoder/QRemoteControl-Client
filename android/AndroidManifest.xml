@@ -33,8 +33,8 @@
     </application>
     <uses-sdk android:targetSdkVersion="14" android:minSdkVersion="9"/>
     <supports-screens android:normalScreens="true" android:anyDensity="true" android:smallScreens="true" android:largeScreens="true"/>
-    <!-- %%INSERT_PERMISSIONS -->
-    <!-- %%INSERT_FEATURES -->
+
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
