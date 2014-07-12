@@ -1046,7 +1046,7 @@ void QRemoteBoxClient::incomingNetworkData()
 {
     QByteArray data;
 
-    if ((tcpSocket == NULL))
+    if (tcpSocket == NULL)
         return;
 
     while ((tcpSocket != NULL) && (tcpSocket->bytesAvailable() != 0))

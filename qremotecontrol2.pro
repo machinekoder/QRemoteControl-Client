@@ -223,8 +223,8 @@ ios: {
     #QMAKE_POST_LINK += cp -n $$PWD/icons/$${HC_ICONNAME} $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/. $$escape_expand(\n\t)
     #QMAKE_POST_LINK += rm $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/Default* $$escape_expand(\n\t)
     #QMAKE_POST_LINK += rm $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/Info.plist $$escape_expand(\n\t)
-    QMAKE_POST_LINK += cp -n $$PWD/icons/qremotecontrol.iconset/* $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/.
-    #QMAKE_POST_LINK += cp -n $$PWD/icons/qremotecontrol.iconset/* $${OUT_PWD}/Release-iphoneos/$${TARGET}.app/.
+    #QMAKE_POST_LINK += cp -n $$PWD/icons/qremotecontrol.iconset/* $${OUT_PWD}/Release-iphonesimulator/$${TARGET}.app/.
+    QMAKE_POST_LINK += cp -n $$PWD/icons/qremotecontrol.iconset/* $${OUT_PWD}/Release-iphoneos/$${TARGET}.app/.
     RESOURCES += qml.qrc
     ICON = $$PWD/icons/qremotecontrol.icns
 }
@@ -257,7 +257,8 @@ HEADERS += src/qremotecontrolclient.h \
 INCLUDEPATH += src/
 
 OTHER_FILES += \
-    bar-descriptor.xml
+    bar-descriptor.xml \
+    Info.plist
 
 RESOURCES += \
     i18.qrc
