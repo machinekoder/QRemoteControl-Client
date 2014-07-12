@@ -2,11 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key></key>
-	<array>
-		<string></string>
-		<string></string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en-US</string>
 	<key>CFBundleDisplayName</key>
@@ -17,26 +12,15 @@
 	<string>Created by Qt/QMake</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-                <string>icon_16x16.png</string>
-                <string>icon_32x32.png</string>
-                <string>icon_57x57.png</string>
-                <string>icon_72x72.png</string>
-                <string>icon_76x76.png</string>
-                <string>icon_120x120.png</string>
-                <string>icon_128x128.png</string>
-                <string>icon_152x152.png</string>
-                <string>icon_256x256.png</string>
-                <string>icon_512x512.png</string>
-                <string>icon_16x16@2x.png</string>
-                <string>icon_32x32@2x.png</string>
-                <string>icon_57x57@2x.png</string>
-                <string>icon_72x72@2x.png</string>
-                <string>icon_76x76@2x.png</string>
-                <string>icon_120x120@2x.png</string>
-                <string>icon_128x128@2x.png</string>
-                <string>icon_152x152@2x.png</string>
-                <string>icon_256x256@2x.png</string>
-                <string>icon_512x512@2x.png</string>
+                <string>icon_57x57</string>
+                <string>icon_32x32</string>
+		<string>icon_72x72</string>
+		<string>icon_76x76</string>
+		<string>icon_120x120</string>
+		<string>icon_128x128</string>
+		<string>icon_152x152</string>
+		<string>icon_256x256</string>
+		<string>icon_512x512</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>org.qremote.qremotecontrol-client</string>
