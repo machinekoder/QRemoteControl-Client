@@ -235,5 +235,8 @@
         <file>qml/tutorial/page1.qml</file>
         <file>qml/tutorial/browser_qremote.mp4</file>
         <file>qml/images/lang/italian.png</file>
+        <file>qml/LanguageSelector.qml</file>
+        <file>qml/OrientationSelector.qml</file>
+        <file>qml/ThemeSelector.qml</file>
     </qresource>
 </RCC>

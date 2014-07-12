@@ -106,7 +106,7 @@ Item {
         anchors.topMargin: master.generalMargin
         rotation:           master.screenRotation
         onClicked: Qt.quit()
-        visible: master.platform != "SailfishOS"
+        visible: (master.platform != "SailfishOS") && (master.platform != "Android")
     }
 
     Item {

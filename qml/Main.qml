@@ -34,6 +34,52 @@ Item {
             master.screenRotation = 90
     }
 
+    // Capture the Android Back key and backspace key
+    // on the desktop tp go back in the application
+    // focus needs to be true to capture key events
+    focus: true
+    Keys.onReleased: {
+        if ((event.key === Qt.Key_Back) ||
+                (event.key === Qt.Key_Backspace)) {
+            goBack()
+            event.accepted = true
+        }
+    }
+
+    function goBack()
+    {
+        if (master.state == "remoteControlState")
+            client.disconnect()
+        else if ((master.state == "startState") || (master.state == "networkState"))
+            Qt.quit()
+        else
+            master.state = master.lastState
+    }
+
+    function lockScreenOrientation()
+    {
+        master.oldScreenOrientation = client.screenOrientation
+        master.oldScreenRotation = master.screenRotation
+
+        client.screenOrientation = 1
+        master.screenRotation = 0
+        if (!device.landscapeMode)
+             master.screenRotation += 90
+    }
+
+    function releaseScreenOrientation()
+    {
+        client.screenOrientation = master.oldScreenOrientation
+        master.screenRotation = master.oldScreenRotation
+    }
+
+    function loadBackgroundImage(imageUrl, effect, fillMode)
+    {
+        backgroundImage.source = imageUrl
+        backgroundImage.fillMode = fillMode
+        backgroundImage.effectEnabled = effect
+    }
+
     Rectangle {
         property string backgroundImage: "images/background_grey.png"
         property string imagePath: "images/"
@@ -522,30 +568,6 @@ Item {
         ]
         transitions: Transition {
            NumberAnimation { targets: [wakeOnLanPage, settingsPage, helpPage, connectPage, broadcastPage, loadingPage, aboutPage, remotecontrolPage, tutorialPage]; properties: "opacity"; duration: 300}
-        }
-
-        function lockScreenOrientation()
-        {
-            master.oldScreenOrientation = client.screenOrientation
-            master.oldScreenRotation = master.screenRotation
-
-            client.screenOrientation = 1
-            master.screenRotation = 0
-            if (!device.landscapeMode)
-                 master.screenRotation += 90
-        }
-
-        function releaseScreenOrientation()
-        {
-            client.screenOrientation = master.oldScreenOrientation
-            master.screenRotation = master.oldScreenRotation
-        }
-
-        function loadBackgroundImage(imageUrl, effect, fillMode)
-        {
-            backgroundImage.source = imageUrl
-            backgroundImage.fillMode = fillMode
-            backgroundImage.effectEnabled = effect
         }
     }
 }
