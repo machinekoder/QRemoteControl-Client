@@ -1,0 +1,39 @@
+Name: harbour-qremotecontrol
+Summary: Remote control for your desktop
+Version: 2.6.1
+Release: 1
+Group: Qt/Qt
+URL: http://qremote.org/
+License: GPLv3
+Sources:
+- '%{name}-%{version}.tar.bz2'
+Description: "With QRemoteControl installed on your Smartphone you can easily control
+  your computer via WiFi. By using the touchpad of your Phone you can for example
+  open the internet browser and navigate to the pages you want to visit, use the music
+  player or your media center without being next to your PC or laptop. Summurazing
+  QRemoteControl allows you to do almost everything you would be able to do with a
+  mouse and a keyboard, but also from a greater distance.  To make these replacements
+  possible QRemoteControl offers you a touchpad, a keyboard, multimedia keys and buttons
+  for starting applications.  Even powering on the computer via Wake On Lan is supported
+  by this app.\nThe fresh design makes QRemoteControl an eyecatcher. Moreover serveral
+  color designs for the user interface are aviable to adapt it to your individual
+  flavour. Automatically swiching from portrait to landscape mode is another feature
+  making it pefectly fiting for the user in every situation.\n\nBy now the server
+  application is available for Windows, Linux and Mac."
+Configure: none
+Builder: qtc5
+PkgConfigBR:
+- sailfishapp >= 0.0.10
+- Qt5Core
+- Qt5Qml
+- Qt5Quick
+- Qt5Network
+Requires:
+- qt5-qtgraphicaleffects >= 5.1
+- sailfishsilica-qt5 >= 0.10.9
+Files:
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/%{name}/qml'
+- '%{_bindir}'
+PkgBR: []
